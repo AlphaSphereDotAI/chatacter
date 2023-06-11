@@ -3,3 +3,5 @@ This is a graduation project. Click [here](https://tome.app/mh0386/mind-reading-
 
 ## Ideas
 - FPS Enhancer
+- BCI with VR
+- Object Eraser from video
