@@ -5,3 +5,8 @@ This is a graduation project. Click [here](https://tome.app/mh0386/mind-reading-
 - FPS Enhancer
 - BCI with VR
 - Object Eraser from video
+
+## Object Eraser from video
+### resourses
+- https://youtu.be/RHMIZoFVwKI
+- https://youtu.be/y4pq_tRZwxQ
