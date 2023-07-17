@@ -1,7 +1,7 @@
 # Graduation Project
 This is a graduation project.
 ## Ideas
-- FPS Enhancer
+- Frame Rate Enhancer
 - Handwritten BCI Recognition
 - DeepFake
 
