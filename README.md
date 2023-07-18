@@ -1,5 +1,5 @@
 # Graduation Project
-This is a graduation project for a 6-member team at Cairo University. For a more detailed report, click [here](https://drive.google.com/drive/folders/1DM4TEChpwALbl5ll6JCwM6gaRtpx5zjS?usp=sharing)
+This is a graduation project for a 6-member team at Cairo University. For a more detailed report, click [here](https://docs.google.com/document/d/1AqPmSc7sS0sIT5c1Txxk98LEKcT2caWGn9AnyRQPEmo/edit?usp=sharing)
 ## Ideas
 - Frame Rate Enhancer
 - Handwritten BCI Recognition
