@@ -5,7 +5,7 @@ This is a graduation project.
 - Handwritten BCI Recognition
 - DeepFake (**under brainstorming**)
 
-### FPS Enhancer
+### Frame Rate Enhancer
 After using the RIFE Model, it enhances 5 FPS video to 20 FPS.
 
 ![5 FPS video to 20 FPS](https://github.com/MH0386/graduation_project/assets/77013511/37a4e785-74a5-405a-adb9-a19f8a90f2c7)
