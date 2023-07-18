@@ -8,15 +8,15 @@ This is a graduation project.
 ### FPS Enhancer
 After using the RIFE Model, it enhances 5 FPS video to 20 FPS.
 
-![video](https://github.com/MH0386/graduation_project/assets/77013511/e6bc148f-873e-4418-a372-f393952a0ede)
+![5 FPS video to 20 FPS](https://github.com/MH0386/graduation_project/assets/77013511/37a4e785-74a5-405a-adb9-a19f8a90f2c7)
 
 
 <details>
 <summary>In Terminal:</summary>
  
  ```
- Loaded v3.x HD model.
- v.mp4, 150.0 frames in total, 5.0FPS to 20.0FPS
+loaded v3.x HD model.
+ v.mp4, 150.0 frames in total, 5.0 FPS to 20.0 FPS
  The audio will be merged after the interpolation process
   99%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉ | 149/150.0 [00:29<00:00,  5.02it/s]
  ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 The FFmpeg developers
