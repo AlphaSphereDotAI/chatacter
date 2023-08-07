@@ -3,7 +3,6 @@ This is a graduation project for a 6-member team at Cairo University. For a more
 ## Ideas
 - Frame Rate Enhancer
 - Handwritten BCI Recognition
-- DeepFake (**under brainstorming**)
 
 ### Frame Rate Enhancer
 After using the RIFE Model, it enhances 5 FPS video to 20 FPS.
