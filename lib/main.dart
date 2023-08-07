@@ -20,7 +20,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'alpha-AI Team',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFF000000)),
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color(0xFF000000),
+      ),
       home: Scaffold(
         body: Center(
           child: Column(
