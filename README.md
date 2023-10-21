@@ -3,7 +3,7 @@ This is a graduation project for a 6-member team at Cairo University. For a more
 
 # Ideas
 - Self-Driving Vehicles
-- Handwritten BCI Recognition
-- Glass with Computer Vision
-- Chat with Characters in History
+- [Handwritten BCI Recognition](HandwrittenBCIRecognition.md)
+- [Glass with Computer Vision](GlasswithComputerVision.md)
+- [Chat with Characters in History](ChatwithCharactersinHistory.md)
 - [Frame Rate Enhancer](FrameRateEnhancer.md)
