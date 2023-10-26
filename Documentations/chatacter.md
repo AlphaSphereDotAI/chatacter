@@ -1,4 +1,4 @@
-# Chat with Characters from History
+# Chatacter - Chat with Characters
 
 The concept of my AI project is to create a platform that allows users to interact with historical figures and gather information about individuals from the past and present. The objectives of my project are to create a conversational AI system, simulate historical figures' personalities, and provide accurate historical information. The AI technology I plan to use for this project is a large language model, such as GPT-3.
 
