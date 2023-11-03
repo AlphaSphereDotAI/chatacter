@@ -1,2 +1,3 @@
 # QAgent
-This is a graduation project. For documents, click [here](Writerside/topics/main.md).
+
+This is a graduation project. For detail, click [here](https://mh0386.github.io/QAgent).
