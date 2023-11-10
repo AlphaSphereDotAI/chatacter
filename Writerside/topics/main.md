@@ -1,6 +1,6 @@
-# QAgent
+# Graduation Project
 
-This is a graduation project for 6-member team at Cairo University.
+This is a graduation project for a 6-member team at Cairo University.
 
 ## Team Member:
 
