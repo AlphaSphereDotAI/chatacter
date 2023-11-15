@@ -1,4 +1,4 @@
-name: CI
+name: jupyter_to_python
 on:
   push:
     branches: [ "main" ]
