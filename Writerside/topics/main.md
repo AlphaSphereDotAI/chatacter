@@ -1,12 +1,17 @@
 # Graduation Project
 
-This is a graduation project for a 3-member team at Cairo University.
+This is a graduation project for a 3-member team at [Cairo University](https://www.linkedin.com/school/cairo-university).
+
+## Supervisor
+
+-   [Reda El-Khoribi](https://linkedin.com/in/reda-el-khoribi-aa338437)
+-   [Asmaa Ahmed]()
 
 ## Team Member
 
--   [Yousef Mohamed Abd El-Hay](https://github.com/Youssef-Mohammad)
--   [Abdelrahman Mostafa Mohamed](https://github.com/Eng-Abdelrahman-Mostafa-Mohamed)
--   [Mohamed Hisham Abdelzaher](https://github.com/MH0386)
+-   [Yousef Mohamed Abd El-Hay](https://www.linkedin.com/in/yussef-mohamed-900b44161)
+-   [Mohamed Hisham Abdelzaher](https://linkedin.com/in/MH0386)
+-   [Abdelrahman Mostafa Mohamed](https://linkedin.com/in/abdelrahman-mostafa-mohamed)
 
 ## Contact Us
 
