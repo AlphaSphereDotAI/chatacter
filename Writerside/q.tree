@@ -6,5 +6,7 @@
                  name="Graduation Project"
                  start-page="main.md">
 
-    <toc-element topic="main.md"/>
+    <toc-element topic="main.md">
+        <toc-element topic="Overview.md"/>
+    </toc-element>
 </instance-profile>
