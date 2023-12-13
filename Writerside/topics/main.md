@@ -13,6 +13,6 @@ This is a graduation project for a 3-member team at [Cairo University](https://w
 
 ## Contact Us
 * Email: [alpha-AI@googlegroups.com](mailto:alpha-AI@googlegroups.com)
-* Website: [MH0386.github.io/graduation_project](https://mh0386.github.io/graduation_project)
+* GitHub: [github.com/MH0386/graduation_project](https://github.com/MH0386/graduation_project)
 
 For Presentation, click [here](https://tome.app/mh0386/graduation-project-cli7p4hwj2jb65x3bldnihu1o)
