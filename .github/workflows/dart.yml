@@ -27,7 +27,7 @@ jobs:
             
       - uses: dart-lang/setup-dart@v1
       - run: dart pub get -C chatacter
-      - run: dart format --output=none --set-exit-if-changed . -C chatacter
+      - run: dart format --set-exit-if-changed .
       - run: dart analyze -C chatacter
       - run: dart test -C chatacter
 
