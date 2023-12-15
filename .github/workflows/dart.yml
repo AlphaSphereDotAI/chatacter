@@ -26,7 +26,8 @@ jobs:
         uses: subosito/flutter-action@v2.12.0
             
       - uses: dart-lang/setup-dart@v1
-      - run: dart pub get -C chatacter
+      - run: cd chatacter
+      - run: dart pub get
       - run: dart format --set-exit-if-changed .
       - run: dart analyze
       - run: dart test
