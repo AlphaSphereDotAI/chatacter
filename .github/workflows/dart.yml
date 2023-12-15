@@ -22,6 +22,9 @@ jobs:
       # You can specify other versions if desired, see documentation here:
       # https://github.com/dart-lang/setup-dart/blob/main/README.md
       # - uses: dart-lang/setup-dart@v1
+      - name: Flutter action
+        uses: subosito/flutter-action@v2.12.0
+            
       - uses: dart-lang/setup-dart@v1
       - run: dart pub get -C chatacter
       - run: dart format --output=none --set-exit-if-changed . -C chatacter
