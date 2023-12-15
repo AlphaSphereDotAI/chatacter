@@ -26,14 +26,7 @@ jobs:
         uses: subosito/flutter-action@v2.12.0
             
       - uses: dart-lang/setup-dart@v1
-
-      - name: Change Directory
-        working-directory: chatacter
-        run: |
-          # Run commands in the specified directory
-          pwd
-          ls
-          dart pub get
-          dart format --set-exit-if-changed .
-          dart analyze
-          dart test
+      - run: cd chatacter && dart pub get
+      - run: cd chatacter && dart format --set-exit-if-changed .
+      - run: cd chatacter && dart analyze
+      - run: cd chatacter && dart test
