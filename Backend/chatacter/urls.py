@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from chatacter.views import index
+from Backend.views import index
 
 urlpatterns = [
     path("admin/", admin.site.urls),
