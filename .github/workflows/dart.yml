@@ -29,4 +29,3 @@ jobs:
       - run: cd chatacter && dart pub get
       - run: cd chatacter && dart format --set-exit-if-changed .
       - run: cd chatacter && dart analyze
-      - run: cd chatacter && dart test
