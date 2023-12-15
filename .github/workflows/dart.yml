@@ -28,8 +28,8 @@ jobs:
       - uses: dart-lang/setup-dart@v1
       - run: dart pub get -C chatacter
       - run: dart format --set-exit-if-changed .
-      - run: dart analyze -C chatacter
-      - run: dart test -C chatacter
+      - run: dart analyze
+      - run: dart test
 
       # Uncomment this step to verify the use of 'dart format' on each commit.
       # - name: Verify formatting
