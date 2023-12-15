@@ -22,11 +22,16 @@ jobs:
       # You can specify other versions if desired, see documentation here:
       # https://github.com/dart-lang/setup-dart/blob/main/README.md
       # - uses: dart-lang/setup-dart@v1
+      - name: Flutter action
+        uses: subosito/flutter-action@v2.12.0
+            
       - uses: dart-lang/setup-dart@v1
-      - run: dart pub get -C chatacter
-      - run: dart format --output=none --set-exit-if-changed . -C chatacter
-      - run: dart analyze -C chatacter
-      - run: dart test -C chatacter
+      - run: cd chatacter
+      - run: pwd
+      - run: dart pub get
+      - run: dart format --set-exit-if-changed .
+      - run: dart analyze
+      - run: dart test
 
       # Uncomment this step to verify the use of 'dart format' on each commit.
       # - name: Verify formatting
