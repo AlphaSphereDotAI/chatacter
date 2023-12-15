@@ -23,13 +23,10 @@ jobs:
       # https://github.com/dart-lang/setup-dart/blob/main/README.md
       # - uses: dart-lang/setup-dart@v1
       - uses: dart-lang/setup-dart@v1
-      - run: dart pub get
-      - run: dart format --output=none --set-exit-if-changed .
-      - run: dart analyze
-      - run: dart test
-
-      - name: Install dependencies
-        run: dart pub get -C chatacter
+      - run: dart pub get -C chatacter
+      - run: dart format --output=none --set-exit-if-changed . -C chatacter
+      - run: dart analyze -C chatacter
+      - run: dart test -C chatacter
 
       # Uncomment this step to verify the use of 'dart format' on each commit.
       # - name: Verify formatting
