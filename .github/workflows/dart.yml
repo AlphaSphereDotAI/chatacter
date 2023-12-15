@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
       - uses: subosito/flutter-action@v2
-      - run: flutter pub get -C chatacter
+      #- run: flutter pub get -C chatacter
 
       # Uncomment this step to verify the use of 'dart format' on each commit.
       # - name: Verify formatting
