@@ -1,5 +1,5 @@
 Django
 pathlib
 gunicorn
-fastapi
 uvicorn
+fastapi
