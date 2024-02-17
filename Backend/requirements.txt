@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 Django
 pathlib
 gunicorn
 uvicorn
+=======
+Django
+pathlib
+gunicorn
+uvicorn
+>>>>>>> origin/main
 fastapi
