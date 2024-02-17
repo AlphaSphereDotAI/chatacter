@@ -1,0 +1,5 @@
+name: .venvCHATACTER
+channels:
+    - defaults
+dependencies:
+    - python=3.8

@@ -1,0 +1,5 @@
+Django
+pathlib
+gunicorn
+uvicorn
+fastapi
