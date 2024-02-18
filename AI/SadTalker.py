@@ -1,10 +1,6 @@
-import ipywidgets as widgets
 import matplotlib.pyplot as plt
-from IPython.display import HTML
-from IPython.display import display
-from base64 import b64encode
-import os, sys, glob
-import gradio
+import os, glob, gradio
+from SadTalker.inference import main
 
 # apt-get update
 # apt install software-properties-common -y
@@ -17,10 +13,10 @@ import gradio
 # apt install ffmpeg -y
 
 # Now, the virtual environment is created and you can install packages using pip.
-os.system("source activate chatacter")
+# os.system("source activate chatacter")
 os.system("nvidia-smi --query-gpu=name,memory.total,memory.free --format=csv,noheader")
 os.system("python --version")
-os.system("cd SadTalker")
+os.chdir("SadTalker")
 os.system("pip install -r requirements.txt")
 
 print("Download pre-trained models...")
@@ -38,19 +34,12 @@ img_list.sort()
 img_list = [item.split(".")[0] for item in img_list]
 default_head_name = "art_0"
 
-
-def on_change(change):
-    if change["type"] == "change" and change["name"] == "value":
-        plt.imshow(plt.imread("examples/source_image/{}.png".format(default_head_name)))
-        plt.axis("off")
-        plt.show()
-
-
 # selected audio from exmaple/driven_audio
 img = "examples/source_image/{}.png".format(default_head_name)
 print(img)
-os.system(
-    "python inference.py --driven_audio ./examples/driven_audio/RD_Radio31_000.wav \
-           --source_image {img} \
-           --result_dir ./results --still --preprocess full --enhancer gfpgan"
-)
+
+gradio.inputs.Image(type="pil", label="Source Image")
+gradio.outputs.Video(label="Animated Video")
+gradio.Interface(
+    fn=main(img, "examples/driven_audio/bus_chinese.wav", "examples/source_image/{}.png".format(default_head_name)), 
+    inputs="image", outputs="video").launch()
