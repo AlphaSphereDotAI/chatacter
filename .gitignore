@@ -15,8 +15,6 @@ migrate_working_dir/
 Artificial Intelligence/experiments/
 Artificial Intelligence/SadTalker/
 
-.venv/
-
 # IntelliJ related
 *.iml
 *.ipr
