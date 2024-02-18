@@ -41,5 +41,11 @@ print(img)
 gradio.inputs.Image(type="pil", label="Source Image")
 gradio.outputs.Video(label="Animated Video")
 gradio.Interface(
-    fn=main(img, "examples/driven_audio/bus_chinese.wav", "examples/source_image/{}.png".format(default_head_name)), 
-    inputs="image", outputs="video").launch()
+    fn=main(
+        img,
+        "examples/driven_audio/bus_chinese.wav",
+        "examples/source_image/{}.png".format(default_head_name),
+    ),
+    inputs="image",
+    outputs="video",
+).launch()
