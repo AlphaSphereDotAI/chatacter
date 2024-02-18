@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 """
 WSGI config for Backend project.
 
@@ -15,6 +16,24 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Backend.settings')
 
 application = get_wsgi_application()
+=======
+"""
+WSGI config for Backend project.
+
+It exposes the WSGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.0/howto/deployment/wsgi/
+"""
+
+import os
+
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Backend.settings')
+
+application = get_wsgi_application()
+>>>>>>> f5424afa1ac4cd3c51a45df37e24eeff80606872
 =======
 """
 WSGI config for Backend project.

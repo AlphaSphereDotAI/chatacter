@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+=======
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+>>>>>>> f5424afa1ac4cd3c51a45df37e24eeff80606872
 .github/workflows/jupyter_to_python.yml
 
 Artificial Intelligence/experiments/
@@ -9,6 +24,12 @@ Artificial Intelligence/SadTalker/
 *.iws
 .idea/
 
+<<<<<<< HEAD
+=======
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+>>>>>>> f5424afa1ac4cd3c51a45df37e24eeff80606872
 .vscode/
 
 # Flutter/Dart/Pub related
@@ -22,6 +43,7 @@ Artificial Intelligence/SadTalker/
 .pub/
 /build/
 
+<<<<<<< HEAD
 **/doc/api/
 Frontend/.dart_tool/
 Frontend/.flutter-plugins
@@ -34,3 +56,16 @@ Frontend/.pub/
 /Frontend/android/app/debug
 /Frontend/android/app/profile
 /Frontend/android/app/release
+=======
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+>>>>>>> f5424afa1ac4cd3c51a45df37e24eeff80606872
