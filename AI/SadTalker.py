@@ -25,8 +25,8 @@ os.system('nvidia-smi --query-gpu=name,memory.total,memory.free --format=csv,noh
 
 subprocess.run(['sudo', '-S', 'python', '--version'], input=password, text=True)
 os.system('python --version')
-# os.system('echo %s|sudo -S %s' % (password, 'apt-get update'))
-# os.system('echo %s|sudo -S %s' % (password, 'apt install software-properties-common -y'))
+os.system('echo %s|sudo -S %s' % (password, 'apt-get update'))
+os.system('echo %s|sudo -S %s' % (password, 'apt install software-properties-common -y'))
 #
 # os.system('echo %s|sudo -S %s' % (password, 'dpkg --remove \
 # --force-remove-reinstreq python3-pip python3-setuptools python3-wheel'))
