@@ -6,6 +6,7 @@ from base64 import b64encode
 import os, sys, glob
 import venv
 import getpass
+import subprocess
 
 password = getpass.getpass()
 venv_dir = "../.virtualenv"
@@ -21,7 +22,6 @@ os.system('nvidia-smi --query-gpu=name,memory.total,memory.free --format=csv,noh
 # os.system('update-alternatives --install /usr/local/bin/python3 python3 /usr/bin/python3.9 1')
 # os.system('sudo apt install python3.8')
 # os.system('sudo apt-get install python3.8-distutils')
-import subprocess
 
 subprocess.run(['sudo', '-S', 'python', '--version'], input=password, text=True)
 os.system('python --version')
