@@ -1,15 +1,3 @@
-# Miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.buildlog/
-.history
-.svn/
-migrate_working_dir/
-
 .github/workflows/jupyter_to_python.yml
 
 Artificial Intelligence/experiments/
@@ -21,9 +9,6 @@ Artificial Intelligence/SadTalker/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
 .vscode/
 
 # Flutter/Dart/Pub related
@@ -37,14 +22,15 @@ Artificial Intelligence/SadTalker/
 .pub/
 /build/
 
-# Symbolication related
-app.*.symbols
-
-# Obfuscation related
-app.*.map.json
+**/doc/api/
+Frontend/.dart_tool/
+Frontend/.flutter-plugins
+Frontend/.flutter-plugins-dependencies
+Frontend/.pub-cache/
+Frontend/.pub/
+/Frontend/build/
 
 # Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
-
+/Frontend/android/app/debug
+/Frontend/android/app/profile
+/Frontend/android/app/release
