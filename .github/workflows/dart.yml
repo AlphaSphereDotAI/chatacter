@@ -1,99 +1,26 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 name: Dart
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    push:
+        branches: ["main"]
+    pull_request:
+        branches: ["main"]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
+        steps:
+            - uses: actions/checkout@v3
 
-      # Note: This workflow uses the latest stable version of the Dart SDK.
-      # You can specify other versions if desired, see documentation here:
-      # https://github.com/dart-lang/setup-dart/blob/main/README.md
-      # - uses: dart-lang/setup-dart@v1
-      - name: Flutter action
-        uses: subosito/flutter-action@v2.12.0
+            # Note: This workflow uses the latest stable version of the Dart SDK.
+            # You can specify other versions if desired, see documentation here:
+            # https://github.com/dart-lang/setup-dart/blob/main/README.md
+            # - uses: dart-lang/setup-dart@v1
+            - name: Flutter action
+              uses: subosito/flutter-action@v2.12.0
 
-      - uses: dart-lang/setup-dart@v1
-      - run: cd Frontend && dart pub get
-      - run: cd Frontend && dart format --set-exit-if-changed .
-      - run: cd Frontend && dart analyze
-=======
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Dart
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      # Note: This workflow uses the latest stable version of the Dart SDK.
-      # You can specify other versions if desired, see documentation here:
-      # https://github.com/dart-lang/setup-dart/blob/main/README.md
-      # - uses: dart-lang/setup-dart@v1
-      - name: Flutter action
-        uses: subosito/flutter-action@v2.12.0
-
-      - uses: dart-lang/setup-dart@v1
-      - run: cd Frontend && dart pub get
-      - run: cd Frontend && dart format --set-exit-if-changed .
-      - run: cd Frontend && dart analyze
->>>>>>> f5424afa1ac4cd3c51a45df37e24eeff80606872
-=======
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Dart
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      # Note: This workflow uses the latest stable version of the Dart SDK.
-      # You can specify other versions if desired, see documentation here:
-      # https://github.com/dart-lang/setup-dart/blob/main/README.md
-      # - uses: dart-lang/setup-dart@v1
-      - name: Flutter action
-        uses: subosito/flutter-action@v2.12.0
-
-      - uses: dart-lang/setup-dart@v1
-      - run: cd Frontend && dart pub get
-      - run: cd Frontend && dart format --set-exit-if-changed .
-      - run: cd Frontend && dart analyze
->>>>>>> origin/main
+            - uses: dart-lang/setup-dart@v1
+            - run: cd Frontend && dart pub get
+            - run: cd Frontend && dart format --set-exit-if-changed .
+            - run: cd Frontend && dart analyze

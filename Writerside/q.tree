@@ -1,40 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE instance-profile
-        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+<!DOCTYPE instance-profile SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="q"
-                 name="Graduation Project"
-                 start-page="main.md">
+    name="Graduation Project"
+    start-page="main.md">
 
     <toc-element topic="main.md">
-        <toc-element topic="Overview.md"/>
+        <toc-element topic="Overview.md" />
     </toc-element>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE instance-profile
-        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
-
-<instance-profile id="q"
-                 name="Graduation Project"
-                 start-page="main.md">
-
-    <toc-element topic="main.md">
-        <toc-element topic="Overview.md"/>
-    </toc-element>
->>>>>>> f5424afa1ac4cd3c51a45df37e24eeff80606872
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE instance-profile
-        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
-
-<instance-profile id="q"
-                 name="Graduation Project"
-                 start-page="main.md">
-
-    <toc-element topic="main.md">
-        <toc-element topic="Overview.md"/>
-    </toc-element>
->>>>>>> origin/main
 </instance-profile>
