@@ -1,11 +1,5 @@
 # Plan of work
 
-·        CV&#x20;
-
-·        Model Selection (In progress)&#x20;
-
-·      &#x20;
-
 * [ ] LLM (Large Language Model)
   * [ ] Data&#x20;
     * [ ] Napoleon Bonaparte's Data
