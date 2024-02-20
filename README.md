@@ -1,11 +1,15 @@
+---
+description: Live Chat with Virtual Character
+---
+
 # Graduation Project
 
 This is a graduation project for a 3-member team at [Cairo University](https://www.linkedin.com/school/cairo-university).
 
 ### Supervisor
 
-* [Reda El-Khoribi](https://linkedin.com/in/reda-el-khoribi-aa338437)
-* [Asmaa Ahmed](https://github.com/MH0386/graduation\_project/wiki/)
+* Dr. [Reda El-Khoribi](https://linkedin.com/in/reda-el-khoribi-aa338437)
+* T.A. [Asmaa Ahmed](https://github.com/MH0386/graduation\_project/wiki/)
 
 ### Team Member
 
