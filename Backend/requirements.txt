@@ -1,19 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 Django
 pathlib
 gunicorn
 uvicorn
-=======
-Django
-pathlib
-gunicorn
-uvicorn
->>>>>>> f5424afa1ac4cd3c51a45df37e24eeff80606872
-=======
-Django
-pathlib
-gunicorn
-uvicorn
->>>>>>> origin/main
-fastapi
