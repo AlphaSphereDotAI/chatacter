@@ -1,0 +1,11 @@
+version = 1
+
+[[analyzers]]
+name = "dart-analyze"
+type = "community"
+
+[[analyzers]]
+name = "python"
+
+  [analyzers.meta]
+  runtime_version = "3.x.x"
