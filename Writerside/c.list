@@ -1,22 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE categories
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/categories.dtd">
 <categories>
     <category id="wrs" name="Writerside documentation" order="1"/>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE categories
-        SYSTEM "https://resources.jetbrains.com/writerside/1.0/categories.dtd">
-<categories>
-    <category id="wrs" name="Writerside documentation" order="1"/>
->>>>>>> f5424afa1ac4cd3c51a45df37e24eeff80606872
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE categories
-        SYSTEM "https://resources.jetbrains.com/writerside/1.0/categories.dtd">
-<categories>
-    <category id="wrs" name="Writerside documentation" order="1"/>
->>>>>>> origin/main
-</categories>
