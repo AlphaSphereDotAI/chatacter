@@ -11,6 +11,8 @@ Artificial Intelligence/SadTalker/
 
 .vscode/
 
+AI/SadTalker/checkpoints/
+
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
