@@ -45,7 +45,7 @@ trimesh==3.9.20
 TTS==0.22.0
 webui==0.1.7
 yacs==0.1.8
---index-url https://download.pytorch.org/whl/nightly/cu121
-torch
-torchvision
-torchaudio
+--find-links https://download.pytorch.org/whl/nightly/cu121
+torch+cu121
+torchvision+cu121
+torchaudio+cu121
