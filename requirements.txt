@@ -47,6 +47,6 @@ TTS==0.22.0
 webui==0.1.7
 yacs==0.1.8
 --find-links https://download.pytorch.org/whl/nightly/cu121
-torch+cu121
-torchvision+cu121
-torchaudio+cu121
+torch==2.3.0+cu121
+torchvision==0.13.1+cu121
+torchaudio==0.12.1+cu121
