@@ -3,13 +3,14 @@ import time
 import os
 import google.generativeai as genai
 import pandas as pd
+
 genai.configure(api_key="AIzaSyAs7leXVWQMBGPELkYCmWCnekobhMUAszE")
 
 # import pprint
 # for model in genai.list_models():
 #     pprint.pprint(model)
 
-model = genai.GenerativeModel(    model_name="gemini-1.0-pro")
+model = genai.GenerativeModel(model_name="gemini-1.0-pro")
 chat = model.start_chat(history=[])
 prompt = st.chat_input("What's up?")
 if prompt:
