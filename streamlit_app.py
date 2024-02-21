@@ -3,7 +3,7 @@ import time
 import os
 import google.generativeai as genai
 
-genai.configure(api_key="AIzaSyAs7leXVWQMBGPELkYCmWCnekobhMUAszE")
+genai.configure(api_key=st.secrets['GEMINI_KEY'])
 model = genai.GenerativeModel(model_name="gemini-1.0-pro")
 prompt = st.chat_input("What's up?")
 if prompt:
