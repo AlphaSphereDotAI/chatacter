@@ -20,7 +20,7 @@ jobs:
             - name: Run Tests
               run: cd backend && python manage.py test
             - name: Cache 
-            - uses: actions/cache@v3
+              uses: actions/cache@v3
               with:
                 path: ~/.cache/pip
                 key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
