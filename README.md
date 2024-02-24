@@ -1,6 +1,8 @@
 # Graduation Project
 
-This is a graduation project for a 3-member team at [Cairo University](https://www.linkedin.com/school/cairo-university). Live Chat with Virtual Character
+This is a graduation project for a 3-member team at [Cairo University](https://www.linkedin.com/school/cairo-university). 
+
+## Title: Live Chat with Virtual Character
 
 ### Supervisor
 
