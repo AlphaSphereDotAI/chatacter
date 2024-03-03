@@ -1,0 +1,10 @@
+site_name: Chatacter
+nav:
+    - Home: index.md
+    - Abstract: abstract.md
+    - Introduction: introduction.md
+    - Methodology: methodology.md
+    - Related Work: related-work.md
+    - Plan of Work: plan-of-work.md
+    - References: references.md
+    - Policy: policy.md
