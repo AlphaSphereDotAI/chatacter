@@ -20,14 +20,14 @@ AI/SadTalker/checkpoints/
 /build/
 
 **/doc/api/
-Frontend/.dart_tool/
-Frontend/.flutter-plugins
-Frontend/.flutter-plugins-dependencies
-Frontend/.pub-cache/
-Frontend/.pub/
-/Frontend/build/
+frontend/.dart_tool/
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/.pub-cache/
+frontend/.pub/
+/frontend/build/
 
 # Android Studio will place build artifacts here
-/Frontend/android/app/debug
-/Frontend/android/app/profile
-/Frontend/android/app/release
+/frontend/android/app/debug
+/frontend/android/app/profile
+/frontend/android/app/release
