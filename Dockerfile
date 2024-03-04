@@ -1,12 +1,11 @@
 FROM ubuntu
 
-# Set the default shell to bash rather than sh
 ENV SHELL /bin/bash
+ENV DEBIAN_FRONTEND noninteractive
 
-# [Optional] Uncomment this section to install additional OS packages.
+RUN add-apt-repository ppa:git-core/ppa
 RUN apt-get update
-RUN export DEBIAN_FRONTEND=noninteractive
-RUN apt install python3-pip -y
+RUN apt-get install python3-pip git -y
 RUN python3 -m pip install --upgrade pip
 
 COPY . /workspace

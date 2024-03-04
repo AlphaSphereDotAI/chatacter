@@ -1,0 +1,5 @@
+google-generativeai
+# bark
+mkdocs
+mkdocs-same-dir
+mkdocs-simple-blog
