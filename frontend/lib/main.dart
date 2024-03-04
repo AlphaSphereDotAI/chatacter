@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Chatacter Demo',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -124,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
             AnimatedTextKit(
               animatedTexts: [
                 TypewriterAnimatedText(
-                  'Chatacter Alpha Version\nYou are now chatting with Napoleon AI\nType your message below and press send to get a response\n\n$_response',
+                  'Chatacter Alpha Version\nYou are now chatting with Napoleon\nType your message below and\npress send to get a response\nIt may take time due to server starting\n',
                   textStyle: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
