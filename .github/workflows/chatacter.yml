@@ -7,11 +7,12 @@ on:
 jobs:
     Frontend:
         runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: frontend
         steps:
             - name: Checkout
               uses: actions/checkout@v4
-              with:
-                  path: frontend
             - name: Set up Flutter
               uses: subosito/flutter-action@v2.13.0
               with:
