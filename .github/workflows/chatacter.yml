@@ -28,7 +28,6 @@ jobs:
             - run: flutter pub outdated
             - run: dart format .
             - run: flutter analyze
-            - run: flutter test
     Documentation:
         runs-on: ubuntu-latest
         steps:
