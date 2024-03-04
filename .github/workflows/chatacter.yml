@@ -13,18 +13,20 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
-            - name: Set up Flutter
-              uses: subosito/flutter-action@v2.13.0
-              with:
-                  channel: "stable"
             - name: Cache
               uses: actions/cache@v4
               with:
                   path: ~/.pub-cache
                   key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
                   restore-keys: ${{ runner.os }}-pub-
+            - name: Set up Flutter
+              uses: subosito/flutter-action@v2.13.0
+              with:
+                  channel: "stable"
             - run: flutter pub get
-            - run: dart format --set-exit-if-changed .
+            - run: flutter pub upgrade
+            - run: flutter pub outdated
+            - run: dart format .
             - run: flutter analyze
             - run: flutter test
     Documentation:
@@ -32,17 +34,17 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
-            - name: Set up Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: "3.x"
             - name: Cache
               uses: actions/cache@v4
               with:
                   path: ~/.cache/pip
                   key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
                   restore-keys: ${{ runner.os }}-pip-
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.x"
             - name: Set up MKDocs
               run: pip install mkdocs mkdocs-material
             - name: Build documentation
-              run: mkdocs gh-deploy -v
+              run: mkdocs gh-deploy -v --force

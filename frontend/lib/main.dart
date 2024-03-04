@@ -10,7 +10,8 @@ void main() {
 }
 
 Future<Map<String, dynamic>> getResponse(String query) async {
-  final response = await http.post(Uri.parse("https://8000-01hqrk1qr2p3w6cc5np0wk0ys5.cloudspaces.litng.ai/predict?query='$query'"));
+  final response = await http.post(Uri.parse(
+      "https://8000-01hqrk1qr2p3w6cc5np0wk0ys5.cloudspaces.litng.ai/predict?query='$query'"));
   if (response.statusCode == 200) {
     Map<String, dynamic> data = jsonDecode(jsonDecode(response.body));
     return data;
@@ -146,7 +147,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         child: Container(
           margin: const EdgeInsets.all(10),
           child: Row(
@@ -156,7 +158,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: const InputDecoration(
                     hintText: 'Message...',
                     hintStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                    border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black)),
                   ),
                   onChanged: updateMessage,
                 ),
