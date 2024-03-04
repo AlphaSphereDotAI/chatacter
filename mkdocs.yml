@@ -1,10 +1,51 @@
 site_name: Chatacter
+repo_url: https://github.com/MH0386/graduation_project
+site_author: MH0386
 nav:
     - Home: index.md
-    - Abstract: abstract.md
-    - Introduction: introduction.md
-    - Methodology: methodology.md
-    - Related Work: related-work.md
-    - Plan of Work: plan-of-work.md
-    - References: references.md
+    - Document: docs.md
     - Policy: policy.md
+theme:
+    name: material
+    palette:
+        # Palette toggle for light mode
+        - media: "(prefers-color-scheme: light)"
+          primary: grey
+          accent: light blue
+          scheme: default
+          toggle:
+              icon: material/weather-sunny
+              name: Switch to dark mode
+        # Palette toggle for dark mode
+        - media: "(prefers-color-scheme: dark)"
+          primary: black
+          accent: light blue
+          scheme: slate
+          toggle:
+              icon: material/weather-night
+              name: Switch to light mode
+    font:
+        text: JetBrains Mono
+        code: Roboto Mono
+    features:
+        - navigation.instant
+        - navigation.instant.progress
+        - navigation.tracking
+        - navigation.sections
+        - navigation.expand
+        - navigation.path
+        - navigation.indexes
+        - toc.follow
+        - search.suggest
+        - search.share
+        - navigation.footer
+markdown_extensions:
+    - attr_list
+plugins:
+    - search
+extra:
+    social:
+        - icon: octicons/mark-github-16
+          link: https://github.com/MH0386/graduation_project
+        - icon: octicons/mail-16
+          link: mailto:alpha-AI@googlegroups.com
