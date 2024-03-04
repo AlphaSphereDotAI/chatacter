@@ -124,7 +124,7 @@ class SPADEDecoder(nn.Module):
         oc = 64
         norm_G = 'spadespectralinstance'
         label_nc = 256
-        
+
         self.fc = nn.Conv2d(ic, 2 * ic, 3, padding=1)
         self.G_middle_0 = SPADEResnetBlock(2 * ic, 2 * ic, norm_G, label_nc)
         self.G_middle_1 = SPADEResnetBlock(2 * ic, 2 * ic, norm_G, label_nc)
@@ -136,7 +136,7 @@ class SPADEDecoder(nn.Module):
         self.up_1 = SPADEResnetBlock(ic, oc, norm_G, label_nc)
         self.conv_img = nn.Conv2d(oc, 3, 3, padding=1)
         self.up = nn.Upsample(scale_factor=2)
-        
+
     def forward(self, feature):
         seg = feature
         x = self.fc(feature)
@@ -154,7 +154,7 @@ class SPADEDecoder(nn.Module):
         x = self.conv_img(F.leaky_relu(x, 2e-1))
         # x = torch.tanh(x)
         x = F.sigmoid(x)
-        
+
         return x
 
 
@@ -241,7 +241,7 @@ class OcclusionAwareSPADEGenerator(nn.Module):
             out = self.fourth(out)
 
             # occlusion_map = torch.where(occlusion_map < 0.95, 0, occlusion_map)
-            
+
             if occlusion_map is not None:
                 if out.shape[2] != occlusion_map.shape[2] or out.shape[3] != occlusion_map.shape[3]:
                     occlusion_map = F.interpolate(occlusion_map, size=out.shape[2:], mode='bilinear')
@@ -251,5 +251,5 @@ class OcclusionAwareSPADEGenerator(nn.Module):
         out = self.decoder(out)
 
         output_dict["prediction"] = out
-        
+
         return output_dict

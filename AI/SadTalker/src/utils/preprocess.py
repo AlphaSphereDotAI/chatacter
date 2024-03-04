@@ -48,7 +48,7 @@ class CropAndExtract():
 
         self.propress = Preprocesser(device)
         self.net_recon = networks.define_net_recon(net_recon='resnet50', use_last_fc=False, init_path='').to(device)
-        
+
         if sadtalker_path['use_safetensor']:
             checkpoint = safetensors.torch.load_file(sadtalker_path['checkpoint'])    
             self.net_recon.load_state_dict(load_x_from_safetensor(checkpoint, 'face_3drecon'))
@@ -59,7 +59,7 @@ class CropAndExtract():
         self.net_recon.eval()
         self.lm3d_std = load_lm3d(sadtalker_path['dir_of_BFM_fitting'])
         self.device = device
-    
+
     def generate(self, input_path, save_dir, crop_or_resize='crop', source_image_flag=False, pic_size=256):
 
         pic_name = os.path.splitext(os.path.split(input_path)[-1])[0]  
@@ -134,7 +134,7 @@ class CropAndExtract():
                 frame = frames_pil[idx]
                 W,H = frame.size
                 lm1 = lm[idx].reshape([-1, 2])
-            
+
                 if np.mean(lm1) == -1:
                     lm1 = (self.lm3d_std[:, :2]+1)/2.
                     lm1 = np.concatenate(
@@ -144,16 +144,16 @@ class CropAndExtract():
                     lm1[:, -1] = H - 1 - lm1[:, -1]
 
                 trans_params, im1, lm1, _ = align_img(frame, lm1, self.lm3d_std)
- 
+
                 trans_params = np.array([float(item) for item in np.hsplit(trans_params, 5)]).astype(np.float32)
                 im_t = torch.tensor(np.array(im1)/255., dtype=torch.float32).permute(2, 0, 1).to(self.device).unsqueeze(0)
-                
+
                 with torch.no_grad():
                     full_coeff = self.net_recon(im_t)
                     coeffs = split_coeff(full_coeff)
 
                 pred_coeff = {key:coeffs[key].cpu().numpy() for key in coeffs}
- 
+
                 pred_coeff = np.concatenate([
                     pred_coeff['exp'], 
                     pred_coeff['angle'],

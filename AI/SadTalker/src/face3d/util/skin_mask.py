@@ -19,7 +19,7 @@ class GMM:
         self.factor = [0]*num
         for i in range(self.num):
             self.factor[i] = (2*math.pi)**(self.dim/2) * self.cov_det[i]**0.5
-        
+
     def likelihood(self, data):
         assert(data.shape[1] == self.dim)
         N = data.shape[0]
@@ -35,7 +35,7 @@ class GMM:
             p = np.array([math.exp(power[j]) for j in range(N)])
             p = p/self.factor[i]
             lh += p*self.w[i]
-        
+
         return lh
 
 
@@ -115,7 +115,7 @@ def get_skin_mask(img_path):
     save_path = os.path.join(img_path, 'mask')
     if not os.path.isdir(save_path):
         os.makedirs(save_path)
-    
+
     for i in range(0, len(names)):
         name = names[i]
         print('%05d' % (i), ' ', name)

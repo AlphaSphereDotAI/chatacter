@@ -117,7 +117,7 @@ class RecogNetWrapper(nn.Module):
         self.net = net
         self.preprocess = lambda x: 2 * x - 1
         self.input_size=input_size
-        
+
     def forward(self, image, M):
         image = self.preprocess(resize_n_crop(image, M, self.input_size))
         id_feature = F.normalize(self.net(image), dim=-1, p=2)
@@ -305,7 +305,7 @@ class ResNet(nn.Module):
         self.layer4 = self._make_layer(block, 512, layers[3], stride=2,
                                        dilate=replace_stride_with_dilation[2])
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
-        
+
         if self.use_last_fc:
             self.fc = nn.Linear(512 * block.expansion, num_classes)
 

@@ -161,7 +161,7 @@ class MyVisualizer:
         self.opt = opt  # cache the optio
         self.name = opt.name
         self.img_dir = os.path.join(opt.checkpoints_dir, opt.name, 'results')
-        
+
         if opt.phase != 'test':
             self.writer = SummaryWriter(os.path.join(opt.checkpoints_dir, opt.name, 'logs'))
             # create a logging file to store training losses
@@ -182,7 +182,7 @@ class MyVisualizer:
             dataset (str) - - 'train' or 'val' or 'test'
         """
         # if (not add_image) and (not save_results): return
-        
+
         for label, image in visuals.items():
             for i in range(image.shape[0]):
                 image_numpy = util.tensor2im(image[i])

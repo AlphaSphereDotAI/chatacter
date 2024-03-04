@@ -21,7 +21,7 @@ def check_all_files_safetensor(current_dir):
 
     if not os.path.isdir(current_dir):
         return False
-    
+
     dirs = os.listdir(current_dir)
 
     for f in dirs:
@@ -44,7 +44,7 @@ def check_all_files(current_dir):
 
     if not os.path.isdir(current_dir):
         return False
-    
+
     dirs = os.listdir(current_dir)
 
     for f in dirs:
@@ -53,7 +53,7 @@ def check_all_files(current_dir):
 
     return len(kv.keys()) == 0
 
-    
+
 
 def download_model(local_dir='./checkpoints'):
     REPO_ID = 'vinthony/SadTalker'
@@ -77,7 +77,7 @@ def get_img_from_img2img(x):
     imgs.sort(key=lambda x:os.path.getmtime(os.path.join(imgs_from_img_dir, x)))
     img_from_img_path = os.path.join(imgs_from_img_dir, imgs[-1])
     return img_from_img_path, img_from_img_path
- 
+
 def get_default_checkpoint_path():
     # check the path of models/checkpoints and extensions/
     checkpoint_path = Path(paths.script_path) / "models"/ "SadTalker" 
@@ -90,7 +90,7 @@ def get_default_checkpoint_path():
     if check_all_files_safetensor(extension_checkpoint_path):
         # print('founding sadtalker checkpoint in ' + str(extension_checkpoint_path))
         return extension_checkpoint_path
-    
+
     if check_all_files(checkpoint_path):
         # print('founding sadtalker checkpoint in ' + str(checkpoint_path))
         return checkpoint_path
@@ -143,11 +143,11 @@ def install():
         print(
             """"
             SadTalker will not support download all the files from hugging face, which will take a long time.
-             
+
             please manually set the SADTALKER_CHECKPOINTS in `webui_user.bat`(windows) or `webui_user.sh`(linux)
             """
             )
-        
+
         # python = sys.executable
 
         # launch.run(f'"{python}" -m pip uninstall -y huggingface_hub', live=True)
@@ -157,13 +157,13 @@ def install():
         # # launch.run("cd " + paths.script_path+"/extensions/SadTalker && bash ./scripts/download_models.sh", live=True)
         # # print('SadTalker is successfully installed!')
         # download_model(paths.script_path+'/extensions/SadTalker/checkpoints')
-    
- 
+
+
 def on_ui_tabs():
     install()
 
     sys.path.extend([paths.script_path+'/extensions/SadTalker']) 
-    
+
     repo_dir = paths.script_path+'/extensions/SadTalker/'
 
     result_dir = opts.sadtalker_result_dir
@@ -177,7 +177,7 @@ def on_ui_tabs():
         checkpoint_path = repo_dir+'checkpoints/'
 
     audio_to_video = sadtalker_demo(checkpoint_path=checkpoint_path, config_path=repo_dir+'src/config', warpfn = wrap_queued_call)
-   
+
     return [(audio_to_video, "SadTalker", "extension")]
 
 def on_ui_settings():

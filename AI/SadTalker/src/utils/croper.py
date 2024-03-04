@@ -122,7 +122,7 @@ class Preprocesser:
 
         # Save aligned image.
         return rsize, crop, [lx, ly, rx, ry]
-    
+
     def crop(self, img_np_list, still=False, xsize=512):    # first frame for all video
         img_np = img_np_list[0]
         lm = self.get_landmark(img_np)
