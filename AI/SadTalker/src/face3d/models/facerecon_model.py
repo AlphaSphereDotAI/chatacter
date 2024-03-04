@@ -41,7 +41,7 @@ class FaceReconModel(BaseModel):
             parser.add_argument('--use_crop_face', type=util.str2bool, nargs='?', const=True, default=False, help='use crop mask for photo loss')
             parser.add_argument('--use_predef_M', type=util.str2bool, nargs='?', const=True, default=False, help='use predefined M for predicted face')
 
-            
+
             # augmentation parameters
             parser.add_argument('--shift_pixs', type=float, default=10., help='shift pixels')
             parser.add_argument('--scale_delta', type=float, default=0.1, help='delta scale factor')
@@ -79,7 +79,7 @@ class FaceReconModel(BaseModel):
         - define loss function, visualization images, model names, and optimizers
         """
         BaseModel.__init__(self, opt)  # call the initialization method of BaseModel
-        
+
         self.visual_names = ['output_vis']
         self.model_names = ['net_recon']
         self.parallel_names = self.model_names + ['renderer']
@@ -88,7 +88,7 @@ class FaceReconModel(BaseModel):
             bfm_folder=opt.bfm_folder, camera_distance=opt.camera_d, focal=opt.focal, center=opt.center,
             is_train=self.isTrain, default_name=opt.bfm_model
         )
-        
+
         fov = 2 * np.arctan(opt.center / opt.focal) * 180 / np.pi
         self.renderer = MeshRenderer(
             rasterize_fov=fov, znear=opt.z_near, zfar=opt.z_far, rasterize_size=int(2 * opt.center)
@@ -130,7 +130,7 @@ class FaceReconModel(BaseModel):
             self.facemodel.compute_for_render(output_coeff)
         self.pred_mask, _, self.pred_face = self.renderer(
             self.pred_vertex, self.facemodel.face_buf, feat=self.pred_color)
-        
+
         self.pred_coeffs_dict = self.facemodel.split_coeff(output_coeff)
 
 
@@ -149,11 +149,11 @@ class FaceReconModel(BaseModel):
         face_mask = self.pred_mask
         if self.opt.use_crop_face:
             face_mask, _, _ = self.renderer(self.pred_vertex, self.facemodel.front_face_buf)
-        
+
         face_mask = face_mask.detach()
         self.loss_color = self.opt.w_color * self.comupte_color_loss(
             self.pred_face, self.input_img, self.atten_mask * face_mask)
-        
+
         loss_reg, loss_gamma = self.compute_reg_loss(self.pred_coeffs_dict, self.opt)
         self.loss_reg = self.opt.w_reg * loss_reg
         self.loss_gamma = self.opt.w_gamma * loss_gamma
@@ -164,7 +164,7 @@ class FaceReconModel(BaseModel):
 
         self.loss_all = self.loss_feat + self.loss_color + self.loss_reg + self.loss_gamma \
                         + self.loss_lm + self.loss_reflc
-            
+
 
     def optimize_parameters(self, isTrain=True):
         self.forward()               
@@ -180,13 +180,13 @@ class FaceReconModel(BaseModel):
             input_img_numpy = 255. * self.input_img.detach().cpu().permute(0, 2, 3, 1).numpy()
             output_vis = self.pred_face * self.pred_mask + (1 - self.pred_mask) * self.input_img
             output_vis_numpy_raw = 255. * output_vis.detach().cpu().permute(0, 2, 3, 1).numpy()
-            
+
             if self.gt_lm is not None:
                 gt_lm_numpy = self.gt_lm.cpu().numpy()
                 pred_lm_numpy = self.pred_lm.detach().cpu().numpy()
                 output_vis_numpy = util.draw_landmarks(output_vis_numpy_raw, gt_lm_numpy, 'b')
                 output_vis_numpy = util.draw_landmarks(output_vis_numpy, pred_lm_numpy, 'r')
-            
+
                 output_vis_numpy = np.concatenate((input_img_numpy, 
                                     output_vis_numpy_raw, output_vis_numpy), axis=-2)
             else:

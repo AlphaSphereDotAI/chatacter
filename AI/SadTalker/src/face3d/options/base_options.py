@@ -153,7 +153,7 @@ class BaseOptions():
                 model_pths = [i for i in os.listdir(model_dir) if i.endswith('pth')]
                 if os.path.isdir(model_dir) and len(model_pths) != 0:
                     opt.continue_train= True
-        
+
             # update the latest epoch count
             if opt.continue_train:
                 if opt.epoch == 'latest':
@@ -162,7 +162,7 @@ class BaseOptions():
                         opt.epoch_count = max(epoch_counts) + 1
                 else:
                     opt.epoch_count = int(opt.epoch) + 1
-                    
+
 
         self.print_options(opt)
         self.opt = opt

@@ -80,9 +80,9 @@ class AnimateFromCoeff():
         self.generator.eval()
         self.he_estimator.eval()
         self.mapping.eval()
-         
+
         self.device = device
-    
+
     def load_cpk_facevid2vid_safetensor(self, checkpoint_path, generator=None, 
                         kp_detector=None, he_estimator=None,  
                         device="cpu"):
@@ -107,7 +107,7 @@ class AnimateFromCoeff():
                 if 'he_estimator' in k:
                     x_generator[k.replace('he_estimator.', '')] = v
             he_estimator.load_state_dict(x_generator)
-        
+
         return None
 
     def load_cpk_facevid2vid(self, checkpoint_path, generator=None, discriminator=None, 
@@ -139,7 +139,7 @@ class AnimateFromCoeff():
             optimizer_he_estimator.load_state_dict(checkpoint['optimizer_he_estimator'])
 
         return checkpoint['epoch']
-    
+
     def load_cpk_mapping(self, checkpoint_path, mapping=None, discriminator=None,
                  optimizer_mapping=None, optimizer_discriminator=None, device='cpu'):
         checkpoint = torch.load(checkpoint_path,  map_location=torch.device(device))
@@ -198,15 +198,15 @@ class AnimateFromCoeff():
         original_size = crop_info[0]
         if original_size:
             result = [ cv2.resize(result_i,(img_size, int(img_size * original_size[1]/original_size[0]) )) for result_i in result ]
-        
+
         video_name = x['video_name']  + '.mp4'
         path = os.path.join(video_save_dir, 'temp_'+video_name)
-        
+
         imageio.mimsave(path, result,  fps=float(25))
 
         av_path = os.path.join(video_save_dir, video_name)
         return_path = av_path 
-        
+
         audio_path =  x['audio_path'] 
         audio_name = os.path.splitext(os.path.split(audio_path)[-1])[0]
         new_audio_path = os.path.join(video_save_dir, audio_name+'.wav')
@@ -245,7 +245,7 @@ class AnimateFromCoeff():
             except:
                 enhanced_images_gen_with_len = enhancer_list(full_video_path, method=enhancer, bg_upsampler=background_enhancer)
                 imageio.mimsave(enhanced_path, enhanced_images_gen_with_len, fps=float(25))
-            
+
             save_video_with_watermark(enhanced_path, new_audio_path, av_path_enhancer, watermark= False)
             print(f'The generated video is named {video_save_dir}/{video_name_enhancer}')
             os.remove(enhanced_path)

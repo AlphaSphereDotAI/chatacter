@@ -24,14 +24,14 @@ class SadTalker():
             device = "cuda"
         else:
             device = "cpu"
-        
+
         self.device = device
 
         os.environ['TORCH_HOME']= checkpoint_path
 
         self.checkpoint_path = checkpoint_path
         self.config_path = config_path
-      
+
 
     def test(self, source_image, driven_audio, preprocess='crop', 
         still_mode=False,  use_enhancer=False, batch_size=1, size=256, 
@@ -45,7 +45,7 @@ class SadTalker():
 
         self.sadtalker_paths = init_path(self.checkpoint_path, self.config_path, size, False, preprocess)
         print(self.sadtalker_paths)
-            
+
         self.audio_to_coeff = Audio2Coeff(self.sadtalker_paths, self.device)
         self.preprocess_model = CropAndExtract(self.sadtalker_paths, self.device)
         self.animate_from_coeff = AnimateFromCoeff(self.sadtalker_paths, self.device)
@@ -89,12 +89,12 @@ class SadTalker():
             os.system(cmd)        
 
         os.makedirs(save_dir, exist_ok=True)
-        
+
         #crop image and extract 3dmm from image
         first_frame_dir = os.path.join(save_dir, 'first_frame_dir')
         os.makedirs(first_frame_dir, exist_ok=True)
         first_coeff_path, crop_pic_path, crop_info = self.preprocess_model.generate(pic_path, first_frame_dir, preprocess, True, size)
-        
+
         if first_coeff_path is None:
             raise AttributeError("No face is detected")
 
@@ -147,9 +147,8 @@ class SadTalker():
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
             torch.cuda.synchronize()
-            
+
         import gc; gc.collect()
-        
+
         return return_path
 
-    

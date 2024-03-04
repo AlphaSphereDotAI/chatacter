@@ -50,19 +50,19 @@ class FlistDataset(BaseDataset):
             opt (Option class) -- stores all the experiment flags; needs to be a subclass of BaseOptions
         """
         BaseDataset.__init__(self, opt)
-        
+
         self.lm3d_std = load_lm3d(opt.bfm_folder)
-        
+
         msk_names = default_flist_reader(opt.flist)
         self.msk_paths = [os.path.join(opt.data_root, i) for i in msk_names]
 
         self.size = len(self.msk_paths) 
         self.opt = opt
-        
+
         self.name = 'train' if opt.isTrain else 'val'
         if '_' in opt.flist:
             self.name += '_' + opt.flist.split(os.sep)[-1].split('_')[0]
-        
+
 
     def __getitem__(self, index):
         """Return a data point and its metadata information.
@@ -86,11 +86,11 @@ class FlistDataset(BaseDataset):
         raw_lm = np.loadtxt(lm_path).astype(np.float32)
 
         _, img, lm, msk = align_img(raw_img, raw_lm, self.lm3d_std, raw_msk)
-        
+
         aug_flag = self.opt.use_aug and self.opt.isTrain
         if aug_flag:
             img, lm, msk = self._augmentation(img, lm, self.opt, msk)
-        
+
         _, H = img.size
         M = estimate_norm(lm, H)
         transform = get_transform()
@@ -115,7 +115,7 @@ class FlistDataset(BaseDataset):
         if msk is not None:
             msk = apply_img_affine(msk, affine_inv, method=Image.BILINEAR)
         return img, lm, msk
-    
+
 
 
 

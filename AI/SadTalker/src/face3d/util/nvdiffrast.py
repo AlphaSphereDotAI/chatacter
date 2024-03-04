@@ -46,7 +46,7 @@ class MeshRenderer(nn.Module):
         self.zfar = zfar
 
         self.rasterizer = None
-    
+
     def forward(self, vertex, tri, feat=None):
         """
         Return:
@@ -72,7 +72,7 @@ class MeshRenderer(nn.Module):
         if self.rasterizer is None:
             self.rasterizer = MeshRasterizer()
             print("create rasterizer on device cuda:%d"%device.index)
-        
+
         # ranges = None
         # if isinstance(tri, List) or len(tri.shape) == 3:
         #     vum = vertex_ndc.shape[1]
@@ -110,7 +110,7 @@ class MeshRenderer(nn.Module):
         depth = depth.permute(0, 3, 1, 2)
         mask = (rast_out > 0).float().unsqueeze(1)
         depth = mask * depth
-        
+
 
         image = None
         if feat is not None:
@@ -121,6 +121,6 @@ class MeshRenderer(nn.Module):
             # print(image.shape)
             image = image.squeeze(-2).permute(0, 3, 1, 2)
             image = mask * image
-        
+
         return mask, depth, image
 
