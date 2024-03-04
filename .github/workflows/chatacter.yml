@@ -5,14 +5,14 @@ on:
         branches: main
 
 jobs:
-    Flutter:
+    Frontend:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
               uses: actions/checkout@v4
               with:
                   path: frontend
-            - name: Flutter action
+            - name: Set up Flutter
               uses: subosito/flutter-action@v2.13.0
               with:
                   channel: "stable"
@@ -25,21 +25,23 @@ jobs:
             - run: flutter pub get
             - run: dart format --set-exit-if-changed .
             - run: flutter analyze
-    Django:
+            - run: flutter test
+    Documentation:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.x"
             - name: Cache
               uses: actions/cache@v4
               with:
                   path: ~/.cache/pip
                   key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
                   restore-keys: ${{ runner.os }}-pip-
-            - name: Set up Python
-              uses: actions/setup-python@v5
-              with:
-                  cache: "pip"
-            - name: Install Dependencies
-              run: python -m pip install --upgrade pip && pip install Django
-            - name: Run Tests
-              run: cd backend && python manage.py test
+            - name: Set up MKDocs
+              run: pip install mkdocs mkdocs-material
+            - name: Build documentation
+              run: mkdocs gh-deploy -v
