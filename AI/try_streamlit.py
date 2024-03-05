@@ -4,7 +4,7 @@ import os
 import google.generativeai as genai
 import pandas as pd
 
-genai.configure(api_key="AIzaSyAs7leXVWQMBGPELkYCmWCnekobhMUAszE")
+genai.configure(api_key="")
 
 # import pprint
 # for model in genai.list_models():
