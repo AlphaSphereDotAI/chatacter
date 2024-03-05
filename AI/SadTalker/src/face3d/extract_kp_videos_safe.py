@@ -71,7 +71,7 @@ class KeypointExtractor():
                         # face detection -> face alignment.
                         img = np.array(images)
                         bboxes = self.det_net.detect_faces(images, 0.97)
-                        
+
                         bboxes = bboxes[0]
                         img = img[int(bboxes[1]):int(bboxes[3]), int(bboxes[0]):int(bboxes[2]), :]
 
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     VIDEO_EXTENSIONS_LOWERCASE = {'mp4'}
     VIDEO_EXTENSIONS = VIDEO_EXTENSIONS_LOWERCASE.union({f.upper() for f in VIDEO_EXTENSIONS_LOWERCASE})
     extensions = VIDEO_EXTENSIONS
-    
+
     for ext in extensions:
         os.listdir(f'{opt.input_dir}')
         print(f'{opt.input_dir}/*.{ext}')

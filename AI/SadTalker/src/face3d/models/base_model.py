@@ -96,12 +96,12 @@ class BaseModel(ABC):
         """
         if self.isTrain:
             self.schedulers = [networks.get_scheduler(optimizer, opt) for optimizer in self.optimizers]
-        
+
         if not self.isTrain or opt.continue_train:
             load_suffix = opt.epoch
             self.load_networks(load_suffix)
- 
-            
+
+
         # self.print_networks(opt.verbose)
 
     def parallelize(self, convert_sync_batchnorm=True):
@@ -119,13 +119,13 @@ class BaseModel(ABC):
                     setattr(self, name, torch.nn.parallel.DistributedDataParallel(module.to(self.device),
                         device_ids=[self.device.index], 
                         find_unused_parameters=True, broadcast_buffers=True))
-            
+
             # DistributedDataParallel is not needed when a module doesn't have any parameter that requires a gradient.
             for name in self.parallel_names:
                 if isinstance(name, str) and name not in self.model_names:
                     module = getattr(self, name)
                     setattr(self, name, module.to(self.device))
-            
+
         # put state_dict of optimizer to gpu device
         if self.opt.phase != 'test':
             if self.opt.continue_train:
@@ -208,7 +208,7 @@ class BaseModel(ABC):
 
         save_filename = 'epoch_%s.pth' % (epoch)
         save_path = os.path.join(self.save_dir, save_filename)
-        
+
         save_dict = {}
         for name in self.model_names:
             if isinstance(name, str):
@@ -217,14 +217,14 @@ class BaseModel(ABC):
                         torch.nn.parallel.DistributedDataParallel):
                     net = net.module
                 save_dict[name] = net.state_dict()
-                
+
 
         for i, optim in enumerate(self.optimizers):
             save_dict['opt_%02d'%i] = optim.state_dict()
 
         for i, sched in enumerate(self.schedulers):
             save_dict['sched_%02d'%i] = sched.state_dict()
-        
+
         torch.save(save_dict, save_path)
 
     def __patch_instance_norm_state_dict(self, state_dict, module, keys, i=0):
@@ -262,7 +262,7 @@ class BaseModel(ABC):
                 if isinstance(net, torch.nn.DataParallel):
                     net = net.module
                 net.load_state_dict(state_dict[name])
-        
+
         if self.opt.phase != 'test':
             if self.opt.continue_train:
                 print('loading the optim from %s' % load_path)
@@ -277,9 +277,9 @@ class BaseModel(ABC):
                     print('Failed to load schedulers, set schedulers according to epoch count manually')
                     for i, sched in enumerate(self.schedulers):
                         sched.last_epoch = self.opt.epoch_count - 1
-                    
 
-            
+
+
 
     def print_networks(self, verbose):
         """Print the total number of parameters in the network and (if verbose) network architecture

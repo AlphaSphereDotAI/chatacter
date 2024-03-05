@@ -23,19 +23,19 @@ hparams = HParams(
 	#  network
 	rescale=True,  # Whether to rescale audio prior to preprocessing
 	rescaling_max=0.9,  # Rescaling value
-	
+
 	# Use LWS (https://github.com/Jonathan-LeRoux/lws) for STFT and phase reconstruction
 	# It"s preferred to set True to use with https://github.com/r9y9/wavenet_vocoder
 	# Does not work if n_ffit is not multiple of hop_size!!
 	use_lws=False,
-	
+
 	n_fft=800,  # Extra window size is filled with 0 paddings to match this parameter
 	hop_size=200,  # For 16000Hz, 200 = 12.5 ms (0.0125 * sample_rate)
 	win_size=800,  # For 16000Hz, 800 = 50 ms (If None, win_size = n_fft) (0.05 * sample_rate)
 	sample_rate=16000,  # 16000Hz (corresponding to librispeech) (sox --i <filename>)
-	
+
 	frame_shift_ms=None,  # Can replace hop_size parameter. (Recommended: 12.5)
-	
+
 	# Mel and Linear spectrograms normalization/scaling and clipping
 	signal_normalization=True,
 	# Whether to normalize mel spectrograms to some predefined range (following below parameters)
@@ -52,7 +52,7 @@ hparams = HParams(
 	# levels. Also allows for better G&L phase reconstruction)
 	preemphasize=True,  # whether to apply filter
 	preemphasis=0.97,  # filter coefficient.
-	
+
 	# Limits
 	min_level_db=-100,
 	ref_level_db=20,
@@ -64,7 +64,7 @@ hparams = HParams(
 	###################### Our training parameters #################################
 	img_size=96,
 	fps=25,
-	
+
 	batch_size=16,
 	initial_learning_rate=1e-4,
 	nepochs=300000,  ### ctrl + c, stop whenever eval loss is consistently greater than train loss for ~10 epochs
@@ -92,19 +92,19 @@ hparamsdebug = HParams(
 	#  network
 	rescale=True,  # Whether to rescale audio prior to preprocessing
 	rescaling_max=0.9,  # Rescaling value
-	
+
 	# Use LWS (https://github.com/Jonathan-LeRoux/lws) for STFT and phase reconstruction
 	# It"s preferred to set True to use with https://github.com/r9y9/wavenet_vocoder
 	# Does not work if n_ffit is not multiple of hop_size!!
 	use_lws=False,
-	
+
 	n_fft=800,  # Extra window size is filled with 0 paddings to match this parameter
 	hop_size=200,  # For 16000Hz, 200 = 12.5 ms (0.0125 * sample_rate)
 	win_size=800,  # For 16000Hz, 800 = 50 ms (If None, win_size = n_fft) (0.05 * sample_rate)
 	sample_rate=16000,  # 16000Hz (corresponding to librispeech) (sox --i <filename>)
-	
+
 	frame_shift_ms=None,  # Can replace hop_size parameter. (Recommended: 12.5)
-	
+
 	# Mel and Linear spectrograms normalization/scaling and clipping
 	signal_normalization=True,
 	# Whether to normalize mel spectrograms to some predefined range (following below parameters)
@@ -121,7 +121,7 @@ hparamsdebug = HParams(
 	# levels. Also allows for better G&L phase reconstruction)
 	preemphasize=True,  # whether to apply filter
 	preemphasis=0.97,  # filter coefficient.
-	
+
 	# Limits
 	min_level_db=-100,
 	ref_level_db=20,
@@ -133,7 +133,7 @@ hparamsdebug = HParams(
 	###################### Our training parameters #################################
 	img_size=96,
 	fps=25,
-	
+
 	batch_size=2,
 	initial_learning_rate=1e-3,
 	nepochs=100000,  ### ctrl + c, stop whenever eval loss is consistently greater than train loss for ~10 epochs

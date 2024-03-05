@@ -37,7 +37,7 @@ def POS(xp, x):
     t = np.stack([sTx, sTy], axis=0)
 
     return t, s
-    
+
 # resize and crop images for face reconstruction
 def resize_n_crop_img(img, lm, t, s, target_size=224., mask=None):
     w0, h0 = img.size
@@ -78,7 +78,7 @@ def align_img(img, lm, lm3D, mask=None, target_size=224., rescale_factor=102.):
         img_new            --PIL.Image  (target_size, target_size, 3)
         lm_new             --numpy.array  (68, 2), y direction is opposite to v direction
         mask_new           --PIL.Image  (target_size, target_size)
-    
+
     Parameters:
         img                --PIL.Image  (raw_H, raw_W, 3)
         lm                 --numpy.array  (68, 2), y direction is opposite to v direction

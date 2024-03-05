@@ -114,7 +114,7 @@ class DECODER(nn.Module):
                 self.MLP.add_module(name="A{:d}".format(i), module=nn.ReLU())
             else:
                 self.MLP.add_module(name="sigmoid", module=nn.Sigmoid())
-        
+
         self.pose_linear = nn.Linear(6, 6)
         self.linear_audio = nn.Linear(audio_emb_in_size, audio_emb_out_size)
 

@@ -15,7 +15,7 @@ def toggle_audio_file(choice):
         return gr.update(visible=True), gr.update(visible=False)
     else:
         return gr.update(visible=False), gr.update(visible=True)
-    
+
 def ref_video_fn(path_of_ref_video):
     if path_of_ref_video is not None:
         return gr.update(value=True)
@@ -31,7 +31,7 @@ def sadtalker_demo(checkpoint_path='checkpoints', config_path='src/config', warp
                     <a style='font-size:18px;color: #efefef' href='https://arxiv.org/abs/2211.12194'>Arxiv</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \
                     <a style='font-size:18px;color: #efefef' href='https://sadtalker.github.io'>Homepage</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \
                      <a style='font-size:18px;color: #efefef' href='https://github.com/Winfredy/SadTalker'> Github </div>")
-        
+
         with gr.Row().style(equal_height=False):
             with gr.Column(variant='panel'):
                 with gr.Tabs(elem_id="sadtalker_source_image"):
@@ -51,7 +51,7 @@ def sadtalker_demo(checkpoint_path='checkpoints', config_path='src/config', warp
                                 input_text = gr.Textbox(label="Generating audio from text", lines=5, placeholder="please enter some text here, we genreate the audio from text using @Coqui.ai TTS.")
                                 tts = gr.Button('Generate audio',elem_id="sadtalker_audio_generate", variant='primary')
                                 tts.click(fn=tts_talker.test, inputs=[input_text], outputs=[driven_audio])
-                            
+
             with gr.Column(variant='panel'): 
                 with gr.Tabs(elem_id="sadtalker_checkbox"):
                     with gr.TabItem('Settings'):
@@ -66,7 +66,7 @@ def sadtalker_demo(checkpoint_path='checkpoints', config_path='src/config', warp
                             batch_size = gr.Slider(label="batch size in generation", step=1, maximum=10, value=2)
                             enhancer = gr.Checkbox(label="GFPGAN as Face enhancer")
                             submit = gr.Button('Generate', elem_id="sadtalker_generate", variant='primary')
-                            
+
                 with gr.Tabs(elem_id="sadtalker_genearted"):
                         gen_video = gr.Video(label="Generated video", format="mp4").style(width=256)
 
@@ -100,7 +100,7 @@ def sadtalker_demo(checkpoint_path='checkpoints', config_path='src/config', warp
                         )
 
     return sadtalker_interface
- 
+
 
 if __name__ == "__main__":
 

@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 # draft
 def gen_composed_video(args, device, first_frame_coeff, coeff_path, audio_path, save_path, exp_dim=64):
-    
+
     coeff_first = scio.loadmat(first_frame_coeff)['full_3dmm']
 
     coeff_pred = scio.loadmat(coeff_path)['coeff_3dmm']
@@ -24,7 +24,7 @@ def gen_composed_video(args, device, first_frame_coeff, coeff_path, audio_path, 
     tmp_video_path = '/tmp/face3dtmp.mp4'
 
     facemodel = FaceReconModel(args)
-    
+
     video = cv2.VideoWriter(tmp_video_path, cv2.VideoWriter_fourcc(*'mp4v'), 25, (224, 224))
 
     for k in tqdm(range(coeff_pred.shape[0]), 'face3d rendering:'):

@@ -23,7 +23,7 @@ def get_facerender_data(coeff_path, pic_path, first_coeff_path, audio_path,
     source_image_ts = torch.FloatTensor(source_image).unsqueeze(0)
     source_image_ts = source_image_ts.repeat(batch_size, 1, 1, 1)
     data['source_image'] = source_image_ts
- 
+
     source_semantics_dict = scio.loadmat(first_coeff_path)
     generated_dict = scio.loadmat(coeff_path)
 
@@ -72,7 +72,7 @@ def get_facerender_data(coeff_path, pic_path, first_coeff_path, audio_path,
     data['target_semantics_list'] = torch.FloatTensor(target_semantics_np)
     data['video_name'] = video_name
     data['audio_path'] = audio_path
-    
+
     if input_yaw_list is not None:
         yaw_c_seq = gen_camera_pose(input_yaw_list, frame_num, batch_size)
         data['yaw_c_seq'] = torch.FloatTensor(yaw_c_seq)
@@ -82,7 +82,7 @@ def get_facerender_data(coeff_path, pic_path, first_coeff_path, audio_path,
     if input_roll_list is not None:
         roll_c_seq = gen_camera_pose(input_roll_list, frame_num, batch_size) 
         data['roll_c_seq'] = torch.FloatTensor(roll_c_seq)
- 
+
     return data
 
 def transform_semantic_1(semantic, semantic_radius):
@@ -113,7 +113,7 @@ def gen_camera_pose(camera_degree_list, frame_num, batch_size):
     degree_sum = 0.
     for i, degree in enumerate(camera_degree_list[1:]):
         degree_sum += abs(degree-camera_degree_list[i])
-    
+
     degree_per_frame = degree_sum/(frame_num-1)
     for i, degree in enumerate(camera_degree_list[1:]):
         degree_last = camera_degree_list[i]
@@ -133,4 +133,4 @@ def gen_camera_pose(camera_degree_list, frame_num, batch_size):
             new_degree_list.append(new_degree_list[-1])
     new_degree_np = np.array(new_degree_list).reshape(batch_size, -1) 
     return new_degree_np
-    
+
