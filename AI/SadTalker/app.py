@@ -1,4 +1,5 @@
-import os, sys
+import os
+import sys
 import tempfile
 import gradio as gr
 from src.gradio_demo import SadTalker

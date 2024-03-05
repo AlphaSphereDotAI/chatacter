@@ -1,5 +1,8 @@
 import numpy as np
-import cv2, os, sys, torch
+import cv2
+import os
+import sys
+import torch
 from tqdm import tqdm
 from PIL import Image 
 
