@@ -6,9 +6,7 @@ from src.facerender.modules.dense_motion import DenseMotionNetwork
 
 
 class OcclusionAwareGenerator(nn.Module):
-    """
-    Generator follows NVIDIA architecture.
-    """
+    """Generator follows NVIDIA architecture."""
 
     def __init__(self, image_channel, feature_channel, num_kp, block_expansion, max_features, num_down_blocks, reshape_channel, reshape_depth,
                  num_resblocks, estimate_occlusion_map=False, dense_motion_params=None, estimate_jacobian=False):

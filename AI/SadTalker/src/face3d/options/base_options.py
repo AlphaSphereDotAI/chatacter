@@ -1,5 +1,4 @@
-"""This script contains base options for Deep3DFaceRecon_pytorch
-"""
+"""This script contains base options for Deep3DFaceRecon_pytorch"""
 
 import argparse
 import os
