@@ -1,5 +1,4 @@
-"""This script contains the image preprocessing code for Deep3DFaceRecon_pytorch
-"""
+"""This script contains the image preprocessing code for Deep3DFaceRecon_pytorch"""
 
 import numpy as np
 from scipy.io import loadmat

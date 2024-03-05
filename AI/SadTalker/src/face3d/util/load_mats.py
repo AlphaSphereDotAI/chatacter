@@ -1,5 +1,4 @@
-"""This script is to load 3D face model for Deep3DFaceRecon_pytorch
-"""
+"""This script is to load 3D face model for Deep3DFaceRecon_pytorch"""
 
 import numpy as np
 from PIL import Image

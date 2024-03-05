@@ -1,5 +1,4 @@
-"""This script defines the parametric 3d face model for Deep3DFaceRecon_pytorch
-"""
+"""This script defines the parametric 3d face model for Deep3DFaceRecon_pytorch"""
 
 import numpy as np
 import  torch

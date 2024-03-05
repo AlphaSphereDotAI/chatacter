@@ -10,9 +10,7 @@ import torch.nn.utils.spectral_norm as spectral_norm
 
 
 def kp2gaussian(kp, spatial_size, kp_variance):
-    """
-    Transform a keypoint into gaussian like representation
-    """
+    """Transform a keypoint into gaussian like representation"""
     mean = kp['value']
 
     coordinate_grid = make_coordinate_grid(spatial_size, mean.type())
@@ -33,9 +31,7 @@ def kp2gaussian(kp, spatial_size, kp_variance):
     return out
 
 def make_coordinate_grid_2d(spatial_size, type):
-    """
-    Create a meshgrid [-1,1] x [-1,1] of given spatial_size.
-    """
+    """Create a meshgrid [-1,1] x [-1,1] of given spatial_size."""
     h, w = spatial_size
     x = torch.arange(w).type(type)
     y = torch.arange(h).type(type)
@@ -103,9 +99,7 @@ class ResBottleneck(nn.Module):
 
 
 class ResBlock2d(nn.Module):
-    """
-    Res block, preserve spatial resolution.
-    """
+    """Res block, preserve spatial resolution."""
 
     def __init__(self, in_features, kernel_size, padding):
         super(ResBlock2d, self).__init__()
@@ -128,9 +122,7 @@ class ResBlock2d(nn.Module):
 
 
 class ResBlock3d(nn.Module):
-    """
-    Res block, preserve spatial resolution.
-    """
+    """Res block, preserve spatial resolution."""
 
     def __init__(self, in_features, kernel_size, padding):
         super(ResBlock3d, self).__init__()
@@ -153,9 +145,7 @@ class ResBlock3d(nn.Module):
 
 
 class UpBlock2d(nn.Module):
-    """
-    Upsampling block for use in decoder.
-    """
+    """Upsampling block for use in decoder."""
 
     def __init__(self, in_features, out_features, kernel_size=3, padding=1, groups=1):
         super(UpBlock2d, self).__init__()
@@ -172,9 +162,7 @@ class UpBlock2d(nn.Module):
         return out
 
 class UpBlock3d(nn.Module):
-    """
-    Upsampling block for use in decoder.
-    """
+    """Upsampling block for use in decoder."""
 
     def __init__(self, in_features, out_features, kernel_size=3, padding=1, groups=1):
         super(UpBlock3d, self).__init__()
@@ -193,9 +181,7 @@ class UpBlock3d(nn.Module):
 
 
 class DownBlock2d(nn.Module):
-    """
-    Downsampling block for use in encoder.
-    """
+    """Downsampling block for use in encoder."""
 
     def __init__(self, in_features, out_features, kernel_size=3, padding=1, groups=1):
         super(DownBlock2d, self).__init__()
@@ -213,9 +199,7 @@ class DownBlock2d(nn.Module):
 
 
 class DownBlock3d(nn.Module):
-    """
-    Downsampling block for use in encoder.
-    """
+    """Downsampling block for use in encoder."""
 
     def __init__(self, in_features, out_features, kernel_size=3, padding=1, groups=1):
         super(DownBlock3d, self).__init__()
@@ -237,9 +221,7 @@ class DownBlock3d(nn.Module):
 
 
 class SameBlock2d(nn.Module):
-    """
-    Simple block, preserve spatial resolution.
-    """
+    """Simple block, preserve spatial resolution."""
 
     def __init__(self, in_features, out_features, groups=1, kernel_size=3, padding=1, lrelu=False):
         super(SameBlock2d, self).__init__()
@@ -259,9 +241,7 @@ class SameBlock2d(nn.Module):
 
 
 class Encoder(nn.Module):
-    """
-    Hourglass Encoder
-    """
+    """Hourglass Encoder"""
 
     def __init__(self, block_expansion, in_features, num_blocks=3, max_features=256):
         super(Encoder, self).__init__()
@@ -281,9 +261,7 @@ class Encoder(nn.Module):
 
 
 class Decoder(nn.Module):
-    """
-    Hourglass Decoder
-    """
+    """Hourglass Decoder"""
 
     def __init__(self, block_expansion, in_features, num_blocks=3, max_features=256):
         super(Decoder, self).__init__()
@@ -317,9 +295,7 @@ class Decoder(nn.Module):
 
 
 class Hourglass(nn.Module):
-    """
-    Hourglass architecture.
-    """
+    """Hourglass architecture."""
 
     def __init__(self, block_expansion, in_features, num_blocks=3, max_features=256):
         super(Hourglass, self).__init__()
@@ -332,9 +308,7 @@ class Hourglass(nn.Module):
 
 
 class KPHourglass(nn.Module):
-    """
-    Hourglass architecture.
-    """ 
+    """Hourglass architecture.""" 
 
     def __init__(self, block_expansion, in_features, reshape_features, reshape_depth, num_blocks=3, max_features=256):
         super(KPHourglass, self).__init__()
@@ -369,9 +343,7 @@ class KPHourglass(nn.Module):
 
 
 class AntiAliasInterpolation2d(nn.Module):
-    """
-    Band-limited downsampling, for better preservation of the input signal.
-    """
+    """Band-limited downsampling, for better preservation of the input signal."""
     def __init__(self, channels, scale):
         super(AntiAliasInterpolation2d, self).__init__()
         sigma = (1 / scale - 1) / 2

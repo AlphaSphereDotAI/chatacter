@@ -51,9 +51,7 @@ class AddCoordsTh(nn.Module):
         self.with_boundary = with_boundary
 
     def forward(self, input_tensor, heatmap=None):
-        """
-        input_tensor: (batch, c, x_dim, y_dim)
-        """
+        """input_tensor: (batch, c, x_dim, y_dim)"""
         batch_size_tensor = input_tensor.shape[0]
 
         xx_ones = torch.ones([1, self.y_dim], dtype=torch.int32, device=input_tensor.device)

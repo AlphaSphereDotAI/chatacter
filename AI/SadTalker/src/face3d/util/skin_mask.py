@@ -1,5 +1,4 @@
-"""This script is to generate skin attention mask for Deep3DFaceRecon_pytorch
-"""
+"""This script is to generate skin attention mask for Deep3DFaceRecon_pytorch"""
 
 import math
 import numpy as np
