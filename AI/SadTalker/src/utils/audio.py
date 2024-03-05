@@ -93,7 +93,8 @@ def _linear_to_mel(spectogram):
     return np.dot(_mel_basis, spectogram)
 
 def _build_mel_basis():
-    assert hp.fmax <= hp.sample_rate // 2
+    if hp.fmax > hp.sample_rate // 2:
+        raise AssertionError
     return librosa.filters.mel(sr=hp.sample_rate, n_fft=hp.n_fft, n_mels=hp.num_mels,
                                fmin=hp.fmin, fmax=hp.fmax)
 
@@ -111,7 +112,8 @@ def _normalize(S):
                            -hp.max_abs_value, hp.max_abs_value)
         return np.clip(hp.max_abs_value * ((S - hp.min_level_db) / (-hp.min_level_db)), 0, hp.max_abs_value)
 
-    assert S.max() <= 0 and S.min() - hp.min_level_db >= 0
+    if not (S.max() <= 0 and S.min() - hp.min_level_db >= 0):
+        raise AssertionError
     if hp.symmetric_mels:
         return (2 * hp.max_abs_value) * ((S - hp.min_level_db) / (-hp.min_level_db)) - hp.max_abs_value
     return hp.max_abs_value * ((S - hp.min_level_db) / (-hp.min_level_db))

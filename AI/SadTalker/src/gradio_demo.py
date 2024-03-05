@@ -81,7 +81,8 @@ class SadTalker():
             one_sec_segment.export(audio_path, format="wav")
         else:
             print(use_ref_video, ref_info)
-            assert use_ref_video == True and ref_info == 'all'
+            if not (use_ref_video == True and ref_info == 'all'):
+                raise AssertionError
 
         if use_ref_video and ref_info == 'all': # full ref mode
             ref_video_videoname = os.path.basename(ref_video)
