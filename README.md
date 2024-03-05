@@ -1,12 +1,3 @@
 # Welcome to graduation_project
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
-## Project layout
-
-    graduation_project/
-    ├── docs/
-    │   ├── index.md
-    │   └── ...
-    ├── mkdocs.yml
-    └── ...
+For full documentation visit [MH0386.github.io/graduation_project](https://mh0386.github.io/graduation_project/policy/).
