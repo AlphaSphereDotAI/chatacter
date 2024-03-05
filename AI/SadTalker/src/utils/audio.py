@@ -57,8 +57,7 @@ def _lws_processor():
 def _stft(y):
     if hp.use_lws:
         return _lws_processor(hp).stft(y).T
-    else:
-        return librosa.stft(y=y, n_fft=hp.n_fft, hop_length=get_hop_size(), win_length=hp.win_size)
+    return librosa.stft(y=y, n_fft=hp.n_fft, hop_length=get_hop_size(), win_length=hp.win_size)
 
 ##########################################################
 #Those are only correct when using lws!!! (This was messing with Wavenet quality for a long time!)
@@ -110,14 +109,12 @@ def _normalize(S):
         if hp.symmetric_mels:
             return np.clip((2 * hp.max_abs_value) * ((S - hp.min_level_db) / (-hp.min_level_db)) - hp.max_abs_value,
                            -hp.max_abs_value, hp.max_abs_value)
-        else:
-            return np.clip(hp.max_abs_value * ((S - hp.min_level_db) / (-hp.min_level_db)), 0, hp.max_abs_value)
+        return np.clip(hp.max_abs_value * ((S - hp.min_level_db) / (-hp.min_level_db)), 0, hp.max_abs_value)
 
     assert S.max() <= 0 and S.min() - hp.min_level_db >= 0
     if hp.symmetric_mels:
         return (2 * hp.max_abs_value) * ((S - hp.min_level_db) / (-hp.min_level_db)) - hp.max_abs_value
-    else:
-        return hp.max_abs_value * ((S - hp.min_level_db) / (-hp.min_level_db))
+    return hp.max_abs_value * ((S - hp.min_level_db) / (-hp.min_level_db))
 
 def _denormalize(D):
     if hp.allow_clipping_in_normalization:
@@ -125,10 +122,8 @@ def _denormalize(D):
             return (((np.clip(D, -hp.max_abs_value,
                               hp.max_abs_value) + hp.max_abs_value) * -hp.min_level_db / (2 * hp.max_abs_value))
                     + hp.min_level_db)
-        else:
-            return ((np.clip(D, 0, hp.max_abs_value) * -hp.min_level_db / hp.max_abs_value) + hp.min_level_db)
+        return ((np.clip(D, 0, hp.max_abs_value) * -hp.min_level_db / hp.max_abs_value) + hp.min_level_db)
 
     if hp.symmetric_mels:
         return (((D + hp.max_abs_value) * -hp.min_level_db / (2 * hp.max_abs_value)) + hp.min_level_db)
-    else:
-        return ((D * -hp.min_level_db / hp.max_abs_value) + hp.min_level_db)
+    return ((D * -hp.min_level_db / hp.max_abs_value) + hp.min_level_db)

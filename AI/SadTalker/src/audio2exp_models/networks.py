@@ -20,8 +20,7 @@ class Conv2d(nn.Module):
 
         if self.use_act:
             return self.act(out)
-        else:
-            return out
+        return out
 
 class SimpleWrapperV2(nn.Module):
     def __init__(self) -> None:
