@@ -1,5 +1,4 @@
-"""This script defines the custom dataset for Deep3DFaceRecon_pytorch
-"""
+"""This script defines the custom dataset for Deep3DFaceRecon_pytorch"""
 
 import os.path
 from data.base_dataset import BaseDataset, get_transform, get_affine_mat, apply_img_affine, apply_lm_affine
@@ -120,6 +119,5 @@ class FlistDataset(BaseDataset):
 
 
     def __len__(self):
-        """Return the total number of images in the dataset.
-        """
+        """Return the total number of images in the dataset."""
         return self.size

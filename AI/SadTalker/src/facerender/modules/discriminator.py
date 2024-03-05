@@ -5,9 +5,7 @@ import torch
 
 
 class DownBlock2d(nn.Module):
-    """
-    Simple block for processing video (encoder).
-    """
+    """Simple block for processing video (encoder)."""
 
     def __init__(self, in_features, out_features, norm=False, kernel_size=4, pool=False, sn=False):
         super(DownBlock2d, self).__init__()
@@ -34,9 +32,7 @@ class DownBlock2d(nn.Module):
 
 
 class Discriminator(nn.Module):
-    """
-    Discriminator similar to Pix2Pix
-    """
+    """Discriminator similar to Pix2Pix"""
 
     def __init__(self, num_channels=3, block_expansion=64, num_blocks=4, max_features=512,
                  sn=False, **kwargs):
@@ -67,9 +63,7 @@ class Discriminator(nn.Module):
 
 
 class MultiScaleDiscriminator(nn.Module):
-    """
-    Multi-scale (scale) discriminator
-    """
+    """Multi-scale (scale) discriminator"""
 
     def __init__(self, scales=(), **kwargs):
         super(MultiScaleDiscriminator, self).__init__()
