@@ -3,6 +3,7 @@
 In this Studio, we will learn how to deploy a Machine Learning API using FastAPI. We will deploy an image classification model with ResNet architecture on a CPU machine. You can run this Studio as a part of [free CPU quota](https://lightning.ai/pricing).
 
 ## TLDR; Run
+
 <img src="assets/demo.gif">
 
 ```bash
@@ -13,7 +14,6 @@ uvicorn app:app
 ## What is FastAPI
 
 FastAPI is a web framework for building and deploying RESTful APIs in Python. Once deployed, the API can be used by any frontend or backend via REST protocol.
-
 
 **Create FastAPI Endpoint**
 
@@ -36,7 +36,7 @@ async def hello_world():
 
 We will create an API for image classification, we name it `predict`. We will use a pretrained model from `torchvision` library.
 
-We create a `model.py` module which handles the model loading and image pre-processing logic. We define our endpoint in `app.py` as following - 
+We create a `model.py` module which handles the model loading and image pre-processing logic. We define our endpoint in `app.py` as following -
 
 ```py
 @app.post("/predict")
@@ -47,7 +47,7 @@ def predict(file: UploadFile):
 
 ```
 
-We can run this app as uvicorn server using the following command - 
+We can run this app as uvicorn server using the following command -
 
 ```bash
 cd fastapi-image-classification-api

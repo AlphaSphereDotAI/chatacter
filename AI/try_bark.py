@@ -24,5 +24,7 @@ from qai_hub_models.models import llama_v2_7b_chat_quantized
 torch_model = llama_v2_7b_chat_quantized
 
 # Generate a response
-response = torch_model.generate_response("Hello, my name is Suno. And, uh — and I like pizza. [laughs] But I also have other interests such as playing tic tac toe.")
+response = torch_model.generate_response(
+    "Hello, my name is Suno. And, uh — and I like pizza. [laughs] But I also have other interests such as playing tic tac toe."
+)
 print(response)
