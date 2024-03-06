@@ -11,8 +11,6 @@ Now you can use the dataset class by specifying flag '--dataset_mode dummy'.
 See our template dataset class 'template_dataset.py' for more details.
 """
 import importlib
-
-import numpy as np
 import torch.utils.data
 from face3d.data.base_dataset import BaseDataset
 

@@ -1,10 +1,8 @@
 # this scripts installs necessary requirements and launches main program in webui.py
 # borrow from : https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/launch.py
 import importlib.util
-import json
 import os
 import platform
-import shlex
 import subprocess
 import sys
 

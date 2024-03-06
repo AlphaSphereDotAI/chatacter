@@ -1,6 +1,4 @@
 import os
-import sys
-import tempfile
 
 import gradio as gr
 
