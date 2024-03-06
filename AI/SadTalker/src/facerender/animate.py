@@ -10,9 +10,7 @@ import torch
 import yaml
 from pydub import AudioSegment
 from skimage import img_as_ubyte
-from src.facerender.modules.generator import (
-    OcclusionAwareSPADEGenerator,
-)
+from src.facerender.modules.generator import OcclusionAwareSPADEGenerator
 from src.facerender.modules.keypoint_detector import HEEstimator, KPDetector
 from src.facerender.modules.make_animation import make_animation
 from src.facerender.modules.mapping import MappingNet

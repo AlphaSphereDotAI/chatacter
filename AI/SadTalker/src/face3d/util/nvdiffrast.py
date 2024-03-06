@@ -2,6 +2,7 @@
     Attention, antialiasing step is missing in current version.
 """
 from typing import List
+
 import pytorch3d.ops
 import torch
 from pytorch3d.renderer import (
@@ -9,7 +10,7 @@ from pytorch3d.renderer import (
     MeshRasterizer,
     MeshRenderer,
     RasterizationSettings,
-    )
+)
 from pytorch3d.structures import Meshes
 from torch import nn
 
