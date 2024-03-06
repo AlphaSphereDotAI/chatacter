@@ -1,6 +1,6 @@
 import os
 
-'''
+"""
 apt-get update
 apt install software-properties-common -y
 dpkg --remove --force-remove-reinstreq python3-pip python3-setuptools python3-wheel
@@ -11,7 +11,7 @@ pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 \
 --extra-index-url https://download.pytorch.org/whl/cu113
 apt update
 apt install ffmpeg -y
-'''
+"""
 
 # Now, the virtual environment is created and you can install packages using pip.
 # os.system("source activate chatacter")
@@ -31,11 +31,13 @@ else:
 image = "examples/source_image/art_0.png"
 audio = "examples/driven_audio/bus_chinese.wav"
 results = "results"
-os.system(f"python inference.py \
+os.system(
+    f"python inference.py \
             --source_image {image} \
             --driven_audio {audio} \
             --checkpoint_dir checkpoints \
-            --result_dir {results}")
+            --result_dir {results}"
+)
 
 # gradio.Interface(
 #     fn=,
