@@ -1,13 +1,12 @@
 import json
+
 import numpy as np
 import requests
 import sounddevice as sd
 
-
 response = requests.post(
     "http://localhost:8000/predict?query='What is the meaning of life?'"
 )
-
 
 json_data: json = json.loads(json.loads(response.content.decode("utf-8")))
 print(json_data.keys())

@@ -1,11 +1,12 @@
 import os
 import sys
 import tempfile
+
 import gradio as gr
-from src.gradio_demo import SadTalker
 
 # from src.utils.text2speech import TTSTalker
 from huggingface_hub import snapshot_download
+from src.gradio_demo import SadTalker
 
 
 def get_source_image(image):
@@ -42,7 +43,6 @@ def download_model():
 
 
 def sadtalker_demo():
-
     download_model()
 
     sad_talker = SadTalker(lazy_load=True)
@@ -305,7 +305,6 @@ def sadtalker_demo():
 
 
 if __name__ == "__main__":
-
     demo = sadtalker_demo()
     demo.queue(max_size=10)
     demo.launch(debug=True)
