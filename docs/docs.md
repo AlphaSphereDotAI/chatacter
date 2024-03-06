@@ -1,4 +1,6 @@
-# Abstract
+# Documentation
+
+## Abstract
 
 Recently, chatbots have gained attention for their natural language interactions. However, developing chatbots with contextual awareness and varied responses remains challenging.
 
@@ -12,17 +14,17 @@ Beyond these specific domains, the applications of these agents extend to any fi
 
 Overall, these agents have the potential to deepen our understanding of the past, inform our present, and inspire our future.
 
-# Introduction
+## Introduction
 
-## Problem Definition
+### Problem Definition
 
 Studying history helps us learn from the past, make better choices for the future, and develop critical thinking skills. Studying history may not be fun, and it may be exhausting to search manually for specific historical characters or events. This can be a daunting task.
 
-## Motivation
+### Motivation
 
 Our objective for this project is to use advanced technology to improve the capability of chatbots to understand and respond to historical inquiries with a higher level of contextual accuracy. With this improvement, students will have a more engaging and enjoyable learning experience while studying history with the assistance of chatbots.
 
-## Applications
+### Applications
 
 The applications of AI agents simulating historical figures are wide-ranging and offer significant value across various domains, including:
 
@@ -32,18 +34,18 @@ The applications of AI agents simulating historical figures are wide-ranging and
 
 By leveraging a multi-model approach, dialogue systems can achieve a higher level of characterization, providing users with more personalized and immersive experiences. By adhering to these guidelines, developers can create chatbot that offer a seamless and intuitive user experience, making them indispensable tools for various applications, including customer service, information retrieval, and entertainment.
 
-# Related Work
+## Related Work
 
 The field of conversational agents (CAs) is rapidly evolving, with a growing emphasis on enhancing their contextual understanding, response generation, and overall engagement. This project explores a multi-pronged approach to achieving these goals.
 
-## Large Language Models
+### Large Language Models
 
-### Conversational Agents with Embodied Avatars
+#### Conversational Agents with Embodied Avatars
 
 - FurChat: This project explored a similar approach of combining a large language model (LLM) with an embodied avatar for human interaction. FurChat demonstrated the potential for engaging and informative conversations in a physical setting. However, it focused on general information retrieval, not domain-specific assistance.
 - ERICA: This project developed an embodied social robot with advanced dialogue capabilities. While not using LLMs, ERICA highlighted the potential of embodied agents for emotional engagement and social interaction.
 
-### Large Language Models in Conversational Agents
+#### Large Language Models in Conversational Agents
 
 - LaMDA: This Google AI project demonstrates the power of LLMs for generating human-like dialogue. However, LaMDA focuses on open-ended conversational scenarios and does not address domain-specific expertise.
 - Phi-2: this offers a readily available foundation for building advanced CAs (e.g., \[Radford et al., 2022]). It is a transformer with 2.7 billion parameters. It was trained using the same data sources as Phi-1.5, augmented with a new data source that consists of various NLP synthetic texts and filtered websites (for safety and educational value). When assessed against benchmarks Testing common sense, language understanding, and logical reasoning, Phi-2 highlighted a state-of-the-art performance among models with less than 13 billion parameters. It also employs safety tensors to reduce toxicity and bias in the generated text. It has 24 layers, 32 attention heads, and a hidden size of 40962 with a context length of 2048 tokens. It uses the next-word prediction objective to learn from the training data. In training, it trained on a dataset of size 250B tokens on a 96xA100-80G GPU for 14 days (about 2 weeks), a combination of NLP synthetic data created by AOAI GPT-3.5 and filtered web data from Falcon RefinedWeb and SlimPajama, which was assessed by AOAI GPT-4.
@@ -51,33 +53,33 @@ The field of conversational agents (CAs) is rapidly evolving, with a growing emp
 - Megatron-Turing NLG: This model from NVIDIA highlights the potential of LLMs for factual language generation. However, it primarily focuses on factual summarization and lacks the interactive dialogue capabilities needed for a conversational agent.
 - BlenderBot: This Facebook AI project explores LLMs for open-domain dialogue with a focus on factual grounding. While demonstrating progress, it still faces challenges in achieving robust and consistent domain-specific assistance.
 
-### Domain-Specific Conversational Agents&#x20;
+#### Domain-Specific Conversational Agents&#x20;
 
 Several industries have developed chatbots for specific tasks like customer service or technical support. However, these often lack the embodiment and multi-modal capabilities of your project.
 
 - Mitsuku: This chatbot exhibits impressive performance in open-domain conversation tasks. However, it lacks the embodiment and domain-specific focus of your project
 - Cleverbot: This online chatbot learns through user interactions but does not leverage domain-specific knowledge or LLMs.
 
-## Computer Vision
+### Computer Vision
 
-### Talking Head Video Generation&#x20;
+#### Talking Head Video Generation&#x20;
 
 The creation of talking head videos from a single-face image and speech audio is fraught with challenges, such as unnatural head movements, distorted facial expressions, and modifications to the subject's identity. These issues are attributed to the reliance on learning from coupled 2D motion fields, which can lead to unnatural and incoherent results. Moreover, the use of explicit 3D information has been found to introduce its own set of problems, such as stiff expressions and videos that lack coherence. One of the most powerful models is SadTalker. To address these challenges, SadTalker has been developed. This system generates 3D motion coefficients, including head pose and facial expressions, from audio using a 3D Morphable Model (3DMM) and modulates a novel 3D-aware face render to create talking head videos. SadTalker stands out by explicitly modeling the connections between audio and several types of motion coefficients individually, which helps in achieving more accurate facial expressions and head movements. To learn the realistic motion coefficients, we explicitly model the connections between audio and several types of motion coefficients individually. Precisely, we present ExpNet to learn the accurate facial expression from audio by distilling both coefficients and 3D-rendered faces.
 
-#### Components
+##### Components
 
 - ExpNet: This component is designed to learn accurate facial expressions directly from audio. It does so by distilling information from both the motion coefficients and 3D-rendered faces, which helps in capturing the nuances of facial expressions that are synchronized with the audio.&#x20;
 - PoseVAE: it is a conditional Variational Autoencoder that synthesizes head motion in several styles. This allows for the generation of head movements that are natural and match the speech style, contributing to the video's overall realism.
 - 3D Key Points Mapping: The 3D motion coefficients generated by SadTalker are mapped onto an unsupervised 3D key points space of the proposed face render. This mapping is crucial for synthesizing the final video, ensuring that the motion is accurately reflected in the visual output.
 
-#### Benefits
+##### Benefits
 
 - Individual Modeling: Explicitly modeling audio-to-motion connections for expression and pose leads to improved realism.
 - Distillation-based Learning: ExpNet's learning from both coefficients and rendered faces enhances expression accuracy.
 - Style Control: PoseVAE enables generating head motion with several styles based on audio.
 - Unsupervised 3D Key Points: Mapping to this space leverages 3D information without introducing stiffness or incoherence.
 
-#### Experiments:&#x20;
+##### Experiments:&#x20;
 
 Extensive experiments have been conducted to validate the effectiveness of SadTalker. These studies show the method's superiority in motion realism and video quality, outperforming existing approaches in the field. Extensive experiments demonstrate SadTalker's superiority in terms of:&#x20;
 
@@ -85,9 +87,9 @@ Extensive experiments have been conducted to validate the effectiveness of SadTa
 - Expression Quality: Accurate and nuanced facial expressions driven by audio.
 - Video Quality: Overall higher perceived quality and identity preservation.
 
-# Methodology
+## Methodology
 
-## Large Language Models
+### Large Language Models
 
 To design and develop effective chatbots that can engage users in natural and personalized conversations, the following guidelines should be considered:
 
@@ -98,34 +100,9 @@ To design and develop effective chatbots that can engage users in natural and pe
 3. Utilizing a multi-model approach to enhance conversational agents: In interactive systems that involve conversational agents, each character can be characterized by their distinctive way of communicating. This can include their word choices, sentence structure, tone, and other linguistic features that help establish their personality and identity. Employing a multi-model approach can enhance the system's ability to generate diverse and character-specific responses.
 4. Fine-tuning individual models using a multi-model approach: Create chatbots tailored to the specific characteristics and personalities of each historical figure. Fine-tune each pre-trained model on its respective character-specific dataset. This involves adjusting the model's parameters to optimize its performance on the task of generating text in the style of that character.
 
-## Computer Vision
+### Computer Vision
 
 To integrate the computer vision system into our live chat system, we need to add the Talking Face Animator system. Generating realistic talking head videos using a single-face image and audio presents several challenges, including unnatural head movements, distorted expressions, and loss of identity. This paper argues that these issues stem from learning from coupled 2D motion fields. While directly using 3D information can improve realism, it can also lead to stiff expressions and incoherent videos. SadTalker, This work proposes a novel approach, SadTalker, that leverages 3D motion coefficients (head pose, expression) and implicitly modulates a 3D-aware face renderer for generating talking heads.
-
-# Plan of work
-
-- [ ] LLM (Large Language Model)
-  - [ ] Data&#x20;
-    - [ ] Napoleon Bonaparte's Data
-      - [ ] Collecting Data
-      - [ ] Process Data
-      - [ ] Changing the Personal Pronoun
-    - [ ] Albert Einstein's Data
-      - [ ] Collecting Data
-      - [ ] Process Data.&#x20;
-      - [ ] Changing the Personal Pronoun
-  - [ ] Model Selection (Based on our resources)
-  - [ ] Fine-tune
-
----
-
-- [ ] Computer Vision
-  - [ ] Model Selection (Based on our resources)&#x20;
-
----
-
-- [ ] &#x20;Voice&#x20;
-  - [ ] Model Selection (In progress)&#x20;
 
 ## References
 
