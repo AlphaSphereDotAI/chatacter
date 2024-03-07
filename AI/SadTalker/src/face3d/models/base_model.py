@@ -226,8 +226,9 @@ class BaseModel(ABC):
         for name in self.model_names:
             if isinstance(name, str):
                 net = getattr(self, name)
-                if isinstance(net, torch.nn.DataParallel) or isinstance(
-                    net, torch.nn.parallel.DistributedDataParallel
+                if isinstance(
+                    net,
+                    (torch.nn.DataParallel, torch.nn.parallel.DistributedDataParallel),
                 ):
                     net = net.module
                 save_dict[name] = net.state_dict()
