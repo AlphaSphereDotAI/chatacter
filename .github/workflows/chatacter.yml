@@ -53,27 +53,12 @@ jobs:
               with:
                   input: dart_analyze.txt
                   output: dart_analyze.sarif
-            - name: Set up Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: "3.x"
-            - name: Upload Sarif report to DeepSource
+            - name: Upload SARIF report to DeepSource
               run: |
-                  # Install coverage.py pacakage from pip
-                  pip install coverage
-                
-                  # Run coverage
-                  coverage run tests.py
-                
-                  # Generate coverage report in xml format
-                  coverage xml
-                 
                   # Install the CLI
                   curl https://deepsource.io/cli | sh
-                  
                   # Send the report to DeepSource
                   ./bin/deepsource report --analyzer dart-analyze --analyzer-type community --value-file ./dart_analyze.sarif
-                  ./bin/deepsource report --analyzer test-coverage --key python --value-file ./coverage.xml
               env:
                   DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
     Documentation:
