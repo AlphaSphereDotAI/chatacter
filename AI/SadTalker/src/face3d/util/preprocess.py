@@ -97,7 +97,6 @@ def align_img(img, lm, lm3D, mask=None, target_size=224.0, rescale_factor=102.0)
         lm3D               --numpy.array  (5, 3)
         mask               --PIL.Image  (raw_H, raw_W, 3)
     """
-
     w0, h0 = img.size
     if lm.shape[0] != 5:
         lm5p = extract_5p(lm)

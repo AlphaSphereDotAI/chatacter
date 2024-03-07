@@ -80,7 +80,6 @@ def patch_replication_callback(data_parallel):
         > sync_bn = SynchronizedBatchNorm1d(10, eps=1e-5, affine=False)
         > sync_bn = DataParallelWithCallback(sync_bn, device_ids=[0, 1])
     """
-
     assert isinstance(data_parallel, DataParallel)
 
     old_replicate = data_parallel.replicate

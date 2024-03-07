@@ -126,7 +126,6 @@ class ParametricFaceModel:
         Parameters:
             face_shape       -- torch.tensor, size (B, N, 3)
         """
-
         v1 = face_shape[:, self.face_buf[:, 0]]
         v2 = face_shape[:, self.face_buf[:, 1]]
         v3 = face_shape[:, self.face_buf[:, 2]]
@@ -189,7 +188,6 @@ class ParametricFaceModel:
         Parameters:
             angles           -- torch.tensor, size (B, 3), radian
         """
-
         batch_size = angles.shape[0]
         ones = torch.ones([batch_size, 1]).to(self.device)
         zeros = torch.zeros([batch_size, 1]).to(self.device)

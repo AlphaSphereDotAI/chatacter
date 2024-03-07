@@ -28,7 +28,6 @@ class PerceptualLoss(nn.Module):
             imageA       --torch.tensor (B, 3, H, W), range (0, 1) , RGB order
             imageB       --same as imageA
         """
-
         imageA = self.preprocess(resize_n_crop(imageA, M, self.input_size))
         imageB = self.preprocess(resize_n_crop(imageB, M, self.input_size))
 

@@ -72,7 +72,6 @@ class Predictor(BasePredictor):
         ),
     ) -> Path:
         """Run a single prediction on the model"""
-
         animate_from_coeff = (
             self.animate_from_coeff["full"]
             if preprocess == "full"
