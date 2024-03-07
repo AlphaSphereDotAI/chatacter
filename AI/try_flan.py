@@ -1,5 +1,6 @@
 import time
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
 model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")

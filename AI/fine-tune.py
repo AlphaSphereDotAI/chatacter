@@ -1,12 +1,6 @@
-import json
-import os
-from pprint import pprint
-import bitsandbytes as bnb
 import torch
-import torch.nn as nn
 import transformers
 from datasets import load_dataset
-from huggingface_hub import notebook_login
 from peft import (
     LoraConfig,
     PeftConfig,
@@ -14,12 +8,7 @@ from peft import (
     get_peft_model,
     prepare_model_for_kbit_training,
 )
-from transformers import (
-    AutoConfig,
-    AutoModelForCausalLM,
-    AutoTokenizer,
-    BitsAndBytesConfig,
-)
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 torch.set_default_device("cuda")
 
@@ -42,7 +31,6 @@ model = AutoModelForCausalLM.from_pretrained(
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 tokenizer.pad_token = tokenizer.eos_token
 
-
 # In[3]:
 
 
@@ -61,15 +49,10 @@ def print_trainable_parameters(model):
 
 # In[4]:
 
-
 model.gradient_checkpointing_enable()
 model = prepare_model_for_kbit_training(model)
 
-
 # In[5]:
-
-
-from peft import LoraConfig
 
 config = LoraConfig(
     r=16, lora_alpha=32, lora_dropout=0.05, bias="none", task_type="CAUSAL_LM"
@@ -78,21 +61,17 @@ config = LoraConfig(
 model = get_peft_model(model, config)
 print_trainable_parameters(model)
 
-
 # # Test original model
-# 
+#
 
 # In[6]:
-
 
 prompt = """
 <human>: when and where was napoleon born?
 <assistant>:
 """.strip()
 
-
 # In[7]:
-
 
 generation_config = model.generation_config
 generation_config.max_new_tokens = 200
@@ -102,35 +81,30 @@ generation_config.num_return_sequences = 1
 generation_config.pad_token_id = tokenizer.eos_token_id
 generation_config.eos_token_id = tokenizer.eos_token_id
 
-
 # In[8]:
 
-
-get_ipython().run_cell_magic('time', '', 'device = "cuda"\n\nencoding = tokenizer(prompt, return_tensors="pt").to(device)\nwith torch.inference_mode():\n    outputs = model.generate(\n        input_ids=encoding.input_ids,\n        attention_mask=encoding.attention_mask,\n        generation_config=generation_config\n    )\n\nprint(tokenizer.decode(outputs[0], skip_special_tokens=True))\n')
-
+get_ipython().run_cell_magic(
+    "time",
+    "",
+    'device = "cuda"\n\nencoding = tokenizer(prompt, return_tensors="pt").to(device)\nwith torch.inference_mode():\n    outputs = model.generate(\n        input_ids=encoding.input_ids,\n        attention_mask=encoding.attention_mask,\n        generation_config=generation_config\n    )\n\nprint(tokenizer.decode(outputs[0], skip_special_tokens=True))\n',
+)
 
 # # Prep dataset
-# 
+#
 
 # In[17]:
-
 
 data = load_dataset(
     "MH0386/napoleon_bonaparte", data_files="napoleon_prompt_format.json"
 )
 
-
 # In[18]:
-
 
 data
 
-
 # In[19]:
 
-
 data["train"][0]
-
 
 # In[23]:
 
@@ -150,21 +124,16 @@ def generate_and_tokenize_prompt(data_point):
 
 # In[24]:
 
-
 data = data["train"].shuffle().map(generate_and_tokenize_prompt)
-
 
 # In[25]:
 
-
 data
 
-
 # # Finetune the model
-# 
+#
 
 # In[26]:
-
 
 training_args = transformers.TrainingArguments(
     per_device_train_batch_size=1,
@@ -189,26 +158,20 @@ trainer = transformers.Trainer(
 model.config.use_cache = False
 trainer.train()
 
-
 # # Save trained model
-# 
+#
 
 # In[ ]:
-
 
 model.save_pretrained("trained-model")
 
-
 # In[ ]:
-
 
 PEFT_MODEL = "MH0386/phi-2-napoleon-bonaparte"
 
 model.push_to_hub(PEFT_MODEL, use_auth_token=True)
 
-
 # In[ ]:
-
 
 config = PeftConfig.from_pretrained(PEFT_MODEL)
 model = AutoModelForCausalLM.from_pretrained(
@@ -224,12 +187,10 @@ tokenizer.pad_token = tokenizer.eos_token
 
 model = PeftModel.from_pretrained(model, PEFT_MODEL)
 
-
 # # Run the finetuned model
-# 
+#
 
 # In[ ]:
-
 
 generation_config = model.generation_config
 generation_config.max_new_tokens = 200
@@ -239,9 +200,10 @@ generation_config.num_return_sequences = 1
 generation_config.pad_token_id = tokenizer.eos_token_id
 generation_config.eos_token_id = tokenizer.eos_token_id
 
-
 # In[ ]:
 
-
-get_ipython().run_cell_magic('time', '', 'device = "cuda:0"\n\nprompt = """\n<human>: midjourney prompt for a boy running in the snow\n<assistant>:\n""".strip()\n\nencoding = tokenizer(prompt, return_tensors="pt").to(device)\nwith torch.inference_mode():\n    outputs = model.generate(\n        input_ids=encoding.input_ids,\n        attention_mask=encoding.attention_mask,\n        generation_config=generation_config\n    )\n\nprint(tokenizer.decode(outputs[0], skip_special_tokens=True))\n')
-
+get_ipython().run_cell_magic(
+    "time",
+    "",
+    'device = "cuda:0"\n\nprompt = """\n<human>: midjourney prompt for a boy running in the snow\n<assistant>:\n""".strip()\n\nencoding = tokenizer(prompt, return_tensors="pt").to(device)\nwith torch.inference_mode():\n    outputs = model.generate(\n        input_ids=encoding.input_ids,\n        attention_mask=encoding.attention_mask,\n        generation_config=generation_config\n    )\n\nprint(tokenizer.decode(outputs[0], skip_special_tokens=True))\n',
+)

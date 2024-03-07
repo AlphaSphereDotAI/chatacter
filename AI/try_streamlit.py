@@ -1,10 +1,9 @@
-import streamlit as st
-import time
 import os
-import google.generativeai as genai
-import pandas as pd
 
-genai.configure(api_key="")
+import google.generativeai as genai
+import streamlit as st
+
+genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 # import pprint
 # for model in genai.list_models():

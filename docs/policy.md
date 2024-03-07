@@ -8,24 +8,24 @@ Chatacter is committed to protecting the privacy of its users. This Privacy Poli
 
 We may collect information about you in a variety of ways. The information we may collect via the Application depends on the content and materials you use, and includes:
 
--   **Personal Data**: Demographic and other personally identifiable information (such as your name and email address) that you voluntarily give to us.
--   **Derivative Data**: Information our servers automatically collect when you access the Application, such as your IP address, your browser type, your operating system, access times, and the pages you have viewed directly before and after accessing the Application.
+- **Personal Data**: Demographic and other personally identifiable information (such as your name and email address) that you voluntarily give to us.
+- **Derivative Data**: Information our servers automatically collect when you access the Application, such as your IP address, your browser type, your operating system, access times, and the pages you have viewed directly before and after accessing the Application.
 
 ## Data Use
 
 We may use information collected about you via the Application to:
 
--   Create and manage your account.
--   Email you regarding your account or order.
--   Fulfill and manage purchases, orders, payments, and other transactions related to the Application.
--   Increase the efficiency and operation of the Application.
--   Monitor and analyze usage and trends to improve your experience with the Application.
+- Create and manage your account.
+- Email you regarding your account or order.
+- Fulfill and manage purchases, orders, payments, and other transactions related to the Application.
+- Increase the efficiency and operation of the Application.
+- Monitor and analyze usage and trends to improve your experience with the Application.
 
 ## Data Sharing and Disclosure
 
 We do not share your information with third parties without your consent, except in the following circumstances or as described in this Privacy Policy:
 
--   We may share your information with our affiliates, in which case we will require those affiliates to honor this Privacy Policy.
+- We may share your information with our affiliates, in which case we will require those affiliates to honor this Privacy Policy.
 
 ## Data Storage and Security
 

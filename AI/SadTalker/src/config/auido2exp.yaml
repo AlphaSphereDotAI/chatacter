@@ -14,13 +14,12 @@ DATASET:
   DEBUG: True
   NUM_REPEATS: 2
   T: 40
-  
 
 MODEL:
   FRAMEWORK: V2
   AUDIOENCODER:
     LEAKY_RELU: True
-    NORM: 'IN'
+    NORM: "IN"
   DISCRIMINATOR:
     LEAKY_RELU: False
     INPUT_CHANNELS: 6
@@ -31,7 +30,6 @@ MODEL:
     LATENT_SIZE: 256
     ENCODER_LAYER_SIZES: [192, 1024]
     DECODER_LAYER_SIZES: [1024, 192]
-    
 
 TRAIN:
   MAX_EPOCH: 300
@@ -53,6 +51,4 @@ TRAIN:
     W_EYE_BLINK: 4
 
 TAG:
-  NAME:  small_dataset
-
-
+  NAME: small_dataset
