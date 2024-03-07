@@ -22,7 +22,7 @@ def gen_composed_video(args, device, first_frame_coeff, coeff_path, audio_path, 
     coeff_full[:, 224:227]  = coeff_pred[:, 64:67] # 3 dim translation
     coeff_full[:, 254:]  = coeff_pred[:, 67:] # 3 dim translation
 
-    tmp_video_path = '/tmp/face3dtmp.mp4'
+    tmp_video_path = ''
 
     facemodel = FaceReconModel(args)
 
