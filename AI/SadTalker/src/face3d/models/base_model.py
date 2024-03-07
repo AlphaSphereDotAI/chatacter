@@ -4,7 +4,6 @@ import os
 from abc import ABC, abstractmethod
 from collections import OrderedDict
 
-import numpy as np
 import torch
 
 from . import networks

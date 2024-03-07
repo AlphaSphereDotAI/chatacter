@@ -1,5 +1,4 @@
 import os
-import sys
 import warnings
 
 import cv2
@@ -10,7 +9,7 @@ import safetensors
 import safetensors.torch
 import torch
 from PIL import Image
-from scipy.io import loadmat, savemat
+from scipy.io import savemat
 from src.face3d.models import networks
 from src.face3d.util.load_mats import load_lm3d
 from src.face3d.util.preprocess import align_img

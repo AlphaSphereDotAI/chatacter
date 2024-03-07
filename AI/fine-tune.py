@@ -1,13 +1,6 @@
-import json
-import os
-from pprint import pprint
-
-import bitsandbytes as bnb
 import torch
-import torch.nn as nn
 import transformers
 from datasets import load_dataset
-from huggingface_hub import notebook_login
 from peft import (
     LoraConfig,
     PeftConfig,
@@ -15,12 +8,7 @@ from peft import (
     get_peft_model,
     prepare_model_for_kbit_training,
 )
-from transformers import (
-    AutoConfig,
-    AutoModelForCausalLM,
-    AutoTokenizer,
-    BitsAndBytesConfig,
-)
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 torch.set_default_device("cuda")
 

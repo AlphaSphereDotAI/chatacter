@@ -7,14 +7,10 @@ import numpy as np
 import safetensors
 import safetensors.torch
 import torch
-import torchvision
 import yaml
 from pydub import AudioSegment
 from skimage import img_as_ubyte
-from src.facerender.modules.generator import (
-    OcclusionAwareGenerator,
-    OcclusionAwareSPADEGenerator,
-)
+from src.facerender.modules.generator import OcclusionAwareSPADEGenerator
 from src.facerender.modules.keypoint_detector import HEEstimator, KPDetector
 from src.facerender.modules.make_animation import make_animation
 from src.facerender.modules.mapping import MappingNet
