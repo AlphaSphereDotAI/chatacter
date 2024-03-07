@@ -53,12 +53,13 @@ jobs:
               with:
                   input: dart_analyze.txt
                   output: dart_analyze.sarif
-            - name: Upload SARIF report to DeepSource
+            - name: Upload report to DeepSource
               run: |
                   # Install the CLI
                   curl https://deepsource.io/cli | sh
                   # Send the report to DeepSource
                   ./bin/deepsource report --analyzer dart-analyze --analyzer-type community --value-file ./dart_analyze.sarif
+                  ./bin/deepsource report --analyzer test-coverage --key python --value-file ./coverage.xml
               env:
                   DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
     Documentation:
