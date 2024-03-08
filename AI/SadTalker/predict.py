@@ -166,7 +166,7 @@ class Predictor(BasePredictor):
             preprocess=preprocess,
         )
 
-        output = "/tmp/out.mp4"
+        output = None
         mp4_path = os.path.join(
             results_dir, [f for f in os.listdir(results_dir) if "enhanced.mp4" in f][0]
         )
