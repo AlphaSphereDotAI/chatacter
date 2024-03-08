@@ -1,5 +1,5 @@
 import json
-
+from fastapi.responses import FileResponse
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
 from transformers import pipeline
@@ -39,4 +39,4 @@ def get_response(query):
         # "rate": audio["sampling_rate"],
         "response": response.content,
     }
-    return json.dumps(data)
+    return json.dumps(data), FileResponse("./assets/demo.gif")

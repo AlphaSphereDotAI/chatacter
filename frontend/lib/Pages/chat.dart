@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-
+import 'package:video_player_win/video_player_win.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -12,7 +12,7 @@ class Chat extends StatefulWidget {
 }
 
 Future<Map<String, dynamic>> getResponse(String query) async {
-  final response = await http.post(Uri.parse("https://8000-01hqrk1qr2p3w6cc5np0wk0ys5.cloudspaces.litng.ai/predict?query='$query'"));
+  final response = await http.post(Uri.parse("http://127.0.0.1:8000/predict?query='$query'"));
   if (response.statusCode == 200) {
     Map<String, dynamic> data = jsonDecode(jsonDecode(response.body));
     return data;

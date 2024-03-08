@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
+
 from model import get_response
 
 app = FastAPI(title="Hello world", description="This is a hello world example")
@@ -12,6 +13,7 @@ async def hello_world():
 
 @app.post("/predict")
 def predict(query: str):
+    """predict function"""
     return get_response(query)
 
 
