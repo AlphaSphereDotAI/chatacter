@@ -3,7 +3,7 @@ from fastapi.responses import FileResponse
 
 from model import get_response
 
-app = FastAPI(title="Hello world", description="This is a hello world example")
+app = FastAPI()
 
 
 @app.get("/")

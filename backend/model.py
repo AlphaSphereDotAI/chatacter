@@ -1,13 +1,12 @@
-import json
-
 from fastapi.responses import FileResponse
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
+from scipy.io.wavfile import write
 from transformers import pipeline
 
 pipe = pipeline(
     "text-to-speech",
-    model="suno/bark",
+    model="suno/bark-small",
     device=0,
 )
 chat = ChatGroq(
@@ -31,13 +30,11 @@ def get_response(query):
     response = chain.invoke({"text": query})
     print("2 / 2")
     print("Chatacter is generating the audio...")
-    # audio = pipe(response.content)
-    # print(audio["audio"])
-    print("Here is the response:")
-    print(response.content)
-    data = {
-        # "audio": audio["audio"].tolist(),
-        # "rate": audio["sampling_rate"],
-        "response": response.content,
-    }
-    return json.dumps(data), FileResponse("./assets/demo.gif")
+    audio = pipe(response.content)
+    print(f"Audio generated with Rate {audio['sampling_rate']}")
+    print("Saving audio...")
+    audio_data = audio["audio"]
+    sample_rate = audio["sampling_rate"]
+    write("./assets/demo.wav", sample_rate, audio_data.T)
+    print(f"Here is the response: {response.content}")
+    return [response.content, FileResponse("./assets/demo.wav")]

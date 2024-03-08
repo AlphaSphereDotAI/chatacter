@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:video_player_win/video_player_win.dart';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -11,10 +11,10 @@ class Chat extends StatefulWidget {
   State<Chat> createState() => _ChatState();
 }
 
-Future<Map<String, dynamic>> getResponse(String query) async {
+Future<List> getResponse(String query) async {
   final response = await http.post(Uri.parse("http://127.0.0.1:8000/predict?query='$query'"));
   if (response.statusCode == 200) {
-    Map<String, dynamic> data = jsonDecode(jsonDecode(response.body));
+    List data = jsonDecode(response.body);
     return data;
   } else {
     throw Exception('Failed to load data');
@@ -23,7 +23,7 @@ Future<Map<String, dynamic>> getResponse(String query) async {
 
 class _ChatState extends State<Chat> {
   late String _message;
-  late String _response = '';
+  late List _response = [];
   bool isVisible = true;
   updateMessage(String value) {
     print('The value is: $value');
@@ -37,7 +37,7 @@ class _ChatState extends State<Chat> {
     getResponse(value).then((response) {
       print(response);
       setState(() {
-        _response = response['response'];
+        _response = response;
         _message = '';
       });
     });
