@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -23,6 +24,7 @@ Future<Map<String, dynamic>> getResponse(String query) async {
 class _ChatState extends State<Chat> {
   late String _message;
   late String _response = '';
+  bool isVisible = true;
   updateMessage(String value) {
     print('The value is: $value');
     setState(() {
@@ -38,6 +40,25 @@ class _ChatState extends State<Chat> {
         _response = response['response'];
         _message = '';
       });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+
+  void startTimer() {
+    const oneSec = Duration(seconds: 10);
+    // Adjust the duration based on the speed of the typewriter animation
+    Timer.periodic(oneSec, (Timer timer) {
+      if (mounted) {
+        setState(() {
+          isVisible = false;
+        });
+        timer.cancel();
+      }
     });
   }
 
@@ -58,32 +79,46 @@ class _ChatState extends State<Chat> {
         // the App.build method, and use it to set our appbar title.
         title: const Text('Chatting'),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AnimatedTextKit(
-              animatedTexts: [
-                TypewriterAnimatedText(
-                  'Chatacter Alpha Version\nYou are now chatting with Napoleon\nType your message below and\npress send to get a response\nIt may take time due to server starting\n',
-                  textStyle: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Center(
+          child: Row(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Visibility(
+                    visible: isVisible,
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        TypewriterAnimatedText(
+                          'Chatacter Alpha Version\nYou are now chatting with Napoleon\nType your message below and\npress send to get a response\nIt may take time due to server starting\n',
+                          textStyle: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                      isRepeatingAnimation: false,
+                    ),
                   ),
-                ),
-              ],
-              isRepeatingAnimation: false,
-            ),
-            Text(
-              _response,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: 'JetBrainsMono',
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: Text(
+                      'Napoleon Bonaparte: $_response',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Padding(

@@ -56,21 +56,25 @@ class Home extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Chat()),
                 );
               },
-              child: const Text('Napoleon Bonaparte'),
+              style: const ButtonStyle(
+                alignment: Alignment.center,
+                maximumSize: MaterialStatePropertyAll(
+                  Size(400, 50),
+                ),
+              ),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.chat_bubble_outline_outlined,
+                  ),
+                  SizedBox(width: 20),
+                  Text('Chat with Napoleon Bonaparte'),
+                ],
+              ),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('Floating action button pressed');
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Chat()),
-          );
-        },
-        tooltip: 'Go to chat page',
-        child: const Icon(Icons.chat_bubble_outline),
       ),
     );
   }
