@@ -1,4 +1,3 @@
-from fastapi.responses import FileResponse
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
 from scipy.io.wavfile import write
@@ -15,6 +14,17 @@ chat = ChatGroq(
 )
 
 
+def generate_audio(response):
+    """generate audio"""
+    print("\tChatacter is generating the audio...")
+    audio = pipe(response)
+    print(f"\tAudio generated with Rate {audio['sampling_rate']}")
+    print("\tSaving audio...")
+    audio_data = audio["audio"]
+    sample_rate = audio["sampling_rate"]
+    write("./assets/demo.wav", sample_rate, audio_data.T)
+
+
 def get_response(query):
     """get response function"""
     print("1 / 2")
@@ -22,19 +32,13 @@ def get_response(query):
     print("Thinking...")
     prompt = ChatPromptTemplate.from_messages(
         [
-            ("system", "You are Napoleon Bonaparte. Answer in one statement."),
+            ("system", "Ack as Napoleon Bonaparte. Answer in one statement."),
             ("human", "{text}"),
         ]
     )
     chain = prompt | chat
     response = chain.invoke({"text": query})
     print("2 / 2")
-    print("Chatacter is generating the audio...")
-    audio = pipe(response.content)
-    print(f"Audio generated with Rate {audio['sampling_rate']}")
-    print("Saving audio...")
-    audio_data = audio["audio"]
-    sample_rate = audio["sampling_rate"]
-    write("./assets/demo.wav", sample_rate, audio_data.T)
+    generate_audio(response.content)
     print(f"Here is the response: {response.content}")
-    return [response.content, FileResponse("./assets/demo.wav")]
+    return response.content

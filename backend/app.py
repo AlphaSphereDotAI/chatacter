@@ -19,4 +19,4 @@ def predict(query: str):
 
 @app.get("/download")
 def download_file():
-    return FileResponse("./assets/demo.gif")
+    return FileResponse("./assets/demo.wav", media_type="audio/wav")
