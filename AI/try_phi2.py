@@ -5,7 +5,7 @@ from datasets import load_dataset
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 dataset = load_dataset("microsoft/orca-math-word-problems-200k")
-train_dataset = dataset['train']
+train_dataset = dataset["train"]
 first_example = train_dataset[0]
 print(dataset)
 torch.set_default_device("cuda")
