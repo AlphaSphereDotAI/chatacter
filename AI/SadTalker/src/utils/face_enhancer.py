@@ -29,7 +29,6 @@ def enhancer_list(images, method="gfpgan", bg_upsampler="realesrgan"):
 def enhancer_generator_with_len(images, method="gfpgan", bg_upsampler="realesrgan"):
     """Provide a generator with a __len__ method so that it can passed to functions that
     call len()"""
-
     if os.path.isfile(images):  # handle video to images
         # TODO: Create a generator version of load_video_to_cv2
         images = load_video_to_cv2(images)
@@ -43,7 +42,6 @@ def enhancer_generator_no_len(images, method="gfpgan", bg_upsampler="realesrgan"
     """Provide a generator function so that all of the enhanced images don't need
     to be stored in memory at the same time. This can save tons of RAM compared to
     the enhancer function."""
-
     print("face enhancer....")
     if not isinstance(images, list) and os.path.isfile(
         images

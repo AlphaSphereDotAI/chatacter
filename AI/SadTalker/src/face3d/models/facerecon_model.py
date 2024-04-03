@@ -222,7 +222,6 @@ class FaceReconModel(BaseModel):
 
     def compute_losses(self):
         """Calculate losses, gradients, and update network weights; called in every training iteration"""
-
         if self.net_recog.training != False:
             raise AssertionError
         trans_m = self.trans_m
