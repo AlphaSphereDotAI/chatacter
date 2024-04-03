@@ -1,4 +1,5 @@
 """run bash scripts/download_models.sh first to prepare the weights file"""
+
 import os
 import shutil
 from argparse import Namespace
