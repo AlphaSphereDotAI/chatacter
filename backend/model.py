@@ -1,17 +1,23 @@
+import os
+
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
+from sadtalker.app import download_model
 from scipy.io.wavfile import write
 from transformers import pipeline
 
 pipe = pipeline(
     "text-to-speech",
     model="suno/bark-small",
-    device=0,
 )
 chat = ChatGroq(
     model_name="mixtral-8x7b-32768",
     verbose=True,
 )
+IMAGE = "../AI/SadTalker/examples/source_image/Einstein.jpg"
+AUDIO = "./assets/AUDIO.wav"
+CHECKPOINT_DIR = "../AI/SadTalker/checkpoints"
+RESULT_DIR = "./assets"
 
 
 def generate_audio(response):
@@ -22,7 +28,19 @@ def generate_audio(response):
     print("\tSaving audio...")
     audio_data = audio["audio"]
     sample_rate = audio["sampling_rate"]
-    write("./assets/demo.wav", sample_rate, audio_data.T)
+    write("./assets/AUDIO.wav", sample_rate, audio_data.T)
+
+
+def generate_video():
+    """generate video"""
+    download_model("../AI/SadTalker")
+    os.system(
+        f"python inference.py \
+            --source_image {IMAGE} \
+            --driven_audio {AUDIO} \
+            --checkpoint_dir {CHECKPOINT_DIR} \
+            --result_dir {RESULT_DIR}"
+    )
 
 
 def get_response(query):
@@ -41,4 +59,5 @@ def get_response(query):
     print("2 / 2")
     generate_audio(response.content)
     print(f"Here is the response: {response.content}")
+    generate_video()
     return response.content
