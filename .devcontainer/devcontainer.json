@@ -23,7 +23,8 @@
 				"ms-python.black-formatter",
 				"formulahendry.code-runner",
 				"streetsidesoftware.code-spell-checker",
-				"Dart-Code.flutter"
+				"Dart-Code.flutter",
+				"charliermarsh.ruff"
 			]
 		}
 	},

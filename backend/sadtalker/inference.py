@@ -1,9 +1,9 @@
-from glob import glob
-from math import e
+import os
 import shutil
-import torch
+import sys
 from time import strftime
-import os, sys, time, wget
+
+import wget
 
 
 # from argparse import ArgumentParser
@@ -16,76 +16,70 @@ import os, sys, time, wget
 # from src.generate_facerender_batch import get_facerender_data
 # from src.utils.init_path import init_path
 def download_model():
-    if not os.path.exists("./checkpoints"):
+    CHECKPOINT_DIR = "./checkpoints"
+    GFPGAN_WEIGHTS_DIR = "./gfpgan/weights"
+    MODELS = {
+        "mapping_00109-model.pth.tar": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00109-model.pth.tar",
+        "mapping_00229-model.pth.tar": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00229-model.pth.tar",
+        "SadTalker_V0.0.2_256.safetensors": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_256.safetensors",
+        "SadTalker_V0.0.2_512.safetensors": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_512.safetensors",
+        "epoch_00190_iteration_000400000_checkpoint.pt": "https://huggingface.co/vinthony/SadTalker-V002rc/resolve/main/epoch_00190_iteration_000400000_checkpoint.pt?download=true",
+        "alignment_WFLW_4HG.pth": "https://github.com/xinntao/facexlib/releases/download/v0.1.0/alignment_WFLW_4HG.pth",
+        "detection_Resnet50_Final.pth": "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth",
+        "GFPGANv1.4.pth": "https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth",
+        "parsing_parsenet.pth": "https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth",
+    }
+
+    def download_model_from_url(url, path):
+        print("\nDownloading model from", url)
+        wget.download(url=url, out=path)
+        print()
+
+    if not os.path.exists(CHECKPOINT_DIR):
         print("\nCreating checkpoints directory")
         os.mkdir("./checkpoints")
-    if not os.path.exists("./checkpoints/mapping_00109-model.pth.tar"):
-        print("\nDownloading model 'mapping_00109-model.pth.tar'")
-        wget.download(
-            url="https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00109-model.pth.tar",
-            out="./checkpoints",
-        )
-        print()
-    if not os.path.exists("./checkpoints/mapping_00229-model.pth.tar"):
-        print("\nDownloading model 'mapping_00229-model.pth.tar'")
-        wget.download(
-            url="https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00229-model.pth.tar",
-            out="./checkpoints",
-        )
-        print()
-    if not os.path.exists("./checkpoints/SadTalker_V0.0.2_256.safetensors"):
-        print("\nDownloading model 'SadTalker_V0.0.2_256.safetensors'")
-        wget.download(
-            url="https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_256.safetensors",
-            out="./checkpoints",
-        )
-        print()
-    if not os.path.exists("./checkpoints/SadTalker_V0.0.2_512.safetensors"):
-        print("\nDownloading model 'SadTalker_V0.0.2_512.safetensors'")
-        wget.download(
-            url="https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_512.safetensors",
-            out="./checkpoints",
-        )
-        print()
-    if not os.path.exists("./checkpoints/epoch_00190_iteration_000400000_checkpoint.pt"):
-        print("\nDownloading model 'epoch_00190_iteration_000400000_checkpoint.pt'")
-        wget.download(
-            url="https://huggingface.co/vinthony/SadTalker-V002rc/resolve/main/epoch_00190_iteration_000400000_checkpoint.pt?download=true",
-            out="./checkpoints",
-        )
-        print()
-    if not os.path.exists("./gfpgan/weights"):
+    if not os.path.exists(GFPGAN_WEIGHTS_DIR):
         print("\nCreating gfpgan/weights directory")
         os.makedirs("./gfpgan/weights")
+
+    if not os.path.exists("./checkpoints/mapping_00109-model.pth.tar"):
+        download_model_from_url(
+            url=MODELS["mapping_00109-model.pth.tar"], path=CHECKPOINT_DIR
+        )
+    if not os.path.exists("./checkpoints/mapping_00229-model.pth.tar"):
+        download_model_from_url(
+            url=MODELS["mapping_00229-model.pth.tar"], path=CHECKPOINT_DIR
+        )
+    if not os.path.exists("./checkpoints/SadTalker_V0.0.2_256.safetensors"):
+        download_model_from_url(
+            url=MODELS["SadTalker_V0.0.2_256.safetensors"], path=CHECKPOINT_DIR
+        )
+    if not os.path.exists("./checkpoints/SadTalker_V0.0.2_512.safetensors"):
+        download_model_from_url(
+            url=MODELS["SadTalker_V0.0.2_512.safetensors"], path=CHECKPOINT_DIR
+        )
+    if not os.path.exists(
+        "./checkpoints/epoch_00190_iteration_000400000_checkpoint.pt"
+    ):
+        download_model_from_url(
+            url=MODELS["epoch_00190_iteration_000400000_checkpoint.pt"], path=CHECKPOINT_DIR
+        )
     if not os.path.exists("./gfpgan/weights/alignment_WFLW_4HG.pth"):
-        print("\nDownloading model 'alignment_WFLW_4HG.pth'")
-        wget.download(
-            url="https://github.com/xinntao/facexlib/releases/download/v0.1.0/alignment_WFLW_4HG.pth",
-            out="./gfpgan/weights", 
+        download_model_from_url(
+            url=MODELS["alignment_WFLW_4HG.pth"], path=GFPGAN_WEIGHTS_DIR
         )
-        print()
     if not os.path.exists("./gfpgan/weights/detection_Resnet50_Final.pth"):
-        print("\nDownloading model 'detection_Resnet50_Final.pth'")
-        wget.download(
-            url="https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth",
-            out="./gfpgan/weights",
+        download_model_from_url(
+            url=MODELS["detection_Resnet50_Final.pth"], path=GFPGAN_WEIGHTS_DIR
         )
-        print()
     if not os.path.exists("./gfpgan/weights/GFPGANv1.4.pth"):
-        print("\nDownloading model 'GFPGANv1.4.pth'")
-        wget.download(
-            url="https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth",
-            out="./gfpgan/weights",
+        download_model_from_url(
+            url=MODELS["GFPGANv1.4.pth"], path=GFPGAN_WEIGHTS_DIR
         )
-        print()
     if not os.path.exists("./gfpgan/weights/parsing_parsenet.pth"):
-        print("\nDownloading model 'parsing_parsenet.pth'")
-        wget.download(
-            url="https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth",
-            out="./gfpgan/weights",
+        download_model_from_url(
+            url=MODELS["parsing_parsenet.pth"], path=GFPGAN_WEIGHTS_DIR
         )
-        print()
-        
 
 def main(args):
     # torch.backends.cudnn.enabled = False

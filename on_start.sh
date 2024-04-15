@@ -1,8 +1,14 @@
 apt update
+apt full-upgrade -y
 apt install software-properties-common -y
-add-apt-repository ppa:jonathonf/ffmpeg-4 -y
-apt update
 apt install ffmpeg -y
+apt autoremove -y
+
 pip install -U pip
-pip install torch==1.12.1+cu121 torchvision==0.13.1+cu121 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu121
-pip install -r requirements.txt --use-pep517 -v
+pip install setuptools==59.8.0
+pip install torch==2.1.0+cu121 torchvision==0.16.0+cu121 torchaudio basicsr==1.4.2 --use-pep517 --extra-index-url https://download.pytorch.org/whl/cu121
+pip install -v -r requirements.txt
+
+ruff check
+
+sh ./scripts/download_models.sh
