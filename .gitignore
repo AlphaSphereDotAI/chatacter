@@ -6,8 +6,9 @@
 
 .vscode/
 
-AI/SadTalker/checkpoints/
+*/checkpoints/
 
+*/__pycache__/
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
