@@ -5,8 +5,12 @@ from langchain_groq import ChatGroq
 from scipy.io.wavfile import write
 from transformers import AutoModelForTextToWaveform, AutoProcessor
 
-processor = AutoProcessor.from_pretrained("/workspaces/graduation_project/backend/bark-small")
-model = AutoModelForTextToWaveform.from_pretrained("/workspaces/graduation_project/backend/bark-small")
+processor = AutoProcessor.from_pretrained(
+    "/workspaces/graduation_project/backend/bark-small"
+)
+model = AutoModelForTextToWaveform.from_pretrained(
+    "/workspaces/graduation_project/backend/bark-small"
+)
 chat = ChatGroq(
     model_name="mixtral-8x7b-32768",
     verbose=True,
@@ -28,7 +32,9 @@ def generate_audio(response):
 
 def generate_video():
     """generate video"""
-    os.system(f"python /workspaces/graduation_project/backend/sadtalker/inference.py --source_image {IMAGE} --driven_audio {AUDIO}")
+    os.system(
+        f"python /workspaces/graduation_project/backend/sadtalker/inference.py --source_image {IMAGE} --driven_audio {AUDIO}"
+    )
 
 
 def get_response(query):

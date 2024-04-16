@@ -6,7 +6,7 @@ The requirements for 3D visualization are difficult to install, so here's a tuto
 
 ```bash
 git clone https://github.com/OpenTalker/SadTalker.git
-cd SadTalker 
+cd SadTalker
 conda create -n sadtalker3d python=3.8
 source activate sadtalker3d
 
@@ -28,7 +28,7 @@ pip install git+https://github.com/TencentARC/GFPGAN
 ### when occurs gcc version problem `from pytorch import _C` from pytorch3d, add the anaconda path to LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/$YOUR_ANACONDA_PATH/lib/
 
-``` 
+```
 
 Then, generate the result via:
 
