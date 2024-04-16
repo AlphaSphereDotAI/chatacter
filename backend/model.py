@@ -23,13 +23,12 @@ def generate_audio(response):
     audio = model.generate(**inputs)
     print("\tAudio generated with Rate 24000")
     print("\tSaving audio...")
-    print(audio.shape)
     write(AUDIO, 24000, audio.squeeze(0).numpy())
 
 
 def generate_video():
     """generate video"""
-    os.system(f"python sadtalker/inference.py --source_image {IMAGE} --driven_audio {AUDIO}")
+    os.system(f"python /workspaces/graduation_project/backend/sadtalker/inference.py --source_image {IMAGE} --driven_audio {AUDIO}")
 
 
 def get_response(query):

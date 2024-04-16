@@ -176,8 +176,8 @@ def main(args):
 download_model()
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument("--driven_audio", default='/workspaces/graduation_project/backend/assets/bus_chinese.wav', help="path to driven audio")
-    parser.add_argument("--source_image", default='/workspaces/graduation_project/backend/assets/full_body_1.png', help="path to source image")
+    parser.add_argument("--driven_audio", default='/workspaces/graduation_project/backend/assets/AUDIO.wav', help="path to driven audio")
+    parser.add_argument("--source_image", default='/workspaces/graduation_project/backend/assets/einstein.jpg', help="path to source image")
     parser.add_argument("--checkpoint_dir", default='/workspaces/graduation_project/backend/sadtalker/checkpoints', help="path to output")
     parser.add_argument("--result_dir", default='/workspaces/graduation_project/backend/assets', help="path to output")
     
