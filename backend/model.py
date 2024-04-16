@@ -2,45 +2,34 @@ import os
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
-from sadtalker.app import download_model
 from scipy.io.wavfile import write
-from transformers import pipeline
+from transformers import AutoModelForTextToWaveform, AutoProcessor
 
-pipe = pipeline(
-    "text-to-speech",
-    model="suno/bark-small",
-)
+processor = AutoProcessor.from_pretrained("/workspaces/graduation_project/backend/bark-small")
+model = AutoModelForTextToWaveform.from_pretrained("/workspaces/graduation_project/backend/bark-small")
 chat = ChatGroq(
     model_name="mixtral-8x7b-32768",
     verbose=True,
 )
-IMAGE = "../AI/SadTalker/examples/source_image/Einstein.jpg"
-AUDIO = "./assets/AUDIO.wav"
-CHECKPOINT_DIR = "../AI/SadTalker/checkpoints"
-RESULT_DIR = "./assets"
+
+IMAGE = "/workspaces/graduation_project/backend/assets/Einstein.jpg"
+AUDIO = "/workspaces/graduation_project/backend/assets/AUDIO.wav"
 
 
 def generate_audio(response):
     """generate audio"""
     print("\tChatacter is generating the audio...")
-    audio = pipe(response)
-    print(f"\tAudio generated with Rate {audio['sampling_rate']}")
+    inputs = processor(response, return_tensors="pt")
+    audio = model.generate(**inputs)
+    print("\tAudio generated with Rate 24000")
     print("\tSaving audio...")
-    audio_data = audio["audio"]
-    sample_rate = audio["sampling_rate"]
-    write("./assets/AUDIO.wav", sample_rate, audio_data.T)
+    print(audio.shape)
+    write(AUDIO, 24000, audio.squeeze(0).numpy())
 
 
 def generate_video():
     """generate video"""
-    download_model("../AI/SadTalker")
-    os.system(
-        f"python inference.py \
-            --source_image {IMAGE} \
-            --driven_audio {AUDIO} \
-            --checkpoint_dir {CHECKPOINT_DIR} \
-            --result_dir {RESULT_DIR}"
-    )
+    os.system(f"python sadtalker/inference.py --source_image {IMAGE} --driven_audio {AUDIO}")
 
 
 def get_response(query):

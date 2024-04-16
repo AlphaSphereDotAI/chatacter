@@ -1,35 +1,34 @@
 import os
 import shutil
 import sys
+from argparse import ArgumentParser
 from time import strftime
 
+import torch
 import wget
+from src.facerender.animate import AnimateFromCoeff
+from src.generate_batch import get_data
+from src.generate_facerender_batch import get_facerender_data
+from src.test_audio2coeff import Audio2Coeff
+from src.utils.init_path import init_path
+from src.utils.preprocess import CropAndExtract
 
 
-# from argparse import ArgumentParser
-# from huggingface_hub import snapshot_download
-# import wget
-# from src.utils.preprocess import CropAndExtract
-# from src.test_audio2coeff import Audio2Coeff
-# from src.facerender.animate import AnimateFromCoeff
-# from src.generate_batch import get_data
-# from src.generate_facerender_batch import get_facerender_data
-# from src.utils.init_path import init_path
 def download_model():
-    CHECKPOINT_DIR = "./checkpoints"
-    GFPGAN_WEIGHTS_DIR = "./gfpgan/weights"
+    os.system("pwd")
+    CHECKPOINT_DIR = "/workspaces/graduation_project/backend/sadtalker/checkpoints"
+    GFPGAN_WEIGHTS_DIR = "/workspaces/graduation_project/backend/sadtalker/gfpgan/weights"
     MODELS = {
-        "mapping_00109-model.pth.tar": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00109-model.pth.tar",
-        "mapping_00229-model.pth.tar": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00229-model.pth.tar",
-        "SadTalker_V0.0.2_256.safetensors": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_256.safetensors",
-        "SadTalker_V0.0.2_512.safetensors": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_512.safetensors",
-        "epoch_00190_iteration_000400000_checkpoint.pt": "https://huggingface.co/vinthony/SadTalker-V002rc/resolve/main/epoch_00190_iteration_000400000_checkpoint.pt?download=true",
-        "alignment_WFLW_4HG.pth": "https://github.com/xinntao/facexlib/releases/download/v0.1.0/alignment_WFLW_4HG.pth",
-        "detection_Resnet50_Final.pth": "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth",
-        "GFPGANv1.4.pth": "https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth",
-        "parsing_parsenet.pth": "https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth",
+        f"{CHECKPOINT_DIR}/mapping_00109-model.pth.tar": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00109-model.pth.tar",
+        f"{CHECKPOINT_DIR}/mapping_00229-model.pth.tar": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00229-model.pth.tar",
+        f"{CHECKPOINT_DIR}/SadTalker_V0.0.2_256.safetensors": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_256.safetensors",
+        f"{CHECKPOINT_DIR}/SadTalker_V0.0.2_512.safetensors": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_512.safetensors",
+        f"{CHECKPOINT_DIR}/epoch_00190_iteration_000400000_checkpoint.pt": "https://huggingface.co/vinthony/SadTalker-V002rc/resolve/main/epoch_00190_iteration_000400000_checkpoint.pt?download=true",
+        f"{GFPGAN_WEIGHTS_DIR}/alignment_WFLW_4HG.pth": "https://github.com/xinntao/facexlib/releases/download/v0.1.0/alignment_WFLW_4HG.pth",
+        f"{GFPGAN_WEIGHTS_DIR}/detection_Resnet50_Final.pth": "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth",
+        f"{GFPGAN_WEIGHTS_DIR}/GFPGANv1.4.pth": "https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth",
+        f"{GFPGAN_WEIGHTS_DIR}/parsing_parsenet.pth": "https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth",
     }
-
     def download_model_from_url(url, path):
         print("\nDownloading model from", url)
         wget.download(url=url, out=path)
@@ -37,52 +36,16 @@ def download_model():
 
     if not os.path.exists(CHECKPOINT_DIR):
         print("\nCreating checkpoints directory")
-        os.mkdir("./checkpoints")
+        os.mkdir(CHECKPOINT_DIR)
     if not os.path.exists(GFPGAN_WEIGHTS_DIR):
         print("\nCreating gfpgan/weights directory")
-        os.makedirs("./gfpgan/weights")
-
-    if not os.path.exists("./checkpoints/mapping_00109-model.pth.tar"):
-        download_model_from_url(
-            url=MODELS["mapping_00109-model.pth.tar"], path=CHECKPOINT_DIR
-        )
-    if not os.path.exists("./checkpoints/mapping_00229-model.pth.tar"):
-        download_model_from_url(
-            url=MODELS["mapping_00229-model.pth.tar"], path=CHECKPOINT_DIR
-        )
-    if not os.path.exists("./checkpoints/SadTalker_V0.0.2_256.safetensors"):
-        download_model_from_url(
-            url=MODELS["SadTalker_V0.0.2_256.safetensors"], path=CHECKPOINT_DIR
-        )
-    if not os.path.exists("./checkpoints/SadTalker_V0.0.2_512.safetensors"):
-        download_model_from_url(
-            url=MODELS["SadTalker_V0.0.2_512.safetensors"], path=CHECKPOINT_DIR
-        )
-    if not os.path.exists(
-        "./checkpoints/epoch_00190_iteration_000400000_checkpoint.pt"
-    ):
-        download_model_from_url(
-            url=MODELS["epoch_00190_iteration_000400000_checkpoint.pt"], path=CHECKPOINT_DIR
-        )
-    if not os.path.exists("./gfpgan/weights/alignment_WFLW_4HG.pth"):
-        download_model_from_url(
-            url=MODELS["alignment_WFLW_4HG.pth"], path=GFPGAN_WEIGHTS_DIR
-        )
-    if not os.path.exists("./gfpgan/weights/detection_Resnet50_Final.pth"):
-        download_model_from_url(
-            url=MODELS["detection_Resnet50_Final.pth"], path=GFPGAN_WEIGHTS_DIR
-        )
-    if not os.path.exists("./gfpgan/weights/GFPGANv1.4.pth"):
-        download_model_from_url(
-            url=MODELS["GFPGANv1.4.pth"], path=GFPGAN_WEIGHTS_DIR
-        )
-    if not os.path.exists("./gfpgan/weights/parsing_parsenet.pth"):
-        download_model_from_url(
-            url=MODELS["parsing_parsenet.pth"], path=GFPGAN_WEIGHTS_DIR
-        )
+        os.makedirs(GFPGAN_WEIGHTS_DIR)
+    
+    for path, link in MODELS.items():
+        if not os.path.exists(path):
+            download_model_from_url(url=link, path=path)
 
 def main(args):
-    # torch.backends.cudnn.enabled = False
 
     pic_path = args.source_image
     audio_path = args.driven_audio
@@ -109,9 +72,7 @@ def main(args):
 
     # init model
     preprocess_model = CropAndExtract(sadtalker_paths, device)
-
     audio_to_coeff = Audio2Coeff(sadtalker_paths, device)
-
     animate_from_coeff = AnimateFromCoeff(sadtalker_paths, device)
 
     # crop image and extract 3dmm from image
@@ -213,46 +174,46 @@ def main(args):
 
 
 download_model()
-# if __name__ == '__main__':
+if __name__ == '__main__':
+    parser = ArgumentParser()
+    parser.add_argument("--driven_audio", default='/workspaces/graduation_project/backend/assets/bus_chinese.wav', help="path to driven audio")
+    parser.add_argument("--source_image", default='/workspaces/graduation_project/backend/assets/full_body_1.png', help="path to source image")
+    parser.add_argument("--checkpoint_dir", default='/workspaces/graduation_project/backend/sadtalker/checkpoints', help="path to output")
+    parser.add_argument("--result_dir", default='/workspaces/graduation_project/backend/assets', help="path to output")
+    
+    parser.add_argument("--ref_eyeblink", default=None, help="path to reference video providing eye blinking")
+    parser.add_argument("--ref_pose", default=None, help="path to reference video providing pose")
+    parser.add_argument("--pose_style", type=int, default=0,  help="input pose style from [0, 46)")
+    parser.add_argument("--batch_size", type=int, default=2,  help="the batch size of facerender")
+    parser.add_argument("--size", type=int, default=256,  help="the image size of the facerender")
+    parser.add_argument("--expression_scale", type=float, default=1.,  help="the batch size of facerender")
+    parser.add_argument('--input_yaw', nargs='+', type=int, default=None, help="the input yaw degree of the user ")
+    parser.add_argument('--input_pitch', nargs='+', type=int, default=None, help="the input pitch degree of the user")
+    parser.add_argument('--input_roll', nargs='+', type=int, default=None, help="the input roll degree of the user")
+    parser.add_argument('--enhancer',  type=str, default=None, help="Face enhancer, [gfpgan, RestoreFormer]")
+    parser.add_argument('--background_enhancer',  type=str, default=None, help="background enhancer, [realesrgan]")
+    parser.add_argument("--cpu", dest="cpu", action="store_true")
+    parser.add_argument("--face3dvis", action="store_true", help="generate 3d face and 3d landmarks")
+    parser.add_argument("--still", action="store_true", help="can crop back to the original videos for the full body aniamtion")
+    parser.add_argument("--preprocess", default='crop', choices=['crop', 'extcrop', 'resize', 'full', 'extfull'], help="how to preprocess the images" )
+    parser.add_argument("--verbose",action="store_true", help="saving the intermedia output or not" )
+    parser.add_argument("--old_version",action="store_true", help="use the pth other than safetensor version" )
 
-# parser = ArgumentParser()
-# parser.add_argument("--driven_audio", default='./examples/driven_audio/bus_chinese.wav', help="path to driven audio")
-# parser.add_argument("--source_image", default='./examples/source_image/full_body_1.png', help="path to source image")
-# parser.add_argument("--ref_eyeblink", default=None, help="path to reference video providing eye blinking")
-# parser.add_argument("--ref_pose", default=None, help="path to reference video providing pose")
-# parser.add_argument("--checkpoint_dir", default='./checkpoints', help="path to output")
-# parser.add_argument("--result_dir", default='./results', help="path to output")
-# parser.add_argument("--pose_style", type=int, default=0,  help="input pose style from [0, 46)")
-# parser.add_argument("--batch_size", type=int, default=2,  help="the batch size of facerender")
-# parser.add_argument("--size", type=int, default=256,  help="the image size of the facerender")
-# parser.add_argument("--expression_scale", type=float, default=1.,  help="the batch size of facerender")
-# parser.add_argument('--input_yaw', nargs='+', type=int, default=None, help="the input yaw degree of the user ")
-# parser.add_argument('--input_pitch', nargs='+', type=int, default=None, help="the input pitch degree of the user")
-# parser.add_argument('--input_roll', nargs='+', type=int, default=None, help="the input roll degree of the user")
-# parser.add_argument('--enhancer',  type=str, default=None, help="Face enhancer, [gfpgan, RestoreFormer]")
-# parser.add_argument('--background_enhancer',  type=str, default=None, help="background enhancer, [realesrgan]")
-# parser.add_argument("--cpu", dest="cpu", action="store_true")
-# parser.add_argument("--face3dvis", action="store_true", help="generate 3d face and 3d landmarks")
-# parser.add_argument("--still", action="store_true", help="can crop back to the original videos for the full body aniamtion")
-# parser.add_argument("--preprocess", default='crop', choices=['crop', 'extcrop', 'resize', 'full', 'extfull'], help="how to preprocess the images" )
-# parser.add_argument("--verbose",action="store_true", help="saving the intermedia output or not" )
-# parser.add_argument("--old_version",action="store_true", help="use the pth other than safetensor version" )
+    # net structure and parameters
+    parser.add_argument('--net_recon', type=str, default='resnet50', choices=['resnet18', 'resnet34', 'resnet50'], help='useless')
+    parser.add_argument('--init_path', type=str, default=None, help='Useless')
+    parser.add_argument('--use_last_fc',default=False, help='zero initialize the last fc')
+    parser.add_argument('--bfm_folder', type=str, default='./checkpoints/BFM_Fitting/')
+    parser.add_argument('--bfm_model', type=str, default='BFM_model_front.mat', help='bfm model')
 
-# # net structure and parameters
-# parser.add_argument('--net_recon', type=str, default='resnet50', choices=['resnet18', 'resnet34', 'resnet50'], help='useless')
-# parser.add_argument('--init_path', type=str, default=None, help='Useless')
-# parser.add_argument('--use_last_fc',default=False, help='zero initialize the last fc')
-# parser.add_argument('--bfm_folder', type=str, default='./checkpoints/BFM_Fitting/')
-# parser.add_argument('--bfm_model', type=str, default='BFM_model_front.mat', help='bfm model')
+    # default renderer parameters
+    parser.add_argument('--focal', type=float, default=1015.)
+    parser.add_argument('--center', type=float, default=112.)
+    parser.add_argument('--camera_d', type=float, default=10.)
+    parser.add_argument('--z_near', type=float, default=5.)
+    parser.add_argument('--z_far', type=float, default=15.)
 
-# # default renderer parameters
-# parser.add_argument('--focal', type=float, default=1015.)
-# parser.add_argument('--center', type=float, default=112.)
-# parser.add_argument('--camera_d', type=float, default=10.)
-# parser.add_argument('--z_near', type=float, default=5.)
-# parser.add_argument('--z_far', type=float, default=15.)
+    args = parser.parse_args()
 
-# args = parser.parse_args()
-
-# args.device = "cuda" if torch.cuda.is_available() and not args.cpu else "cpu"
-# main(args)
+    args.device = "cuda" if torch.cuda.is_available() and not args.cpu else "cpu"
+    main(args)
