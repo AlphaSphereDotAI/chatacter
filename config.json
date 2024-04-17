@@ -1,8 +1,11 @@
 {
-    "audio": "/workspaces/graduation_project/backend/assets/AUDIO.wav",
+    "audio_file": "/workspaces/graduation_project/backend/assets/AUDIO.wav",
     "backend_dir": "/workspaces/graduation_project/backend",
     "image": "/workspaces/graduation_project/backend/assets/Einstein.jpg",
+    "lighting": "https://8000-01hqrk1qr2p3w6cc5np0wk0ys5.cloudspaces.litng.ai",
+    "localhost": "http://localhost:8000",
     "main_dir": "/workspaces/graduation_project",
     "project_name": "graduation_project",
-    "text_to_voice_model_dir": "/workspaces/graduation_project/backend/bark-small"
+    "text_to_voice_model_dir": "/workspaces/graduation_project/backend/bark-small",
+    "video": "/workspaces/graduation_project/backend/assets/VIDEO.mp4"
 }

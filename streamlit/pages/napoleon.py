@@ -4,27 +4,35 @@ import requests
 
 import streamlit as st
 
-API = "localhost:8000"  # "https://8000-01hqrk1qr2p3w6cc5np0wk0ys5.cloudspaces.litng.ai"
-
 st.set_page_config(
     page_title="Chat with Napoleon Bonaparte",
     page_icon="😀",
     layout="wide",
 )
+CONFIG = json.load(open("/workspaces/graduation_project/config.json"))
 
 
 def request_prediction(query: str):
-    response = requests.post(
-        f"{API}/predict?query='{query}'",
-        timeout=1000,
-    )
-    download_audio = requests.get(
-        f"{API}/download",
-        timeout=1000,
-    )
-    audio = download_audio.content
-    response = json.loads(response.content.decode("utf-8"))
-    return response, audio
+    with st.status("Downloading data...", expanded=True) as status:
+        st.write("Checking is the Chatacter alive")
+        response = requests.get(f"{CONFIG['localhost']}/is_alive", timeout=1000)
+        if response["status"] == "ok":
+            st.write("Chatacter is alive")
+        else:
+            st.write("Chatacter is not alive")
+        st.write("Chatacter is thinking")
+        response_text = requests.post(
+            f"{CONFIG['localhost']}/get_text?query='{query}'",
+        )
+        st.write("Chatacter is generating the audio file")
+        response_audio = requests.post(
+            f"{CONFIG['localhost']}/get_audio?query='{response_text}'"
+        )
+        st.write("Chatacter is generating the video file")
+        response_video = requests.post(f"{CONFIG['localhost']}/get_video")
+        print(response_video)
+        status.update(label="Download complete!", state="complete", expanded=False)
+    return response
 
 
 st.title("😎 Chat with Napoleon Bonaparte")
