@@ -6,7 +6,6 @@ st.set_page_config(
     layout="wide",
 )
 
-
 st.title("😀 Chatacter Alpha Version")
 st.write(
     "This is a simple character chatting app. Now we only support Napoleon Bonaparte"
