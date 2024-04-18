@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:3.10-bullseye
+FROM ubuntu
 
 ENV SHELL /bin/bash
 ENV DEBIAN_FRONTEND noninteractive
