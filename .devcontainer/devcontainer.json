@@ -26,9 +26,9 @@
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/python": {},
-		"ghcr.io/devcontainers/features/git:1": {},
-		"ghcr.io/devcontainers/features/git-lfs:1": {},
-		"ghcr.io/devcontainers/features/anaconda:1": {}
+		"ghcr.io/devcontainers/features/git": {},
+		"ghcr.io/devcontainers/features/git-lfs": {},
+		"ghcr.io/devcontainers/features/anaconda": {}
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],

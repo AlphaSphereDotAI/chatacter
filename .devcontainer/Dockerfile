@@ -1,18 +1,14 @@
-FROM ubuntu
+FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
 ENV SHELL /bin/bash
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt update
-RUN apt full-upgrade -y
-RUN apt install software-properties-common -y
-RUN apt install ffmpeg -y
+RUN apt-get update
+RUN apt-get full-upgrade -y
+RUN apt-get install software-properties-common -y
+RUN apt-get install ffmpeg -y
 RUN apt-get install python3-pip git -y
-RUN apt autoremove -y
-
-COPY . /workspace
-WORKDIR /workspace
-RUN ls
+RUN apt-get autoremove -y
 
 RUN pip install -v -U pip
 RUN pip install -v setuptools==59.8.0
