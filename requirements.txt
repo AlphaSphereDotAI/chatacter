@@ -25,4 +25,3 @@ scikit-image==0.19.3
 facexlib==0.3.0
 gradio==3.23.0
 llvmlite==0.38.1
-basicsr==1.4.2
