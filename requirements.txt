@@ -1,3 +1,4 @@
+polars
 ruff
 numba
 tqdm

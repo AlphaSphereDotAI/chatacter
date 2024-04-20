@@ -1,12 +1,12 @@
-import json
-
+import polars as pl
 import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from model import generate_audio, generate_video, get_response
 
 app = FastAPI()
-CONFIG = json.load(open("/workspaces/graduation_project/config.json"))
+CONFIG = pl.read_json("/workspaces/graduation_project/config.json")
+print(CONFIG)
 
 
 @app.get("/")
