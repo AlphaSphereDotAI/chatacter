@@ -11,6 +11,7 @@ RUN apt-get install ffmpeg -y
 RUN apt-get autoremove -y
 
 WORKDIR /workspaces/graduation_project/
+RUN echo 'alias pip="pipenv"' >> ~/.bashrc
 
 RUN pip install -v -U pip uv pipenv
 RUN pipenv install -v setuptools==59.8.0
