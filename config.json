@@ -3,7 +3,6 @@
     "model": {
         "text_to_voice": "/workspaces/graduation_project/backend/bark-small"
     },
-    "backend_dir": "/workspaces/graduation_project/backend",
     "assets": {
         "video": "/workspaces/graduation_project/backend/assets/VIDEO.mp4",
         "image": "/workspaces/graduation_project/backend/assets/Einstein.jpg",
