@@ -41,6 +41,7 @@ gradio = "==3.23.0"
 llvmlite = "==0.38.1"
 basicsr = "==1.4.2"
 setuptools = "==59.8.0"
+fastapi = "*"
 
 [dev-packages]
 
