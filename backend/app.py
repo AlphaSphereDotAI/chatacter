@@ -1,12 +1,11 @@
-import polars as pl
+import pandas as pd
 import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from model import generate_audio, generate_video, get_response
 
 app = FastAPI()
-CONFIG = pl.read_json("/workspaces/graduation_project/config.json")
-print(CONFIG)
+CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 
 
 @app.get("/")

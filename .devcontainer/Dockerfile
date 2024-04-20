@@ -7,7 +7,7 @@ ENV PIPENV_VENV_IN_PROJECT=1
 RUN apt-get update
 RUN apt-get full-upgrade -y
 RUN apt-get install software-properties-common -y
-RUN apt-get install ffmpeg -y
+RUN apt-get install ffmpeg nodejs npm -y
 RUN apt-get autoremove -y
 
 WORKDIR /workspaces/graduation_project/

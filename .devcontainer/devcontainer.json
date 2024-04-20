@@ -27,7 +27,8 @@
 				"GitHub.copilot-chat",
 				"twixes.pypi-assistant",
 				"sourcery.sourcery",
-				"WakaTime.vscode-wakatime"
+				"WakaTime.vscode-wakatime",
+				"dotenv.dotenv-vscode"
 			]
 		}
 	},
@@ -35,6 +36,7 @@
 	// "image": "mcr.microsoft.com/devcontainers/python:3.10-bullseye",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
+		"ghcr.io/meaningful-ooo/devcontainer-features/homebrew": {},
 		"ghcr.io/devcontainers/features/git": {},
 		"ghcr.io/devcontainers/features/git-lfs": {}
 	},
