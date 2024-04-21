@@ -1,7 +1,5 @@
-import json
-
+import pandas as pd
 import requests
-
 import streamlit as st
 
 st.set_page_config(
@@ -9,7 +7,8 @@ st.set_page_config(
     page_icon="😀",
     layout="wide",
 )
-CONFIG = json.load(open("/workspaces/graduation_project/config.json"))
+
+CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 
 
 def request_prediction(query: str):
