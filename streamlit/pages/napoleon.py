@@ -15,21 +15,21 @@ CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 def request_prediction(query: str):
     with st.status("Downloading data...", expanded=True) as status:
         st.write("Checking is the Chatacter alive")
-        response = requests.get(f"{CONFIG['localhost']}/is_alive", timeout=1000)
+        response = requests.get(f"{CONFIG["api"]['localhost']}/is_alive", timeout=1000)
         if response["status"] == "ok":
             st.write("Chatacter is alive")
         else:
             st.write("Chatacter is not alive")
         st.write("Chatacter is thinking")
         response_text = requests.post(
-            f"{CONFIG['localhost']}/get_text?query='{query}'",
+            f"{CONFIG["api"]['localhost']}/get_text?query='{query}'",
         )
         st.write("Chatacter is generating the audio file")
         response_audio = requests.post(
-            f"{CONFIG['localhost']}/get_audio?query='{response_text}'"
+            f"{CONFIG["api"]['localhost']}/get_audio?query='{response_text}'"
         )
         st.write("Chatacter is generating the video file")
-        response_video = requests.post(f"{CONFIG['localhost']}/get_video")
+        response_video = requests.post(f"{CONFIG["api"]['localhost']}/get_video")
         print(response_video)
         status.update(label="Download complete!", state="complete", expanded=False)
     return response
