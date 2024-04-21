@@ -15,8 +15,8 @@ CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 def request_prediction(query: str):
     with st.status("Downloading data...", expanded=True) as status:
         st.write("Checking is the Chatacter alive")
-        response = requests.get(f"{CONFIG['localhost']}/is_alive", timeout=1000)
-        if response["status"] == "ok":
+        RESPONSE = requests.get(f"{CONFIG['localhost']}/is_alive", timeout=1000)
+        if RESPONSE["status"] == "ok":
             st.write("Chatacter is alive")
         else:
             st.write("Chatacter is not alive")
