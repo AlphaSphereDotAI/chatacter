@@ -4,6 +4,7 @@
 *.iws
 .idea/
 *.bin
+*.tmp
 .vscode/
 
 */checkpoints/
