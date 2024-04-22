@@ -9,9 +9,6 @@ verify_ssl = true
 name = "downloadpytorch"
 
 [packages]
-torch = {version = "==2.1.0", index = "downloadpytorch"}
-torchvision = {version = "==0.16.0", index = "downloadpytorch"}
-torchaudio = {version = "*", index = "downloadpytorch"}
 polars = "*"
 ruff = "*"
 numba = "*"
@@ -42,6 +39,11 @@ llvmlite = "==0.38.1"
 basicsr = "==1.4.2"
 setuptools = "==59.8.0"
 fastapi = "*"
+pipenv = "*"
+numpy = "*"
+torch = {version = "==2.1.0", index = "downloadpytorch"}
+torchvision = {version = "==0.16.0", index = "downloadpytorch"}
+torchaudio = {version = "*", index = "downloadpytorch"}
 
 [dev-packages]
 

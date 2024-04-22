@@ -13,9 +13,9 @@ RUN apt-get autoremove -y
 WORKDIR /workspaces/graduation_project/
 RUN echo 'alias pip="pipenv"' >> ~/.bashrc
 
-RUN pip install -v -U pip uv pipenv
-RUN pipenv install -v setuptools==59.8.0
-RUN pipenv install -v torch==2.1.0+cu121 torchvision==0.16.0+cu121 torchaudio -i https://download.pytorch.org/whl/cu121
-RUN pipenv install -v basicsr==1.4.2
-RUN pipenv install -v -r requirements.txt
-RUN pipenv shell
+# RUN pip install -v -U pip uv pipenv
+# RUN pipenv install -v setuptools==59.8.0
+# RUN pipenv install -v torch==2.1.0+cu121 torchvision==0.16.0+cu121 torchaudio -i https://download.pytorch.org/whl/cu121
+# RUN pipenv install -v basicsr==1.4.2
+# # RUN pipenv install -v -r requirements.txt
+# # RUN pipenv shell
