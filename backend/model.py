@@ -1,5 +1,3 @@
-import os
-
 import pandas as pd
 from huggingface_hub import snapshot_download
 from langchain_core.prompts import ChatPromptTemplate
@@ -9,16 +7,7 @@ from transformers import AutoModelForTextToWaveform, AutoProcessor
 
 CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 
-
-def check_and_download_model(model_path, repo_id):
-    if not os.path.exists(model_path):
-        print("Model not found. Downloading...")
-        snapshot_download(repo_id=repo_id, local_dir=model_path)
-    else:
-        print("Model exists.")
-
-
-check_and_download_model(CONFIG["model"]["text_to_voice"], "suno/bark-small")
+snapshot_download(repo_id="suno/bark-small", local_dir=CONFIG["model"]["text_to_voice"])
 processor = AutoProcessor.from_pretrained(CONFIG["model"]["text_to_voice"])
 model = AutoModelForTextToWaveform.from_pretrained(CONFIG["model"]["text_to_voice"])
 chat = ChatGroq(model_name="mixtral-8x7b-32768", verbose=True)
