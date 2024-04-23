@@ -36,6 +36,6 @@
 		"ghcr.io/devcontainers/features/git-lfs": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
-	"postCreateCommand": "pip sync",
+	"onCreateCommand": "uv pip -v sync --refresh requirements.txt",
 	"remoteUser": "root"
 }

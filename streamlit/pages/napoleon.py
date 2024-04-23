@@ -16,6 +16,7 @@ def request_prediction(query: str):
     with st.status("Downloading data...", expanded=True) as status:
         st.write("Checking is the Chatacter alive")
         response = requests.get(f"{CONFIG["api"]['localhost']}/is_alive", timeout=1000)
+        print(response)
         if response["status"] == "ok":
             st.write("Chatacter is alive")
         else:
