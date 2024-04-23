@@ -10,7 +10,7 @@ CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 snapshot_download(repo_id="suno/bark-small", local_dir=CONFIG["model"]["text_to_voice"])
 processor = AutoProcessor.from_pretrained(CONFIG["model"]["text_to_voice"])
 model = AutoModelForTextToWaveform.from_pretrained(CONFIG["model"]["text_to_voice"])
-chat = ChatGroq(model_name="mixtral-8x7b-32768", verbose=True)
+chat = ChatGroq(model_name="llama3-70b-8192", verbose=True)
 
 
 def generate_audio(response):
@@ -43,8 +43,8 @@ def get_response(query):
     )
     chain = prompt | chat
     response = chain.invoke({"text": query})
-    print("2 / 2")
-    generate_audio(response.content)
-    print(f"Here is the response: {response.content}")
-    generate_video()
+    # print("2 / 2")
+    # generate_audio(response.content)
+    # print(f"Here is the response: {response.content}")
+    # generate_video()
     return response.content

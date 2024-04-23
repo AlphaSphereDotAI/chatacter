@@ -1,11 +1,9 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
 	"name": "Chatacter",
-	// "build": {
-	// 	"context": "..",
-	// 	"dockerfile": "Dockerfile"
-	// },
+	"build": {
+		"context": "..",
+		"dockerfile": "Dockerfile"
+	},
 	"customizations": {
 		"vscode": {
 			"settings": {
@@ -32,21 +30,12 @@
 			]
 		}
 	},
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/python:3.10-bullseye",
-	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
-		// "ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers/features/node:1": {},
 		"ghcr.io/devcontainers/features/git": {},
-		"ghcr.io/devcontainers/features/git-lfs": {}
+		"ghcr.io/devcontainers/features/git-lfs": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pipenv -v sync \n pipenv shell",
-	"remoteUser": "root",
-	"remoteEnv": {
-		"PIPENV_VENV_IN_PROJECT": "1",
-		"VIRTUAL_ENV": "/workspaces/graduation_project/.venv"
-	}
+	"postCreateCommand": "pip sync",
+	"remoteUser": "root"
 }
