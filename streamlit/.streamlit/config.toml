@@ -1,7 +1,5 @@
+# Below are all the sections and options you can have in ~/.streamlit/config.toml.
 
- # Below are all the sections and options you can have in
- ~/.streamlit/config.toml.
- 
 
 [global]
 
@@ -143,13 +141,13 @@
 # be set to the same value across all replicas to ensure they all share the same secret.
 
 # Default: randomly generated secret key.
-# cookieSecret = "3c45635258524a8bbd4f4f65d2f9e36d290447a9aa735ab4e8372c4f50753d79"
+# cookieSecret = "fbab6909be70b3321d1326e478a68ab9208cd0b53e6140383b75e6422554941f"
 
 # If false, will attempt to open a browser window on start.
 
 # Default: false unless (1) we are on a Linux box where DISPLAY is unset, or
 # (2) we are running in the Streamlit Atom plugin.
-# headless = true
+headless = false
 
 # Automatically rerun script when the file is modified on disk.
 
@@ -274,7 +272,7 @@ runOnSave = true
 
 # The preset Streamlit theme that your custom theme inherits from.
 # One of "light" or "dark".
-# base =
+base = "dark"
 
 # Primary accent color for interactive elements.
 # primaryColor =
@@ -291,4 +289,3 @@ runOnSave = true
 # Font family for all text in the app, except code blocks. One of "sans serif",
 # "serif", or "monospace".
 # font =
-

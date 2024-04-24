@@ -26,7 +26,8 @@
 				"twixes.pypi-assistant",
 				"sourcery.sourcery",
 				"WakaTime.vscode-wakatime",
-				"dotenv.dotenv-vscode"
+				"dotenv.dotenv-vscode",
+				"tamasfe.even-better-toml"
 			]
 		}
 	},
