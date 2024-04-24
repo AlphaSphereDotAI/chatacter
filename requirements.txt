@@ -70,7 +70,6 @@ pandas==2.2.2
 pillow==10.2.0
 pip==24.0
 platformdirs==4.2.1
-polars==0.20.22
 pooch==1.8.1
 protobuf==3.20.0
 pyarrow==16.0.0
@@ -125,7 +124,7 @@ triton==2.1.0
 typing-extensions==4.9.0
 tzdata==2024.1
 urllib3==1.26.13
-uv==0.1.37
+uv
 uvicorn==0.29.0
 watchdog==4.0.0
 werkzeug==3.0.2

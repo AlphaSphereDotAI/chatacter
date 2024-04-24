@@ -7,7 +7,8 @@
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"python.defaultInterpreterPath": "./.venv/bin/python"
+				"python.defaultInterpreterPath": "./.venv/bin/python",
+				"python.terminal.activateEnvInCurrentTerminal": true
 			},
 			"extensions": [
 				"ms-python.python",
@@ -32,8 +33,8 @@
 		}
 	},
 	"updateContentCommand": "uv pip -v sync requirements.txt",
-	"postCreateCommand": "npx --yes dotenv-vault@latest",
-	"postAttachCommand": "npx -yes dotenv-vault pull && npx -yes dotenv-vault push",
+	"postStartCommand": "npx -yes dotenv-vault pull",
+	"postAttachCommand": ". .venv/bin/activate && which python",
 	"remoteUser": "root",
 	"forwardPorts": [
 		8000,

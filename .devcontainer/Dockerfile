@@ -22,3 +22,5 @@ RUN apt-get update
 RUN apt-get install nodejs -y
 RUN apt-get install git -y
 RUN apt-get install git-lfs -y
+
+RUN npx --yes dotenv-vault@latest
