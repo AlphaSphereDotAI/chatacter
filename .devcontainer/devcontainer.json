@@ -31,13 +31,9 @@
 			]
 		}
 	},
-	"features": {
-		"ghcr.io/devcontainers/features/node:1": {},
-		"ghcr.io/devcontainers/features/git": {},
-		"ghcr.io/devcontainers/features/git-lfs": {},
-		"ghcr.io/devcontainers/features/github-cli:1": {}
-	},
-	"onCreateCommand": "uv pip -v sync requirements.txt",
+	"updateContentCommand": "uv pip -v sync requirements.txt",
+	"postCreateCommand": "npx --yes dotenv-vault@latest",
+	"postAttachCommand": "npx -yes dotenv-vault pull && npx -yes dotenv-vault push",
 	"remoteUser": "root",
 	"forwardPorts": [
 		8000,
