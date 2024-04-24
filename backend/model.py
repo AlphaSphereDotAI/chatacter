@@ -33,8 +33,7 @@ def generate_video():
 
 def get_response(query):
     """get response function"""
-    print("1 / 2")
-    print(f"Sending {query} to Chatacter...")
+    print(f"Sending '{query}' to Chatacter...")
     print("Thinking...")
     prompt = ChatPromptTemplate.from_messages(
         [
@@ -44,8 +43,4 @@ def get_response(query):
     )
     chain = prompt | chat
     response = chain.invoke({"text": query})
-    # print("2 / 2")
-    # generate_audio(response.content)
-    # print(f"Here is the response: {response.content}")
-    # generate_video()
     return response.content

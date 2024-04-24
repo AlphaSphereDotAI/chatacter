@@ -36,6 +36,10 @@
 		"ghcr.io/devcontainers/features/git-lfs": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
-	"onCreateCommand": "uv pip -v sync --refresh requirements.txt",
-	"remoteUser": "root"
+	"onCreateCommand": "uv pip -v sync requirements.txt",
+	"remoteUser": "root",
+	"forwardPorts": [
+		8000,
+		8501
+	]
 }
