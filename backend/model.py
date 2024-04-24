@@ -1,10 +1,10 @@
 import pandas as pd
+from dotenv_vault import load_dotenv
 from huggingface_hub import snapshot_download
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
 from scipy.io.wavfile import write
 from transformers import AutoModelForTextToWaveform, AutoProcessor
-from dotenv_vault import load_dotenv
 
 CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 load_dotenv()
