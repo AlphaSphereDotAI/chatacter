@@ -6,7 +6,6 @@ from langchain_groq import ChatGroq
 from sadtalker.predict import Predictor
 from scipy.io.wavfile import write
 from transformers import AutoModelForTextToWaveform, AutoProcessor
-from sadtalker.predict import Predictor
 
 CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 load_dotenv()
@@ -40,6 +39,7 @@ def generate_video():
         enhancer="gfpgan",
         preprocess="full",
     )
+
 
 def get_response(query):
     """get response function"""
