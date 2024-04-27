@@ -4,15 +4,17 @@ import os
 import shutil
 from argparse import Namespace
 
+import pandas as pd
+import torch
 from cog import BasePredictor, Input, Path
-from src.facerender.animate import AnimateFromCoeff
-from src.generate_batch import get_data
-from src.generate_facerender_batch import get_facerender_data
-from src.test_audio2coeff import Audio2Coeff
-from src.utils.init_path import init_path
-from src.utils.preprocess import CropAndExtract
+from sadtalker.src.facerender.animate import AnimateFromCoeff
+from sadtalker.src.generate_batch import get_data
+from sadtalker.src.generate_facerender_batch import get_facerender_data
+from sadtalker.src.test_audio2coeff import Audio2Coeff
+from sadtalker.src.utils.init_path import init_path
+from sadtalker.src.utils.preprocess import CropAndExtract
 
-checkpoints = "checkpoints"
+CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 
 
 class Predictor(BasePredictor):
@@ -20,8 +22,10 @@ class Predictor(BasePredictor):
         """Load the model into memory to make running multiple predictions efficient"""
         device = "cuda"
 
-        sadtalker_paths = init_path(checkpoints, os.path.join("src", "config"))
-
+        sadtalker_paths = init_path(
+            CONFIG["model"]["sadtalker"]["checkpoints"], os.path.join("src", "config")
+        )
+        print(sadtalker_paths)
         # init model
         self.preprocess_model = CropAndExtract(sadtalker_paths, device)
 
@@ -83,7 +87,7 @@ class Predictor(BasePredictor):
         args = load_default()
         args.pic_path = str(source_image)
         args.audio_path = str(driven_audio)
-        device = "cuda"
+        device = "cuda" if torch.cuda.is_available() else "cpu"
         args.still = still
         args.ref_eyeblink = None if ref_eyeblink is None else str(ref_eyeblink)
         args.ref_pose = None if ref_pose is None else str(ref_pose)

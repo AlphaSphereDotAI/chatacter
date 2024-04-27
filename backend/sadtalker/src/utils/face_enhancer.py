@@ -3,7 +3,7 @@ import os
 import cv2
 import torch
 from gfpgan import GFPGANer
-from src.utils.videoio import load_video_to_cv2
+from sadtalker.src.utils.videoio import load_video_to_cv2
 from tqdm import tqdm
 
 

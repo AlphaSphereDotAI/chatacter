@@ -3,7 +3,7 @@ import random
 
 import numpy as np
 import scipy.io as scio
-import src.utils.audio as audio
+import sadtalker.src.utils.audio as audio
 import torch
 from tqdm import tqdm
 

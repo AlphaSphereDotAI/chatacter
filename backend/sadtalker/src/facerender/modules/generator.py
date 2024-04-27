@@ -1,7 +1,7 @@
 import torch
 import torch.nn.functional as F
-from src.facerender.modules.dense_motion import DenseMotionNetwork
-from src.facerender.modules.util import (
+from sadtalker.src.facerender.modules.dense_motion import DenseMotionNetwork
+from sadtalker.src.facerender.modules.util import (
     DownBlock2d,
     ResBlock2d,
     ResBlock3d,

@@ -1,6 +1,6 @@
 import torch
 import torch.nn.functional as F
-from src.audio2pose_models.res_unet import ResUnet
+from sadtalker.src.audio2pose_models.res_unet import ResUnet
 from torch import nn
 
 
