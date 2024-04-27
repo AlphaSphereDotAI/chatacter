@@ -6,6 +6,7 @@ from argparse import Namespace
 
 import pandas as pd
 import torch
+import wget
 from cog import BasePredictor, Input, Path
 from sadtalker.src.facerender.animate import AnimateFromCoeff
 from sadtalker.src.generate_batch import get_data
@@ -44,6 +45,40 @@ class Predictor(BasePredictor):
                 device,
             ),
         }
+
+    def download_model():
+        os.system("pwd")
+        CHECKPOINT_DIR = "/workspaces/graduation_project/backend/sadtalker/checkpoints"
+        GFPGAN_WEIGHTS_DIR = (
+            "/workspaces/graduation_project/backend/sadtalker/gfpgan/weights"
+        )
+        MODELS = {
+            f"{CHECKPOINT_DIR}/mapping_00109-model.pth.tar": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00109-model.pth.tar",
+            f"{CHECKPOINT_DIR}/mapping_00229-model.pth.tar": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00229-model.pth.tar",
+            f"{CHECKPOINT_DIR}/SadTalker_V0.0.2_256.safetensors": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_256.safetensors",
+            f"{CHECKPOINT_DIR}/SadTalker_V0.0.2_512.safetensors": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_512.safetensors",
+            f"{CHECKPOINT_DIR}/epoch_00190_iteration_000400000_checkpoint.pt": "https://huggingface.co/vinthony/SadTalker-V002rc/resolve/main/epoch_00190_iteration_000400000_checkpoint.pt?download=true",
+            f"{GFPGAN_WEIGHTS_DIR}/alignment_WFLW_4HG.pth": "https://github.com/xinntao/facexlib/releases/download/v0.1.0/alignment_WFLW_4HG.pth",
+            f"{GFPGAN_WEIGHTS_DIR}/detection_Resnet50_Final.pth": "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth",
+            f"{GFPGAN_WEIGHTS_DIR}/GFPGANv1.4.pth": "https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth",
+            f"{GFPGAN_WEIGHTS_DIR}/parsing_parsenet.pth": "https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth",
+        }
+
+        def download_model_from_url(url, path):
+            print("\nDownloading model from", url)
+            wget.download(url=url, out=path)
+            print()
+
+        if not os.path.exists(CHECKPOINT_DIR):
+            print("\nCreating checkpoints directory")
+            os.mkdir(CHECKPOINT_DIR)
+        if not os.path.exists(GFPGAN_WEIGHTS_DIR):
+            print("\nCreating gfpgan/weights directory")
+            os.makedirs(GFPGAN_WEIGHTS_DIR)
+
+        for path, link in MODELS.items():
+            if not os.path.exists(path):
+                download_model_from_url(url=link, path=path)
 
     def predict(
         self,
