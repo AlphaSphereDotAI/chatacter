@@ -1,6 +1,7 @@
 import librosa
 import librosa.filters
 import numpy as np
+from sadtalker.src.utils.hparams import hparams as hp
 
 # import tensorflow as tf
 from scipy import signal
