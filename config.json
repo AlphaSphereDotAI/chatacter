@@ -12,7 +12,8 @@
         "bark": "/workspaces/graduation_project/backend/bark-small",
         "sadtalker": {
             "base": "/workspaces/graduation_project/backend/sadtalker",
-            "checkpoints": "/workspaces/graduation_project/backend/sadtalker/checkpoints"
+            "checkpoints": "/workspaces/graduation_project/backend/sadtalker/checkpoints",
+            "gfpgan": "/workspaces/graduation_project/backend/sadtalker/gfpgan/weights"
         }
     },
     "project_name": "graduation_project"
