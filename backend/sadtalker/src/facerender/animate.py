@@ -11,16 +11,16 @@ import torchvision
 import yaml
 from pydub import AudioSegment
 from skimage import img_as_ubyte
-from src.facerender.modules.generator import (
+from sadtalker.src.facerender.modules.generator import (
     OcclusionAwareGenerator,
     OcclusionAwareSPADEGenerator,
 )
-from src.facerender.modules.keypoint_detector import HEEstimator, KPDetector
-from src.facerender.modules.make_animation import make_animation
-from src.facerender.modules.mapping import MappingNet
-from src.utils.face_enhancer import enhancer_generator_with_len, enhancer_list
-from src.utils.paste_pic import paste_pic
-from src.utils.videoio import save_video_with_watermark
+from sadtalker.src.facerender.modules.keypoint_detector import HEEstimator, KPDetector
+from sadtalker.src.facerender.modules.make_animation import make_animation
+from sadtalker.src.facerender.modules.mapping import MappingNet
+from sadtalker.src.utils.face_enhancer import enhancer_generator_with_len, enhancer_list
+from sadtalker.src.utils.paste_pic import paste_pic
+from sadtalker.src.utils.videoio import save_video_with_watermark
 
 warnings.filterwarnings("ignore")
 

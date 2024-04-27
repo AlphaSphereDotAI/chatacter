@@ -5,12 +5,13 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
 from scipy.io.wavfile import write
 from transformers import AutoModelForTextToWaveform, AutoProcessor
+from sadtalker.predict import Predictor
 
 CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 load_dotenv()
-snapshot_download(repo_id="suno/bark-small", local_dir=CONFIG["model"]["text_to_voice"])
-processor = AutoProcessor.from_pretrained(CONFIG["model"]["text_to_voice"])
-model = AutoModelForTextToWaveform.from_pretrained(CONFIG["model"]["text_to_voice"])
+# snapshot_download(repo_id="suno/bark-small", local_dir=CONFIG["model"]["bark"])
+processor = AutoProcessor.from_pretrained(CONFIG["model"]["bark"])
+model = AutoModelForTextToWaveform.from_pretrained(CONFIG["model"]["bark"])
 chat = ChatGroq(model_name="llama3-70b-8192", verbose=True)
 
 
@@ -26,10 +27,15 @@ def generate_audio(response):
 
 def generate_video():
     """generate video"""
-    # os.system(
-    #     f"python /workspaces/graduation_project/backend/sadtalker/inference.py --source_image {CONFIG['image']} --driven_audio {CONFIG['audio']}"
-    # )
-
+    print("\tChatacter is generating the video...")
+    predictor = Predictor()
+    predictor.setup()
+    predictor.predict(
+        source_image=CONFIG["assets"]["source_image"],
+        driven_audio=CONFIG["assets"]["audio"],
+        enhancer="gfpgan",
+        preprocess="full",
+    )
 
 def get_response(query):
     """get response function"""

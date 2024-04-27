@@ -1,15 +1,19 @@
 {
-    "project_name": "graduation_project",
-    "model": {
-        "text_to_voice": "/workspaces/graduation_project/backend/bark-small"
+    "api": {
+        "lighting": "https://8000-01hqrk1qr2p3w6cc5np0wk0ys5.cloudspaces.litng.ai",
+        "localhost": "http://localhost:8000"
     },
     "assets": {
-        "video": "/workspaces/graduation_project/backend/assets/VIDEO.mp4",
+        "audio": "/workspaces/graduation_project/backend/assets/AUDIO.wav",
         "image": "/workspaces/graduation_project/backend/assets/Einstein.jpg",
-        "audio": "/workspaces/graduation_project/backend/assets/AUDIO.wav"
+        "video": "/workspaces/graduation_project/backend/assets/VIDEO.mp4"
     },
-    "api": {
-        "localhost": "http://localhost:8000",
-        "lighting": "https://8000-01hqrk1qr2p3w6cc5np0wk0ys5.cloudspaces.litng.ai"
-    }
+    "model": {
+        "bark": "/workspaces/graduation_project/backend/bark-small",
+        "sadtalker": {
+            "base": "/workspaces/graduation_project/backend/sadtalker",
+            "checkpoints": "/workspaces/graduation_project/backend/sadtalker/checkpoints"
+        }
+    },
+    "project_name": "graduation_project"
 }
