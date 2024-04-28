@@ -3,19 +3,44 @@ FROM mcr.microsoft.com/devcontainers/python:3.10-bullseye
 ENV SHELL /bin/bash
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt update
-RUN apt full-upgrade -y
-RUN apt install software-properties-common -y
-RUN apt install ffmpeg -y
-RUN apt-get install python3-pip git -y
-RUN apt autoremove -y
+RUN apt-get update
+RUN apt-get full-upgrade -y
+RUN apt-get install software-properties-common -y
+RUN apt-get install ffmpeg -y
+RUN apt-get install curl -y
+RUN apt-get autoremove -y
 
-COPY . /workspace
-WORKDIR /workspace
-RUN ls
+# Node
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash 
+RUN apt-get update
+RUN apt-get install nodejs -y
+RUN npx --yes dotenv-vault@latest
 
-RUN pip install -v -U pip
-RUN pip install -v setuptools==59.8.0
-RUN pip install -v torch==2.1.0+cu121 torchvision==0.16.0+cu121 torchaudio --use-pep517 --extra-index-url https://download.pytorch.org/whl/cu121
-RUN pip install -v basicsr==1.4.2 --use-pep517
-RUN pip install -v -r requirements.txt
+# Git
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+RUN apt-get update
+RUN apt-get install git -y
+RUN apt-get install git-lfs -y
+
+# CUDA
+RUN curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+    && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+RUN apt-get update
+RUN apt-get install nvidia-container-toolkit -y
+RUN apt-get install nvidia-docker2 -y
+RUN nvidia-ctk runtime configure --runtime=docker
+
+# Environment Variables
+ENV VIRTUAL_ENV=/workspaces/graduation_project/.venv
+ENV PATH=$VIRTUAL_ENV/bin:$PATH
+ENV UV_EXTRA_INDEX_URL=https://download.pytorch.org/whl/cu121
+ENV CWD=/workspaces/graduation_project/streamlit
+ENV NVIDIA_VISIBLE_DEVICES=all
+
+# Alias
+RUN echo 'alias pip="uv -v pip"' >> ~/.bashrc
+RUN echo 'alias py="python"' >> ~/.bashrc
+RUN echo 'alias env="npx -yes dotenv-vault"' >> ~/.bashrc
+RUN echo 'source /workspaces/graduation_project/.venv/bin/activate' >> ~/.bashrc

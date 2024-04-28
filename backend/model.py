@@ -7,15 +7,14 @@ from langchain_groq import ChatGroq
 from scipy.io.wavfile import write
 from transformers import AutoModelForTextToWaveform, AutoProcessor
 
-CONFIGURATIONS = json.load(open("/workspaces/graduation_project/config.json"))
-snapshot_download(
-    repo_id="suno/bark-small", local_dir=CONFIGURATIONS["text_to_voice_model_dir"]
-)
-processor = AutoProcessor.from_pretrained(CONFIGURATIONS["text_to_voice_model_dir"])
-model = AutoModelForTextToWaveform.from_pretrained(
-    CONFIGURATIONS["text_to_voice_model_dir"]
-)
-chat = ChatGroq(model_name="mixtral-8x7b-32768", verbose=True)
+CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
+load_dotenv()
+# snapshot_download(repo_id="suno/bark-small", local_dir=CONFIG["model"]["bark"])
+processor = AutoProcessor.from_pretrained(CONFIG["model"]["bark"])
+model = AutoModelForTextToWaveform.from_pretrained(CONFIG["model"]["bark"])
+processor = AutoProcessor.from_pretrained(CONFIG["model"]["bark"])
+model = AutoModelForTextToWaveform.from_pretrained(CONFIG["model"]["bark"])
+chat = ChatGroq(model_name="llama3-70b-8192", verbose=True)
 
 
 def generate_audio(response):
