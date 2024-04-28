@@ -4,6 +4,7 @@
 *.iws
 .idea/
 *.bin
+*.tmp
 .vscode/
 
 */checkpoints/
@@ -32,3 +33,8 @@ frontend/.pub/
 /frontend/android/app/debug
 /frontend/android/app/profile
 /frontend/android/app/release
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault

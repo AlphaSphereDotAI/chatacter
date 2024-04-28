@@ -4,15 +4,18 @@ import os
 import shutil
 from argparse import Namespace
 
+import pandas as pd
+import torch
+import wget
 from cog import BasePredictor, Input, Path
-from src.facerender.animate import AnimateFromCoeff
-from src.generate_batch import get_data
-from src.generate_facerender_batch import get_facerender_data
-from src.test_audio2coeff import Audio2Coeff
-from src.utils.init_path import init_path
-from src.utils.preprocess import CropAndExtract
+from sadtalker.src.facerender.animate import AnimateFromCoeff
+from sadtalker.src.generate_batch import get_data
+from sadtalker.src.generate_facerender_batch import get_facerender_data
+from sadtalker.src.test_audio2coeff import Audio2Coeff
+from sadtalker.src.utils.init_path import init_path
+from sadtalker.src.utils.preprocess import CropAndExtract
 
-checkpoints = "checkpoints"
+CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 
 
 class Predictor(BasePredictor):
@@ -20,8 +23,10 @@ class Predictor(BasePredictor):
         """Load the model into memory to make running multiple predictions efficient"""
         device = "cuda"
 
-        sadtalker_paths = init_path(checkpoints, os.path.join("src", "config"))
-
+        sadtalker_paths = init_path(
+            CONFIG["model"]["sadtalker"]["checkpoints"], os.path.join("src", "config")
+        )
+        print(sadtalker_paths)
         # init model
         self.preprocess_model = CropAndExtract(sadtalker_paths, device)
 
@@ -40,6 +45,36 @@ class Predictor(BasePredictor):
                 device,
             ),
         }
+
+    def download_model(self):
+        os.system("pwd")
+        MODELS = {
+            f"{CONFIG['model']['sadtalker']['checkpoints']}/mapping_00109-model.pth.tar": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00109-model.pth.tar",
+            f"{CONFIG['model']['sadtalker']['checkpoints']}/mapping_00229-model.pth.tar": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00229-model.pth.tar",
+            f"{CONFIG['model']['sadtalker']['checkpoints']}/SadTalker_V0.0.2_256.safetensors": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_256.safetensors",
+            f"{CONFIG['model']['sadtalker']['checkpoints']}/SadTalker_V0.0.2_512.safetensors": "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_512.safetensors",
+            f"{CONFIG['model']['sadtalker']['checkpoints']}/epoch_00190_iteration_000400000_checkpoint.pt": "https://huggingface.co/vinthony/SadTalker-V002rc/resolve/main/epoch_00190_iteration_000400000_checkpoint.pt?download=true",
+            f"{CONFIG['model']['sadtalker']['gfpgan']}/alignment_WFLW_4HG.pth": "https://github.com/xinntao/facexlib/releases/download/v0.1.0/alignment_WFLW_4HG.pth",
+            f"{CONFIG['model']['sadtalker']['gfpgan']}/detection_Resnet50_Final.pth": "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth",
+            f"{CONFIG['model']['sadtalker']['gfpgan']}/GFPGANv1.4.pth": "https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth",
+            f"{CONFIG['model']['sadtalker']['gfpgan']}/parsing_parsenet.pth": "https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth",
+        }
+
+        def download_model_from_url(url, path):
+            print("\nDownloading model from", url)
+            wget.download(url=url, out=path)
+            print()
+
+        if not os.path.exists(CONFIG["model"]["sadtalker"]["checkpoints"]):
+            print("\nCreating checkpoints directory")
+            os.mkdir(CONFIG["model"]["sadtalker"]["checkpoints"])
+        if not os.path.exists(CONFIG["model"]["sadtalker"]["gfpgan"]):
+            print("\nCreating gfpgan/weights directory")
+            os.makedirs(CONFIG["model"]["sadtalker"]["gfpgan"])
+
+        for path, link in MODELS.items():
+            if not os.path.exists(path):
+                download_model_from_url(url=link, path=path)
 
     def predict(
         self,
@@ -83,7 +118,7 @@ class Predictor(BasePredictor):
         args = load_default()
         args.pic_path = str(source_image)
         args.audio_path = str(driven_audio)
-        device = "cuda"
+        device = "cuda" if torch.cuda.is_available() else "cpu"
         args.still = still
         args.ref_eyeblink = None if ref_eyeblink is None else str(ref_eyeblink)
         args.ref_pose = None if ref_pose is None else str(ref_pose)

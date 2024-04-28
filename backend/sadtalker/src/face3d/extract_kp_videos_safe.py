@@ -11,7 +11,7 @@ from facexlib.alignment import landmark_98_to_68
 from facexlib.detection import init_detection_model
 from facexlib.utils import load_file_from_url
 from PIL import Image
-from src.face3d.util.my_awing_arch import FAN
+from sadtalker.src.face3d.util.my_awing_arch import FAN
 from torch.multiprocessing import Pool, Process, set_start_method
 from tqdm import tqdm
 
