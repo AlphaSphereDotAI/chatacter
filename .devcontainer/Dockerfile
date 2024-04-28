@@ -40,3 +40,4 @@ ENV NVIDIA_VISIBLE_DEVICES=all
 RUN echo 'alias pip="uv -v pip"' >> ~/.bashrc
 RUN echo 'alias py="python"' >> ~/.bashrc
 RUN echo 'alias env="npx -yes dotenv-vault"' >> ~/.bashrc
+RUN echo 'source /workspaces/graduation_project/.venv/bin/activate' >> ~/.bashrc
