@@ -6,6 +6,9 @@
 *.bin
 .vscode/
 
+.env
+.env.me
+.env.previous
 */checkpoints/
 
 */__pycache__/
