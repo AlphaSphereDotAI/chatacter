@@ -4,12 +4,12 @@ import numpy as np
 import safetensors
 import safetensors.torch
 import torch
+from sadtalker.src.audio2exp_models.audio2exp import Audio2Exp
+from sadtalker.src.audio2exp_models.networks import SimpleWrapperV2
+from sadtalker.src.audio2pose_models.audio2pose import Audio2Pose
+from sadtalker.src.utils.safetensor_helper import load_x_from_safetensor
 from scipy.io import loadmat, savemat
 from scipy.signal import savgol_filter
-from src.audio2exp_models.audio2exp import Audio2Exp
-from src.audio2exp_models.networks import SimpleWrapperV2
-from src.audio2pose_models.audio2pose import Audio2Pose
-from src.utils.safetensor_helper import load_x_from_safetensor
 from yacs.config import CfgNode as CN
 
 

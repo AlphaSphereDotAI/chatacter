@@ -1,27 +1,39 @@
+import pandas as pd
 import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from model import get_response
+from model import generate_audio, generate_video, get_response
 
 app = FastAPI()
+CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 
 
 @app.get("/")
-async def hello_world():
+async def is_alive():
     """hello world function"""
-    return "hello world"
+    return {
+        "message": "Hello World",
+        "status": "ok",
+    }
 
 
-@app.post("/predict")
-def predict(query: str):
-    """predict function"""
+@app.post("/get_text")
+def get_text(query: str):
+    """get text response function"""
     return get_response(query)
 
 
-@app.get("/download")
-def download_file():
-    """download the file"""
-    return FileResponse("./assets/demo.wav", media_type="audio/wav")
+@app.get("/get_audio")
+def get_audio(text: str):
+    """generate the audio file"""
+    return generate_audio(text)
+
+
+@app.get("/get_video")
+def get_video():
+    """generate the video file"""
+    generate_video()
+    return FileResponse(CONFIG["video"], media_type="video/mp4")
 
 
 if __name__ == "__main__":

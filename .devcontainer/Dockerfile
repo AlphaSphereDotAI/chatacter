@@ -1,7 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:3.10-bullseye
-
-ENV SHELL /bin/bash
-ENV DEBIAN_FRONTEND noninteractive
+FROM nvidia/cuda:12.1.0-devel-ubuntu22.04
 
 RUN apt-get update
 RUN apt-get full-upgrade -y
@@ -43,4 +40,3 @@ ENV NVIDIA_VISIBLE_DEVICES=all
 RUN echo 'alias pip="uv -v pip"' >> ~/.bashrc
 RUN echo 'alias py="python"' >> ~/.bashrc
 RUN echo 'alias env="npx -yes dotenv-vault"' >> ~/.bashrc
-RUN echo 'source /workspaces/graduation_project/.venv/bin/activate' >> ~/.bashrc
