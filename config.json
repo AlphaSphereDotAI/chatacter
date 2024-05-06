@@ -4,16 +4,16 @@
         "localhost": "http://localhost:8000"
     },
     "assets": {
-        "audio": "/workspaces/graduation_project/backend/assets/AUDIO.wav",
-        "image": "/workspaces/graduation_project/backend/assets/Einstein.jpg",
-        "video": "/workspaces/graduation_project/backend/assets/VIDEO.mp4"
+        "audio": "/teamspace/studios/this_studio/graduation_project/backend/assets/AUDIO.wav",
+        "image": "/teamspace/studios/this_studio/graduation_project/backend/assets/Einstein.jpg",
+        "video": "/teamspace/studios/this_studio/graduation_project/backend/assets/VIDEO.mp4"
     },
     "model": {
-        "bark": "/workspaces/graduation_project/backend/bark-small",
+        "bark": "/teamspace/studios/this_studio/graduation_project/backend/bark-small",
         "sadtalker": {
-            "base": "/workspaces/graduation_project/backend/sadtalker",
-            "checkpoints": "/workspaces/graduation_project/backend/sadtalker/checkpoints",
-            "gfpgan": "/workspaces/graduation_project/backend/sadtalker/gfpgan/weights"
+            "base": "/teamspace/studios/this_studio/graduation_project/backend/sadtalker",
+            "checkpoints": "/teamspace/studios/this_studio/graduation_project/backend/sadtalker/checkpoints",
+            "gfpgan": "/teamspace/studios/this_studio/graduation_project/backend/sadtalker/gfpgan/weights"
         }
     },
     "project_name": "graduation_project"
