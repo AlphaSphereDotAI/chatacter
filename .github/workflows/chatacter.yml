@@ -80,3 +80,23 @@ jobs:
               run: pip install mkdocs mkdocs-material
             - name: Build documentation
               run: mkdocs gh-deploy -v --force
+    HuggingFaceSync:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: streamlit
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.cache/hf
+                  key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
+                  restore-keys: ${{ runner.os }}-pip-
+            - name: Sync With Hugging Face Hub
+              uses: nateraw/huggingface-sync-action@v0.0.5
+              with:
+                github_repo_id: 'MH0386/graduation_project'
+                huggingface_repo_id: 'AlphaSphereDotAI/chatacher'
+                hf_token: ${{ secrets.HF_TOKEN }}
