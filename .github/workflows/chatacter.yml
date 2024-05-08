@@ -98,8 +98,8 @@ jobs:
             - name: Sync With Hugging Face Hub
               uses: nateraw/huggingface-sync-action@v0.0.5
               with:
-                github_repo_id: 'MH0386/graduation_project'
-                huggingface_repo_id: 'AlphaSphereDotAI/chatacher'
+                github_repo_id: MH0386/graduation_project
+                huggingface_repo_id: AlphaSphereDotAI/chatacher
                 hf_token: ${{ secrets.HF_TOKEN }}
-                subdirectory: 'streamlit'
-                space_sdk: 'streamlit'
+                subdirectory: streamlit
+                space_sdk: streamlit
