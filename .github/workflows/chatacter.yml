@@ -42,8 +42,8 @@ jobs:
               uses: actions/cache@v4
               with:
                   path: ~/.pub-cache
-                  key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
-                  restore-keys: ${{ runner.os }}-pub-
+                  key: ${{ runner.os }}-chatacter-${{ hashFiles('**/requirements.txt') }}
+                  restore-keys: ${{ runner.os }}-chatacter-
             - name: Setup Dart
               uses: dart-lang/setup-dart@v1.6.2
             - name: Run Dart Analyze
@@ -70,8 +70,8 @@ jobs:
               uses: actions/cache@v4
               with:
                   path: ~/.cache/pip
-                  key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
-                  restore-keys: ${{ runner.os }}-pip-
+                  key: ${{ runner.os }}-chatacter-${{ hashFiles('**/requirements.txt') }}
+                  restore-keys: ${{ runner.os }}-chatacter-
             - name: Set up Python
               uses: actions/setup-python@v5
               with:
@@ -89,8 +89,8 @@ jobs:
               uses: actions/cache@v4
               with:
                   path: ~/.cache/hf
-                  key: ${{ runner.os }}-pub-${{ hashFiles('requirements.txt') }}
-                  restore-keys: ${{ runner.os }}-pip-
+                  key: ${{ runner.os }}-chatacter-${{ hashFiles('**/requirements.txt') }}
+                  restore-keys: ${{ runner.os }}-chatacter-
             - name: Sync With Hugging Face Hub
               uses: nateraw/huggingface-sync-action@v0.0.5
               with:
