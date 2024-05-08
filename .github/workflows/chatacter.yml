@@ -100,3 +100,4 @@ jobs:
                 huggingface_repo_id: 'AlphaSphereDotAI/chatacher'
                 hf_token: ${{ secrets.HF_TOKEN }}
                 subdirectory: 'streamlit'
+                space_sdk: 'streamlit'
