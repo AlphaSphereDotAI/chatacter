@@ -88,9 +88,11 @@ jobs:
             - name: Cache
               uses: actions/cache@v4
               with:
-                  path: ~/.cache/hf
+                  path: ~/.cache/huggingface
                   key: ${{ runner.os }}-chatacter-${{ hashFiles('**/requirements.txt') }}
                   restore-keys: ${{ runner.os }}-chatacter-
+            - name: PWD
+              run: pwd 
             - name: Sync With Hugging Face Hub
               uses: nateraw/huggingface-sync-action@v0.0.5
               with:
