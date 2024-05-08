@@ -89,7 +89,7 @@ jobs:
               uses: actions/cache@v4
               with:
                   path: ~/.cache/hf
-                  key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
+                  key: ${{ runner.os }}-pub-${{ hashFiles('requirements.txt') }}
                   restore-keys: ${{ runner.os }}-pip-
             - name: Sync With Hugging Face Hub
               uses: nateraw/huggingface-sync-action@v0.0.5
