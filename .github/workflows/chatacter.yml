@@ -93,6 +93,8 @@ jobs:
                   restore-keys: ${{ runner.os }}-chatacter-
             - name: PWD
               run: pwd 
+            - name: LS
+              run: ls -a
             - name: Sync With Hugging Face Hub
               uses: nateraw/huggingface-sync-action@v0.0.5
               with:
