@@ -1,7 +1,7 @@
 ---
 title: Chatacher
 emoji: 👀
-colorFrom: yellow
+colorFrom: gray
 colorTo: blue
 sdk: streamlit
 app_file: app.py
