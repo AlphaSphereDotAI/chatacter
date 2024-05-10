@@ -1,6 +1,8 @@
+import os
+
 import pandas as pd
 import requests
-import os
+
 import streamlit as st
 
 st.set_page_config(
@@ -8,6 +10,7 @@ st.set_page_config(
     page_icon="😀",
     layout="wide",
 )
+
 
 def request_prediction(query: str):
     with st.status("Downloading data...", expanded=True) as status:
