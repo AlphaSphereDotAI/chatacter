@@ -14,5 +14,4 @@ yacs==0.1.8
 joblib==1.2.0
 scikit-image==0.19.3
 facexlib==0.3.0
-gradio==4.19.2
 llvmlite==0.38.1
