@@ -5,7 +5,7 @@ from fastapi.responses import FileResponse
 from model import generate_audio, generate_video, get_response
 
 app = FastAPI()
-CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
+CONFIG = pd.read_json("/teamspace/studios/this_studio/graduation_project/config.json")
 
 
 @app.get("/")
@@ -37,4 +37,4 @@ def get_video():
 
 
 if __name__ == "__main__":
-    uvicorn.run("app:app", host="localhost", port=8000, reload=True)
+    uvicorn.run("app:app", host="localhost", port=8001, reload=True)
