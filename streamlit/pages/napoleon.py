@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 import requests
 
@@ -8,8 +10,6 @@ st.set_page_config(
     page_icon="😀",
     layout="wide",
 )
-
-CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
 
 
 def request_prediction(query: str):
