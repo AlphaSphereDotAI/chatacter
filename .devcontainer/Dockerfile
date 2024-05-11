@@ -35,8 +35,13 @@ ENV PATH=$VIRTUAL_ENV/bin:$PATH
 ENV UV_EXTRA_INDEX_URL=https://download.pytorch.org/whl/cu121
 ENV CWD=/workspaces/graduation_project/streamlit
 ENV NVIDIA_VISIBLE_DEVICES=all
+ENV UV_CACHE_DIR=.venv/.cache
+ENV PIP_CACHE_DIR=.venv/.cache
+ENV PYTHONUSERBASE=/workspaces/graduation_project/.venv/lib/python3.10/site-packages
 
 # Alias
 RUN echo 'alias pip="uv -v pip"' >> ~/.bashrc
 RUN echo 'alias py="python"' >> ~/.bashrc
 RUN echo 'alias env="npx -yes dotenv-vault"' >> ~/.bashrc
+RUN echo 'alias streamlit="python -m streamlit"' >> ~/.bashrc
+RUN echo 'source /workspaces/graduation_project/.venv/bin/activate' >> ~/.bashrc

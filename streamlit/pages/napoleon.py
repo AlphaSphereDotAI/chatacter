@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 import requests
 
@@ -9,13 +11,11 @@ st.set_page_config(
     layout="wide",
 )
 
-CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
-
 
 def request_prediction(query: str):
     with st.status("Downloading data...", expanded=True) as status:
         st.write("Checking is the Chatacter alive")
-        response = requests.get(f"{CONFIG['api']['localhost']}/is_alive", timeout=1000)
+        response = requests.get(f"{CONFIG['api']['localhost']}/", timeout=100)
         print(response)
         if response["status"] == "ok":
             st.write("Chatacter is alive")

@@ -34,7 +34,6 @@
 	},
 	"updateContentCommand": "uv pip -v sync requirements.txt",
 	"postStartCommand": "npx -yes dotenv-vault pull",
-	"postAttachCommand": ". .venv/bin/activate && which python",
 	"remoteUser": "root",
 	"forwardPorts": [
 		8000,
