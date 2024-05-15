@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:chatacter/Pages/chat.dart';
 import 'package:flutter/material.dart';
