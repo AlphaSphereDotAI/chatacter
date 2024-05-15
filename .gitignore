@@ -5,7 +5,6 @@
 .idea/
 *.bin
 *.tmp
-.vscode/
 
 .env
 .env.me

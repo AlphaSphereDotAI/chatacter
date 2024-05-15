@@ -7,9 +7,9 @@ from sadtalker.predict import Predictor
 from scipy.io.wavfile import write
 from transformers import AutoModelForTextToWaveform, AutoProcessor
 
-CONFIG = pd.read_json("/workspaces/graduation_project/config.json")
+CONFIG = pd.read_json("/teamspace/studios/this_studio/graduation_project/config.json")
 load_dotenv()
-# snapshot_download(repo_id="suno/bark-small", local_dir=CONFIG["model"]["bark"])
+snapshot_download(repo_id="suno/bark-small", local_dir=CONFIG["model"]["bark"])
 processor = AutoProcessor.from_pretrained(CONFIG["model"]["bark"])
 model = AutoModelForTextToWaveform.from_pretrained(CONFIG["model"]["bark"])
 processor = AutoProcessor.from_pretrained(CONFIG["model"]["bark"])
