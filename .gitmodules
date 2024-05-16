@@ -4,3 +4,6 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/AlphaSphereDotAI/chatacter_backend
+[submodule "streamlit"]
+	path = streamlit
+	url = https://github.com/AlphaSphereDotAI/chatacter_streamlit
