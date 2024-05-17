@@ -4,63 +4,6 @@ on:
         branches: main
     pull_request:
 jobs:
-    # Frontend:
-    #     runs-on: ubuntu-latest
-    #     defaults:
-    #         run:
-    #             working-directory: frontend
-    #     steps:
-    #         - name: Checkout
-    #           uses: actions/checkout@v4.1.4
-    #         - name: Cache
-    #           uses: actions/cache@v4
-    #           with:
-    #               path: ~/.pub-cache
-    #               key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
-    #               restore-keys: ${{ runner.os }}-pub-
-    #         - name: Set up Flutter
-    #           uses: subosito/flutter-action@v2.13.0
-    #           with:
-    #               channel: "stable"
-    #         - run: flutter pub get
-    #         - run: flutter pub upgrade
-    #         - run: flutter pub outdated
-    #         - run: dart format .
-    #         - run: flutter analyze
-    DeepSource:
-        runs-on: ubuntu-latest
-        permissions:
-            contents: read
-            security-events: write
-            actions: read
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4.1.4
-              with:
-                  ref: ${{ github.event.pull_request.head.sha }}
-            - name: Cache
-              uses: actions/cache@v4
-              with:
-                  path: ~/.pub-cache
-                  key: ${{ runner.os }}-chatacter-${{ hashFiles('**/requirements.txt') }}
-                  restore-keys: ${{ runner.os }}-chatacter-
-            - name: Setup Dart
-              uses: dart-lang/setup-dart@v1.6.2
-            - name: Run Dart Analyze
-              run: dart analyze > dart_analyze.txt || true
-            - name: Dart Analyze to SARIF
-              uses: advanced-security/dart-analyzer-sarif@main
-              with:
-                  input: dart_analyze.txt
-                  output: dart_analyze.sarif
-            - name: Upload SARIF report to DeepSource
-              run: |
-                  # Install the CLI
-                  curl https://deepsource.io/cli | sh
-                  # Send the report to DeepSource
-                  ./bin/deepsource report --analyzer dart-analyze --analyzer-type community --value-file ./dart_analyze.sarif
-              env:
-                  DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
     Documentation:
         runs-on: ubuntu-latest
         steps:
@@ -80,22 +23,3 @@ jobs:
               run: pip install mkdocs mkdocs-material
             - name: Build documentation
               run: mkdocs gh-deploy -v --force
-    HuggingFaceSync:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4.1.4
-            - name: Cache
-              uses: actions/cache@v4
-              with:
-                  path: ~/.cache/pip
-                  key: ${{ runner.os }}-chatacter-${{ hashFiles('**/requirements.txt') }}
-                  restore-keys: ${{ runner.os }}-chatacter-
-            - name: Sync With Hugging Face Hub
-              uses: nateraw/huggingface-sync-action@v0.0.5
-              with:
-                github_repo_id: MH0386/graduation_project
-                huggingface_repo_id: AlphaSphereDotAI/chatacher
-                hf_token: ${{ secrets.HF_TOKEN }}
-                subdirectory: streamlit
-                space_sdk: streamlit
