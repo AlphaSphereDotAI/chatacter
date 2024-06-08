@@ -1,5 +1,8 @@
-# Policy
-
+---
+title: "Policy"
+# about:
+#   template: jolla
+---
 ## Introduction
 
 Chatacter is committed to protecting the privacy of its users. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application. Please read this Privacy Policy carefully.

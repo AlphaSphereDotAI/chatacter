@@ -1,19 +1,27 @@
 project:
-  type: website
+    type: website
 
 website:
-  title: "documentation"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
-
+    title: "Chatacter"
+    search: true
+    page-navigation: true
+    back-to-top-navigation: true
+    twitter-card: true
+    page-footer: "Copyright 2021, Norah Jones"
+    navbar:
+        background: dark
+        left:
+            - index.qmd
+            - about.qmd
+            - docs.qmd
+            - policy.qmd
+        tools:
+            - icon: twitter
+              href: https://twitter.com
+            - icon: github
+              href: https://github.com
 format:
-  html:
-    theme: cosmo
-    css: styles.css
-    toc: true
-
-
-
+    html:
+        theme: darkly
+        css: styles.css
+        toc: true
