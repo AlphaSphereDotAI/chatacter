@@ -6,6 +6,8 @@
 *.bin
 *.tmp
 
+.cache/
+
 .env
 .env.me
 .env.previous
