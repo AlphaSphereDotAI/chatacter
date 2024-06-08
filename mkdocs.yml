@@ -40,7 +40,7 @@ markdown_extensions:
     - attr_list
 plugins:
     - search
-    # - optimize
+    - optimize
     - social
     - git-revision-date-localized:
           enable_creation_date: true
