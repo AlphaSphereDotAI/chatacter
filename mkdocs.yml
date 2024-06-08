@@ -1,32 +1,22 @@
 site_name: Chatacter
-repo_url: https://github.com/MH0386/graduation_project
+repo_url: https://github.com/alphaspheredotai/chatacter
+repo_name: Chatacter
 site_author: MH0386
 nav:
     - Home: index.md
-    - Documentation: docs.md
+    - Doc: docs.md
     - Policy: policy.md
 theme:
     name: material
     palette:
-        # Palette toggle for light mode
-        - media: "(prefers-color-scheme: light)"
-          primary: grey
-          accent: light blue
-          scheme: default
-          toggle:
-              icon: material/weather-sunny
-              name: Switch to dark mode
-        # Palette toggle for dark mode
-        - media: "(prefers-color-scheme: dark)"
-          primary: black
-          accent: light blue
-          scheme: slate
-          toggle:
-              icon: material/weather-night
-              name: Switch to light mode
+        primary: black
+        accent: light blue
+        scheme: slate
     font:
         text: JetBrains Mono
-        code: Roboto Mono
+        code: JetBrains Mono
+    icon:
+        repo: fontawesome/brands/github
     features:
         - navigation.instant
         - navigation.instant.progress
@@ -50,10 +40,18 @@ markdown_extensions:
     - attr_list
 plugins:
     - search
+    # - optimize
+    # - social
+    - git-revision-date-localized:
+      enable_creation_date: true
+    - git-committers:
+      repository: alphaspheredotai/chatacter
+      branch: main
+    - git-authors
 extra:
     social:
         - icon: octicons/mark-github-16
-          link: https://github.com/MH0386/graduation_project
+          link: https://github.com/alphaspheredotai/chatacter
         - icon: octicons/mail-16
           link: mailto:alpha-AI@googlegroups.com
 copyright: Copyright &copy; 2024 <a href="https://alphaspheredotai.github.io"  target="_blank" rel="noopener">AlphaSphere.AI</a>
