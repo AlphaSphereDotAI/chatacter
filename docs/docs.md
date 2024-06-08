@@ -53,7 +53,7 @@ The field of conversational agents (CAs) is rapidly evolving, with a growing emp
 - Megatron-Turing NLG: This model from NVIDIA highlights the potential of LLMs for factual language generation. However, it primarily focuses on factual summarization and lacks the interactive dialogue capabilities needed for a conversational agent.
 - BlenderBot: This Facebook AI project explores LLMs for open-domain dialogue with a focus on factual grounding. While demonstrating progress, it still faces challenges in achieving robust and consistent domain-specific assistance.
 
-#### Domain-Specific Conversational Agents&#x20;
+#### Domain-Specific Conversational Agents
 
 Several industries have developed chatbots for specific tasks like customer service or technical support. However, these often lack the embodiment and multi-modal capabilities of your project.
 
@@ -62,7 +62,7 @@ Several industries have developed chatbots for specific tasks like customer serv
 
 ### Computer Vision
 
-#### Talking Head Video Generation&#x20;
+#### Talking Head Video Generation
 
 The creation of talking head videos from a single-face image and speech audio is fraught with challenges, such as unnatural head movements, distorted facial expressions, and modifications to the subject's identity. These issues are attributed to the reliance on learning from coupled 2D motion fields, which can lead to unnatural and incoherent results. Moreover, the use of explicit 3D information has been found to introduce its own set of problems, such as stiff expressions and videos that lack coherence. One of the most powerful models is SadTalker. To address these challenges, SadTalker has been developed. This system generates 3D motion coefficients, including head pose and facial expressions, from audio using a 3D Morphable Model (3DMM) and modulates a novel 3D-aware face render to create talking head videos. SadTalker stands out by explicitly modeling the connections between audio and several types of motion coefficients individually, which helps in achieving more accurate facial expressions and head movements. To learn the realistic motion coefficients, we explicitly model the connections between audio and several types of motion coefficients individually. Precisely, we present ExpNet to learn the accurate facial expression from audio by distilling both coefficients and 3D-rendered faces.
 
@@ -79,9 +79,9 @@ The creation of talking head videos from a single-face image and speech audio is
 - Style Control: PoseVAE enables generating head motion with several styles based on audio.
 - Unsupervised 3D Key Points: Mapping to this space leverages 3D information without introducing stiffness or incoherence.
 
-##### Experiments:&#x20;
+##### Experiments
 
-Extensive experiments have been conducted to validate the effectiveness of SadTalker. These studies show the method's superiority in motion realism and video quality, outperforming existing approaches in the field. Extensive experiments demonstrate SadTalker's superiority in terms of:&#x20;
+Extensive experiments have been conducted to validate the effectiveness of SadTalker. These studies show the method's superiority in motion realism and video quality, outperforming existing approaches in the field. Extensive experiments demonstrate SadTalker's superiority in terms of:
 
 - Motion Naturalness: More realistic and varied head motions compared to other methods.
 - Expression Quality: Accurate and nuanced facial expressions driven by audio.

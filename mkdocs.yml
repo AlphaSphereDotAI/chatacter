@@ -4,7 +4,7 @@ repo_name: Chatacter
 site_author: MH0386
 nav:
     - Home: index.md
-    - Doc: docs.md
+    - Documentation: docs.md
     - Policy: policy.md
 theme:
     name: material
@@ -47,10 +47,4 @@ plugins:
     - git-committers:
           repository: alphaspheredotai/chatacter
           branch: main
-extra:
-    social:
-        - icon: octicons/mark-github-16
-          link: https://github.com/alphaspheredotai/chatacter
-        - icon: octicons/mail-16
-          link: mailto:alpha-AI@googlegroups.com
 copyright: Copyright &copy; 2024 <a href="https://alphaspheredotai.github.io"  target="_blank" rel="noopener">AlphaSphere.AI</a>
