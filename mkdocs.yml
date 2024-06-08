@@ -42,8 +42,7 @@ plugins:
     - search
     # - optimize
     # - social
-    - git-revision-date-localized:
-      enable_creation_date: true
+    - git-revision-date-localized
     - git-committers:
       repository: alphaspheredotai/chatacter
       branch: main
