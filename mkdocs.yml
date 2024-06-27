@@ -4,6 +4,7 @@ repo_name: Chatacter
 site_author: MH0386
 nav:
     - Home: index.md
+    - Installation: install.md
     - Documentation: docs.md
     - Policy: policy.md
 theme:
