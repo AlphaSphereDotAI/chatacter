@@ -8,7 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-              uses: actions/checkout@v4.1.4
+              uses: actions/checkout@v4
             - name: Cache
               uses: actions/cache@v4
               with:
@@ -20,6 +20,6 @@ jobs:
               with:
                   python-version: "3.x"
             - name: Set up MKDocs
-              run: pip install mkdocs mkdocs-material
+              run: pip install mkdocs mkdocs-material[imaging] mkdocs-git-committers-plugin-2 mkdocs-git-revision-date-localized-plugin
             - name: Build documentation
               run: mkdocs gh-deploy -v --force
