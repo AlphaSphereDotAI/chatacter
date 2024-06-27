@@ -1,9 +1,12 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/AlphaSphereDotAI/chatacter_flutter
+	branch = main
 [submodule "backend"]
 	path = backend
 	url = https://github.com/AlphaSphereDotAI/chatacter_backend
+	branch = main
 [submodule "streamlit"]
 	path = streamlit
 	url = https://github.com/AlphaSphereDotAI/chatacter_streamlit
+	branch = main
