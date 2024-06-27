@@ -1,13 +1,28 @@
-# Installation
+# Backend Part
 
-## Download the repository
+## Prerequisites
+
+- Docker
+- Python 3.10
+- CUDA 12.1
+- conda
+
+## Installation
+
+### Download the repository
 
 ```bash
 git clone https://github.com/AlphaSphereDotAI/chatacter_backend.git
 cd chatacter_backend
 ```
 
-## Install the dependencies
+#### Docker
+
+```bash
+docker compose up
+```
+
+#### Install the dependencies
 
 ```bash
 conda env create -f environment.yml
