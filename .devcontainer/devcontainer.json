@@ -5,6 +5,9 @@
 		"dockerfile": "Dockerfile"
 	},
 	"customizations": {
+		"jetbrains": {
+			"backend": "PyCharm"
+		},
 		"vscode": {
 			"settings": {
 				"python.defaultInterpreterPath": "./.venv/bin/python",
