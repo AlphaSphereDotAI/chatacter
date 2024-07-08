@@ -23,3 +23,15 @@ jobs:
               run: pip install mkdocs mkdocs-material[imaging] mkdocs-git-committers-plugin-2 mkdocs-git-revision-date-localized-plugin
             - name: Build documentation
               run: mkdocs gh-deploy -v --force
+    sonarcloud:
+        name: SonarCloud
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+            with:
+              fetch-depth: 0
+          - name: SonarCloud Scan
+            uses: SonarSource/sonarcloud-github-action@master
+            env:
+              GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }} 
+              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
