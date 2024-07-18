@@ -5,3 +5,4 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/AlphaSphereDotAI/chatacter_flutter
+	branch = main
