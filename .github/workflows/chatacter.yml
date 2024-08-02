@@ -23,8 +23,7 @@ jobs:
               run: pip install mkdocs mkdocs-material[imaging] mkdocs-git-committers-plugin-2 mkdocs-git-revision-date-localized-plugin
             - name: Build documentation
               run: mkdocs gh-deploy -v --force
-    sonarcloud:
-        name: SonarCloud
+    SonarCloud:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v4
@@ -35,3 +34,15 @@ jobs:
             env:
               GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }} 
               SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    DeepSource:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+            with:
+              ref: ${{ github.event.pull_request.head.sha }}
+          - name: Report results to DeepSource
+            run: |
+               curl https://deepsource.io/cli | sh
+               ./bin/deepsource report --analyzer test-coverage --key python --value-file ./coverage.xml
+            env:
+              DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
