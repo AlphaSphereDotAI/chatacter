@@ -28,3 +28,14 @@ docker compose up
 conda env create -f environment.yml
 conda activate chatacter
 ```
+
+<details><summary>Code Block 1</summary>
+  <pre><code>
+  // Code block 1
+  </code></pre>
+</details>
+<details><summary>Code Block 2</summary>
+  <pre><code>
+  // Code block 2
+  </code></pre>
+</details>
