@@ -29,13 +29,17 @@ conda env create -f environment.yml
 conda activate chatacter
 ```
 
-=== "Tab 1"
-    Markdown **content**.
+{{% tabs %}}
+{{% tab "Groovy" %}}
+ standard fenced code block here
+{{% /tab %}}
 
-    Multiple paragraphs.
+{{% tab "JavaScript" %}}
+ standard fenced code block here
+{{% /tab %}}
 
-=== "Tab 2"
-    More Markdown **content**.
+{{% tab "Ruby" %}}
+ standard fenced code block here
+{{% /tab %}}
 
-    - list item a
-    - list item b
+{{% /tabs %}}
