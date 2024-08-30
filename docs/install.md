@@ -33,8 +33,7 @@ conda activate chatacter
   <pre><code>
   // Code block 1
   </code></pre>
-</details>
-<details><summary>Code Block 2</summary>
+<summary>Code Block 2</summary>
   <pre><code>
   // Code block 2
   </code></pre>
