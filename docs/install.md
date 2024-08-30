@@ -28,18 +28,4 @@ docker compose up
 conda env create -f environment.yml
 conda activate chatacter
 ```
-
-{{% tabs %}}
-{{% tab "Groovy" %}}
- standard fenced code block here
-{{% /tab %}}
-
-{{% tab "JavaScript" %}}
- standard fenced code block here
-{{% /tab %}}
-
-{{% tab "Ruby" %}}
- standard fenced code block here
-{{% /tab %}}
-
-{{% /tabs %}}
+ 
