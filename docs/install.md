@@ -29,12 +29,13 @@ conda env create -f environment.yml
 conda activate chatacter
 ```
 
-<details><summary>Code Block 1</summary>
-  <pre><code>
-  // Code block 1
-  </code></pre>
-<summary>Code Block 2</summary>
-  <pre><code>
-  // Code block 2
-  </code></pre>
-</details>
+=== "Tab 1"
+    Markdown **content**.
+
+    Multiple paragraphs.
+
+=== "Tab 2"
+    More Markdown **content**.
+
+    - list item a
+    - list item b
