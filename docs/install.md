@@ -1,5 +1,16 @@
 # Backend Part
 
+## Overview
+
+```plaintext
+
+    backend
+    ├── app
+    ├── video_generator
+    └── voice_generator
+
+```
+
 ## Prerequisites
 
 - Docker
