@@ -9,13 +9,6 @@ backend
 └── voice_generator
 ```
 
-## Prerequisites
-
-- Docker
-- Python 3.10
-- CUDA 12.1
-- conda
-
 ## Installation
 
 ### Download the repository
@@ -23,18 +16,33 @@ backend
 ```bash
 git clone https://github.com/AlphaSphereDotAI/chatacter_backend.git
 cd chatacter_backend
+git submodule update --init --recursive
 ```
 
-#### Docker
+#### Container
+
+- Docker
 
 ```bash
 docker compose up
 ```
 
-#### Install the dependencies
+- Podman
 
 ```bash
-conda env create -f environment.yml
-conda activate chatacter
+podman compose up
 ```
- 
+
+#### Local
+
+- Install the dependencies
+
+```bash
+uv sync
+```
+
+- Run the server
+
+```bash
+uv run fastapi dev
+```
