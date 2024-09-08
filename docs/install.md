@@ -23,26 +23,26 @@ git submodule update --init --recursive
 
 - Docker
 
-    ```bash
-    docker compose up
-    ```
+```bash
+docker compose up
+```
 
 - Podman
 
-    ```bash
-    podman compose up
-    ```
+```bash
+podman compose up
+```
 
 #### Local
 
 - Install the dependencies
 
-    ```bash
-    uv sync
-    ```
+```bash
+uv sync
+```
 
 - Run the server
 
-    ```bash
-    uv run fastapi dev
-    ```
+```bash
+uv run fastapi dev
+```
