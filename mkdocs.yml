@@ -11,7 +11,7 @@ nav:
 theme:
     language: en
     icon:
-        logo: material/chatbot
+        logo: simple/chatbot
     name: material
     palette:
         - media: "(prefers-color-scheme)"
