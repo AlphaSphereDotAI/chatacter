@@ -7,7 +7,7 @@ This is a graduation project for a 3-member team at [Cairo University](https://w
 ## Supervisor
 
 - Dr. [Reda El-Khoribi](https://linkedin.com/in/reda-el-khoribi-aa338437)
-- T.A. [Asmaa Ahmed](https://github.com/MH0386/graduation_project/wiki/)
+- T.A. Asmaa Ahmed
 
 ## Team Member
 
@@ -17,7 +17,7 @@ This is a graduation project for a 3-member team at [Cairo University](https://w
 
 ## Contact Us
 
-- Email: [alpha-AI@googlegroups.com](mailto:alpha-AI@googlegroups.com)
+- Email: [AlphaSphere.AI@gmail.com](mailto:AlphaSphere.AI@gmail.com)
 - GitHub: [Github.com/AlphaSphereDotAI.github.io/chatacter](https://github.com/alphaspheredotai/chatacter)
 
 For the Presentation, click [here](https://tome.app/httpswwwfacebookcom-1aa/graduation-project-clsmcwggf05tmmu5zov31x0m6)
