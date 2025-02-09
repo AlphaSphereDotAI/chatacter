@@ -17,7 +17,7 @@ theme:
         - media: "(prefers-color-scheme)"
           toggle:
             icon: material/brightness-auto
-            name: Switch to light mode
+            name: Switch to dark mode
         - media: "(prefers-color-scheme: dark)"
           scheme: slate
           toggle:
