@@ -18,6 +18,6 @@ This is a graduation project for a 3-member team at [Cairo University](https://w
 ## Contact Us
 
 - Email: [AlphaSphere.AI@gmail.com](mailto:AlphaSphere.AI@gmail.com)
-- GitHub: [Github.com/AlphaSphereDotAI.github.io/chatacter](https://github.com/alphaspheredotai/chatacter)
+- GitHub: [Github.com/AlphaSphereDotAI/chatacter](https://github.com/alphaspheredotai/chatacter)
 
 For the Presentation, click [here](https://tome.app/httpswwwfacebookcom-1aa/graduation-project-clsmcwggf05tmmu5zov31x0m6)
