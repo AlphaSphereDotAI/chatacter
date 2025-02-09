@@ -8,11 +8,23 @@ nav:
     - Documentation: docs.md
     - Policy: policy.md
 theme:
+    language: en
     name: material
     palette:
-        primary: black
-        accent: deep purple
-        scheme: slate
+        - media: "(prefers-color-scheme)"
+          toggle:
+            icon: material/brightness-auto
+            name: Switch to light mode
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          toggle:
+            icon: material/weather-night
+            name: Switch to light mode
+        - media: "(prefers-color-scheme: light)"
+          scheme: default
+          toggle:
+            icon: material/weather-sunny
+            name: Switch to dark mode
     font:
         text: JetBrains Mono
         code: JetBrains Mono
