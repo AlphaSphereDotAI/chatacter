@@ -9,6 +9,8 @@ nav:
     - Policy: policy.md
 theme:
     language: en
+    icon:
+        logo: material/chatbot
     name: material
     palette:
         - media: "(prefers-color-scheme)"
@@ -28,8 +30,6 @@ theme:
     font:
         text: JetBrains Mono
         code: JetBrains Mono
-    icon:
-        repo: fontawesome/brands/github
     features:
         - navigation.instant
         - navigation.instant.progress
