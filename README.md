@@ -4,8 +4,8 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/alphaspheredotai/chatacter/badge)](https://www.codefactor.io/repository/github/alphaspheredotai/chatacter)
 
 - Chatacter
-    - [backend](https://github.com/alphaspheredotai/chatacter_backend)
-        - [app](https://github.com/alphaspheredotai/chatacter_backend_app)
-        - [video_generator](https://github.com/alphaspheredotai/chatacter_backend_video_generator)
-        - [voice_generator](https://github.com/alphaspheredotai/chatacter_backend_voice_generator)
-    - [frontend](https://github.com/alphaspheredotai/chatacter_frontend)
+    - [Backend](https://github.com/alphaspheredotai/chatacter_backend)
+        - [App](https://github.com/alphaspheredotai/chatacter_backend_app)
+        - [Video Generator](https://github.com/alphaspheredotai/chatacter_backend_video_generator)
+        - [Voice Generator](https://github.com/alphaspheredotai/chatacter_backend_voice_generator)
+    - frontend
