@@ -5,7 +5,7 @@
 
 - Chatacter
     - [backend](https://github.com/alphaspheredotai/chatacter_backend)
-        - app
-        - video_generator
-        - voice_generator
+        - [app](https://github.com/alphaspheredotai/chatacter_backend_app)
+        - [video_generator](https://github.com/alphaspheredotai/chatacter_backend_video_generator)
+        - [voice_generator](https://github.com/alphaspheredotai/chatacter_backend_voice_generator)
     - frontend 
