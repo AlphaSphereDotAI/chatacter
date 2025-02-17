@@ -8,4 +8,4 @@
         - [app](https://github.com/alphaspheredotai/chatacter_backend_app)
         - [video_generator](https://github.com/alphaspheredotai/chatacter_backend_video_generator)
         - [voice_generator](https://github.com/alphaspheredotai/chatacter_backend_voice_generator)
-    - frontend 
+    - [frontend](https://github.com/alphaspheredotai/chatacter_frontend)
