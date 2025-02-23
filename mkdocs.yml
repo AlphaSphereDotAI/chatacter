@@ -63,6 +63,13 @@ plugins:
           repository: alphaspheredotai/chatacter
           branch: main
 extra:
+  alternate:
+    - name: English
+      link: /
+      lang: en
+    - name: Arabic
+      link: /ar/
+      lang: ar
   analytics: 
     feedback:
       title: Was this page helpful?
