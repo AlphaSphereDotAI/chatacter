@@ -1,4 +1,4 @@
-name: Chatecter
+name: Chatacter
 on:
     push:
         branches: main
