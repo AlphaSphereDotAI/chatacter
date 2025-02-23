@@ -65,7 +65,7 @@ plugins:
 extra:
   alternate:
     - name: English
-      link: /
+      link: /chatacter/
       lang: en
     - name: Arabic
       link: /chatacter/ar/
