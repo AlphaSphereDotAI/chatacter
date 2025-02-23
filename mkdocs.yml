@@ -2,7 +2,7 @@ site_name: Chatacter
 repo_url: https://github.com/alphaspheredotai/chatacter
 repo_name: Chatacter
 site_author: MH0386
-copyright: Copyright &copy; 2025 <a href="https://alphaspheredotai.github.io"  target="_blank" rel="noopener">AlphaSphere.AI</a>
+copyright: Copyright &copy; 2025 <a href="https://alphaspheredotai.is-a.dev"  target="_blank" rel="noopener">AlphaSphere.AI</a>
 nav:
     - Home: index.md
     - Installation: install.md
@@ -16,18 +16,18 @@ theme:
     palette:
         - media: "(prefers-color-scheme)"
           toggle:
-            icon: material/brightness-auto
-            name: Switch to dark mode
+              icon: material/brightness-auto
+              name: Switch to dark mode
         - media: "(prefers-color-scheme: dark)"
           scheme: slate
           toggle:
-            icon: material/weather-night
-            name: Switch to light mode
+              icon: material/weather-night
+              name: Switch to light mode
         - media: "(prefers-color-scheme: light)"
           scheme: default
           toggle:
-            icon: material/weather-sunny
-            name: Switch to dark mode
+              icon: material/weather-sunny
+              name: Switch to dark mode
     font:
         text: JetBrains Mono
         code: JetBrains Mono
@@ -63,23 +63,23 @@ plugins:
           repository: alphaspheredotai/chatacter
           branch: main
 extra:
-  alternate:
-    - name: English
-      link: /chatacter/
-      lang: en
-    - name: Arabic
-      link: /chatacter/ar/
-      lang: ar
-  analytics: 
-    feedback:
-      title: Was this page helpful?
-      ratings:
-        - icon: material/emoticon-happy-outline
-          name: This page was helpful
-          data: 1
-          note: >-
-            Thanks for your feedback!
-        - icon: material/emoticon-sad-outline
-          name: This page could be improved
-          data: 0
-          note: https://github.com/AlphaSphereDotAI/chatacter/issues/new/?title=[Feedback]+{title}+-+{url}
+    alternate:
+        - name: English
+          link: /chatacter/
+          lang: en
+        - name: Arabic
+          link: /chatacter/ar/
+          lang: ar
+    analytics:
+        feedback:
+            title: Was this page helpful?
+            ratings:
+                - icon: material/emoticon-happy-outline
+                  name: This page was helpful
+                  data: 1
+                  note: >-
+                      Thanks for your feedback!
+                - icon: material/emoticon-sad-outline
+                  name: This page could be improved
+                  data: 0
+                  note: https://github.com/AlphaSphereDotAI/chatacter/issues/new/?title=[Feedback]+{title}+-+{url}
