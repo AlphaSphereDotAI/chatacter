@@ -9,28 +9,27 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4.2.2
-            - name: Cache
-              uses: actions/cache@v4.2.1
+            - name: Set up UV
+              uses: astral-sh/setup-uv@v5.3.0
               with:
-                  path: ~/.cache/pip
-                  key: ${{ runner.os }}-chatacter-${{ hashFiles('**/requirements.txt') }}
-                  restore-keys: ${{ runner.os }}-chatacter-
+                  enable-cache: true
+                  cache-dependency-glob: "uv.lock"
             - name: Set up Python
               uses: actions/setup-python@v5.4.0
               with:
-                  python-version: "3.x"
-            - name: Set up MKDocs
-              run: pip install -r requirements.txt
+                  python-version-file: ".python-version"
+            - name: Install the project
+              run: uv sync --all-extras --dev
             - name: Build documentation
-              run: mkdocs gh-deploy -v --force
+              run: uv run mkdocs gh-deploy -v --force
     SonarCloud:
         runs-on: ubuntu-latest
         steps:
-          - uses: actions/checkout@v4.2.2
-            with:
-              fetch-depth: 0
-          - name: SonarCloud Scan
-            uses: SonarSource/sonarcloud-github-action@v4.0.0
-            env:
-              GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }} 
-              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            - uses: actions/checkout@v4.2.2
+              with:
+                  fetch-depth: 0
+            - name: SonarCloud Scan
+              uses: SonarSource/sonarcloud-github-action@v4.0.0
+              env:
+                  GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
