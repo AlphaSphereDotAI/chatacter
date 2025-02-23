@@ -9,7 +9,6 @@ nav:
     - Documentation: docs.md
     - Policy: policy.md
 theme:
-    language: en
     icon:
         logo: simple/chatbot
     name: material
@@ -32,29 +31,48 @@ theme:
         text: JetBrains Mono
         code: JetBrains Mono
     features:
+        - content.code.annotate
+        - content.code.copy
+        - content.tabs.link
+        - navigation.expand
+        - navigation.footer
+        - navigation.indexes
         - navigation.instant
         - navigation.instant.prefetch
         - navigation.instant.progress
-        - navigation.tracking
-        - navigation.expand
         - navigation.path
-        - navigation.indexes
-        - toc.follow
-        - search.suggest
-        - search.share
-        - navigation.footer
-        - navigation.tabs
         - navigation.sections
-        - toc.integrate
+        - navigation.tabs
         - navigation.top
+        - navigation.tracking
         - search.highlight
-        - content.tabs.link
-        - content.code.annotate
-        - content.code.copy
+        - search.share
+        - search.suggest
+        - toc.follow
+        - toc.integrate
+    direction:
+        rtl:
+            - ar
+        ltr:
+            - en
 markdown_extensions:
     - attr_list
 plugins:
-    - search
+    - search:
+          lang:
+              - en
+              - ar
+    - i18n:
+          default_language: en
+          docs_structure: folder
+          languages:
+              - locale: en
+                default: true
+                name: English
+                build: true
+              - locale: ar
+                name: العربية
+                build: true
     # - optimize
     - social
     - git-revision-date-localized:
@@ -63,13 +81,6 @@ plugins:
           repository: alphaspheredotai/chatacter
           branch: main
 extra:
-    alternate:
-        - name: English
-          link: /chatacter/
-          lang: en
-        - name: Arabic
-          link: /chatacter/ar/
-          lang: ar
     analytics:
         feedback:
             title: Was this page helpful?
