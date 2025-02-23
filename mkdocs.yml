@@ -68,7 +68,7 @@ extra:
       link: /
       lang: en
     - name: Arabic
-      link: /ar/
+      link: /docs/ar/
       lang: ar
   analytics: 
     feedback:
