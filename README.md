@@ -5,8 +5,4 @@
 
 - Chatacter
     - [Backend](https://github.com/alphaspheredotai/chatacter_backend)
-        - [App](https://github.com/alphaspheredotai/chatacter_backend_app)
-        - [Ollama](https://github.com/AlphaSphereDotAI/chatacter_backend_ollama)
-        - [Video Generator](https://github.com/alphaspheredotai/chatacter_backend_video_generator)
-        - [Voice Generator](https://github.com/alphaspheredotai/chatacter_backend_voice_generator)
     - frontend
