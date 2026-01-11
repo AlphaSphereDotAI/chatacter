@@ -10,9 +10,11 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v6.0.1
             - name: Set up UV
-              uses: astral-sh/setup-uv@v7.2.0
+              uses: astral-sh/setup-uv@v7.2.0 
+            - name: Install the project
+              run: uv sync --frozen --no-dev
             - name: Build documentation
-              run: uvx mkdocs gh-deploy -v --force
+              run: uv run mkdocs gh-deploy -v --force
     SonarCloud:
         runs-on: ubuntu-latest
         steps:
@@ -24,4 +26,5 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 
