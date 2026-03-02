@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://alphaspheredotai.is-a.dev/chatacter/</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alphaspheredotai.is-a.dev/chatacter/"/>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://alphaspheredotai.is-a.dev/chatacter/ar/"/>
+    </url>
+    <url>
+        <loc>https://alphaspheredotai.is-a.dev/chatacter/docs/</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alphaspheredotai.is-a.dev/chatacter/docs/"/>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://alphaspheredotai.is-a.dev/chatacter/ar/docs/"/>
+    </url>
+    <url>
+        <loc>https://alphaspheredotai.is-a.dev/chatacter/install/</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alphaspheredotai.is-a.dev/chatacter/install/"/>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://alphaspheredotai.is-a.dev/chatacter/ar/install/"/>
+    </url>
+    <url>
+        <loc>https://alphaspheredotai.is-a.dev/chatacter/policy/</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alphaspheredotai.is-a.dev/chatacter/policy/"/>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://alphaspheredotai.is-a.dev/chatacter/ar/policy/"/>
+    </url>
+    <url>
+        <loc>https://alphaspheredotai.is-a.dev/chatacter/ar/</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://alphaspheredotai.is-a.dev/chatacter/ar/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alphaspheredotai.is-a.dev/chatacter/"/>
+    </url>
+    <url>
+        <loc>https://alphaspheredotai.is-a.dev/chatacter/ar/docs/</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://alphaspheredotai.is-a.dev/chatacter/ar/docs/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alphaspheredotai.is-a.dev/chatacter/docs/"/>
+    </url>
+    <url>
+        <loc>https://alphaspheredotai.is-a.dev/chatacter/ar/install/</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://alphaspheredotai.is-a.dev/chatacter/ar/install/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alphaspheredotai.is-a.dev/chatacter/install/"/>
+    </url>
+    <url>
+        <loc>https://alphaspheredotai.is-a.dev/chatacter/ar/policy/</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://alphaspheredotai.is-a.dev/chatacter/ar/policy/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alphaspheredotai.is-a.dev/chatacter/policy/"/>
+    </url>
+</urlset>
