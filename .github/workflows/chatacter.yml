@@ -12,7 +12,7 @@ jobs:
               with:
                 egress-policy: audit
             - name: Checkout
-              uses: actions/checkout@v6.0.2
+              uses: actions/checkout@v7.0.0
             - name: Set up UV
               uses: astral-sh/setup-uv@v8.1.0 
             - name: Install the project
@@ -26,7 +26,7 @@ jobs:
               uses: step-security/harden-runner@a5ad31d6a139d249332a2605b85202e8c0b78450 # v2.19.1
               with:
                 egress-policy: audit
-            - uses: actions/checkout@v6.0.2
+            - uses: actions/checkout@v7.0.0
               with:
                   fetch-depth: 0
             - name: SonarCloud Scan
